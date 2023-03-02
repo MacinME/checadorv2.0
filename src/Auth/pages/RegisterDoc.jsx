@@ -1,5 +1,5 @@
-import { Navbar } from "../components/Navbar"
-import { TableRegisterDoc } from "../components/TableRegisterDoc"
+
+import { TableRegisterDoc } from '../components/index';
 
 export const RegisterDoc = () => {
   return (

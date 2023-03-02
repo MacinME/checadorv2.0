@@ -1,4 +1,5 @@
-import { HiCheckCircle, HiQuestionMarkCircle} from 'react-icons/hi';
+// Import React librarys and components
+import { HiCheckCircle, HiQuestionMarkCircle, HiOutlinePencil} from 'react-icons/hi';
 
 import img1 from '../assets/p1.png';
 import img2 from '../assets/p2.png';
@@ -6,7 +7,7 @@ import img3 from '../assets/p3.png';
 import img4 from '../assets/p4.png';
 import img5 from '../assets/p5.png';
 
-export const TableUsers = () => {
+export const TableUsers = ({handleShowModal}) => {
   return (
     <div className="table-section">
         <table className="table w-full">
@@ -50,7 +51,11 @@ export const TableUsers = () => {
                     </td>
                     <td>Docente</td>
                     <td>email@gmail.com</td>
-                    <td>Edit</td>
+                    <td> 
+                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg' onClick={ () => handleShowModal() }>
+                            <HiOutlinePencil />
+                        </button> 
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -75,7 +80,11 @@ export const TableUsers = () => {
                     </td>
                     <td>Administrativo</td>
                     <td>email@gmail.com</td>
-                    <td>Edit</td>
+                    <td> 
+                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg'>
+                            <HiOutlinePencil />
+                        </button> 
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -100,7 +109,11 @@ export const TableUsers = () => {
                     </td>
                     <td>Administrativo</td>
                     <td>email@gmail.com</td>
-                    <td>Edit</td>
+                    <td> 
+                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg'>
+                            <HiOutlinePencil />
+                        </button> 
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -125,7 +138,11 @@ export const TableUsers = () => {
                     </td>
                     <td>Administrativo</td>
                     <td>email@gmail.com</td>
-                    <td>Edit</td>
+                    <td> 
+                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg'>
+                            <HiOutlinePencil />
+                        </button> 
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -150,11 +167,14 @@ export const TableUsers = () => {
                     </td>
                     <td>Administrativo</td>
                     <td>email@gmail.com</td>
-                    <td>Edit</td>
+                    <td> 
+                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg'>
+                            <HiOutlinePencil />
+                        </button> 
+                    </td>
                 </tr>
             </tbody>
         </table>
-
     </div>
   )
 }

@@ -1,3 +1,4 @@
+// Import React librarys and components
 import React from 'react';
 import { HiArrowDown } from 'react-icons/hi';
 import profileImg from '../assets/profile.png';

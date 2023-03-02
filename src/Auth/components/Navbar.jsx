@@ -1,10 +1,11 @@
+// Import components
+import { NavLink } from 'react-router-dom';
 import {
     HiOutlineDocument,
     HiOutlineDocumentSearch,
     HiOutlineUser
 } from 'react-icons/hi';
 
-import { NavLink } from 'react-router-dom';
 
 
 export const Navbar = ({ handleToggle, item1, item2 }) => {

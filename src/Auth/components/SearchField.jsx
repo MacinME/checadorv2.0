@@ -8,7 +8,7 @@ export const SearchField = () => {
             <input 
                 type="text" 
                 name="seach" 
-                className="w-full outline-0 py-2 px-5 text-2xl tracking-wider font-normal text-gray-500 tracking-wider"
+                className="w-full outline-0 py-2 px-5 text-lg tracking-wider font-normal text-gray-500 tracking-wider"
                 placeholder="Buscar usuarios......."
             />
 

@@ -82,4 +82,30 @@ td{
     top: 20px;
     border-radius: 20px;
     padding: 2px 5px;
+    grid-template-columns: auto 1fr;
+}
+
+/* Modal user styles*/
+.modal-user{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.btnModal-close {
+    background-color: #f02626;
+    top: 0;
+    right: 0;
+}
+
+.btnModal-close:hover{
+    background-color: #fff;
+    border: 1px solid #f02626;
+    color: #1d1d1d;
+}
+
+.btnModal-save{
+    border: 1px solid #2666f0;
+}
+
+.btnModal-save:hover{
+    background-color: #2666f0;
+    color: #fff;
 }
