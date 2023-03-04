@@ -1,47 +1,29 @@
 // Import React librarys and components
-import { useState } from "react";
-import { ModalUser, Navbar} from '../components/index';
+import { ModalUser, Navbar, ProfileAdmin} from '../components/index';
+import { useNewModal } from "../Helpers/useNewModal";
 import { Formats, RegisterAdmon, RegisterDoc, UsersPage } from './index'
-
 export const MainHome = ({ page }) => {
 
-    // useState to toggle a dropdown in Navbar
-    const [toggle, setToggle] = useState([
-        {id_listItem: 1, status: false},
-        {id_listItem: 2, status: false},
-    ])
-
-    const item1 = toggle[0];
-    const item2 = toggle[1];
-
-    const handleToggle = ({id_listItem, status}) => {
-        const values = [...toggle]
-        values[id_listItem - 1] = {id_listItem: id_listItem, status: !status}
-        setToggle(values)
-    }
 
     // Show Modal
-    
-    const [showModal, setShowModal] = useState('invisible')
+    const { onShowModal, showModal } = useNewModal([
+        {id: 1, className: 'invisible', status: false },
+        {id: 2, className: 'invisible', status: false }
+    ]);
 
-    const handleShowModal = () => {
-        showModal != 'visible' ? 
-            setShowModal('visible')
-        : 
-            setShowModal('invisible')
-
-    }
+    const disUserModal = showModal[0];
+    const dispProfile = showModal[1];
 
   return (
     <>
         <div className="main-section relative">
 
             {/* Navbar Component */}
-            <Navbar handleToggle={ handleToggle } item1={ item1 } item2={ item2 } />
+            <Navbar />
 
             <div className="container-section">
                 {/* Registers Docentes */}
-                { page === 1 && <UsersPage handleShowModal={ handleShowModal } showModal={ showModal } /> } 
+                { page === 1 && <UsersPage onShowModal={ onShowModal } disUserModal={ disUserModal } /> } 
                 
                 {/* Registers Docentes */}
                 { page === 2 && <RegisterDoc /> }
@@ -51,9 +33,17 @@ export const MainHome = ({ page }) => {
 
                 {/* Registers Docentes */}
                 { page === 4 && <Formats /> }
+
+                {/* Profile Photo */}
+                <ProfileAdmin onShowModal={ onShowModal } dispProfile={ dispProfile } />
             </div>
 
-            <ModalUser handleShowModal={ handleShowModal } showModal={ showModal } />
+            {/* Modal User */}\
+            {
+                disUserModal.status && (
+                    <ModalUser onShowModal={ onShowModal } disUserModal={ disUserModal } />
+                )
+            }
 
         </div>
     </>

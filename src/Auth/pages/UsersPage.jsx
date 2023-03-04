@@ -1,7 +1,8 @@
 // Import React librarys and components
-import { ProfileAdmin, SearchField, TableUsers } from '../components/index';
+import { SearchField, TableUsers } from '../components/index';
 
-export const UsersPage = ({handleShowModal, showModal}) => {
+export const UsersPage = ({ onShowModal, disUserModal}) => {
+
   return (
       <div className="container">
         <div className="title flex items-center mb-10">
@@ -11,10 +12,8 @@ export const UsersPage = ({handleShowModal, showModal}) => {
           <SearchField />
 
           {/* Table Component */}
-          <TableUsers handleShowModal={ handleShowModal } showModal={ showModal }  />
+          <TableUsers onShowModal={ onShowModal } disUserModal={ disUserModal } />
 
-          {/* Profile Photo */}
-          <ProfileAdmin />   
       </div>
   )
 }

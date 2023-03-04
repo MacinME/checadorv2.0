@@ -1,14 +1,24 @@
 // Import components
 import { NavLink } from 'react-router-dom';
 import {
-    HiOutlineDocument,
+    HiOutlineDocumentText,
     HiOutlineDocumentSearch,
-    HiOutlineUser
+    HiOutlineUser,
+    HiChevronDown,
+    HiChevronRight
 } from 'react-icons/hi';
+import { useNewModal } from '../Helpers/useNewModal';
 
+export const Navbar = () => {
+    
+    // useState to toggle a dropdown in Navbar
+    const { handleModal, showNewModal } = useNewModal([
+        { id: 1, status: false },
+        { id: 2, status: false }
+    ]);
 
-
-export const Navbar = ({ handleToggle, item1, item2 }) => {
+    const itemOne = showNewModal[0];
+    const itemTwo = showNewModal[1];
 
   return (
     <div className="navbar flex flex-col gap-8 border-r-2 border-gray-200">
@@ -28,11 +38,14 @@ export const Navbar = ({ handleToggle, item1, item2 }) => {
                     className="list-item cursor-pointer"
 
                 > 
-                    <div className='flex gap-2 items-center y-1 px-2' onClick={ () => handleToggle(item1) }>
-                        <HiOutlineDocument /> 
-                         <p> Docentes </p>
+                    <div className='flex gap-2 items-center y-1 px-2' onClick={ () => handleModal(itemOne) }>
+                        <HiOutlineDocumentText /> 
+                         <div className='flex gap-2 items-center'>
+                            <p> Docentes  </p>
+                            { itemOne.status ?  <HiChevronRight  /> : <HiChevronDown /> }
+                         </div>
                     </div>
-                    { item1.status && (
+                    { itemOne.status && (
                         <ul className="bg-gray-200 rounded rounded-2xl pt-2 pb-2 mt-2">
                             <NavLink className={ ({isActive}) => `${isActive ? 'active' : ''}` } to="/registers-doc"> <div className='py-1 px-2 pl-6'> Registros </div> </NavLink>
                         </ul>
@@ -41,12 +54,15 @@ export const Navbar = ({ handleToggle, item1, item2 }) => {
                 <li className="list-item cursor-pointer">
                     <div 
                         className='flex gap-2 items-center y-1 px-2'
-                        onClick={ () => handleToggle(item2) }
+                        onClick={ () => handleModal(itemTwo) }
                     >
-                        <HiOutlineDocument /> 
-                         <p> Administrativo </p>
+                        <HiOutlineDocumentText /> 
+                        <div className='flex gap-2 items-center'>
+                            <p> Administrativo  </p>
+                            { itemTwo.status ?  <HiChevronRight /> : <HiChevronDown /> }
+                         </div>
                     </div>
-                    { item2.status && (
+                    { itemTwo.status && (
                         <ul className="bg-gray-200 rounded rounded-2xl pt-2 pb-2 mt-2">
                             <NavLink className={ ({isActive}) => `${isActive ? 'active' : ''}` } to="/registers-admon"> <div className='py-1 px-2 pl-6'> Registros </div> </NavLink>
                         </ul>

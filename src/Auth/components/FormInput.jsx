@@ -1,16 +1,16 @@
 
 export const FormInput = ( props ) => {
 
-    const { label, errorMessage, name, id, ...inputProps } = props;
+    const { label, errorMessage, onInputChange, id, ...inputProps } = props;
 
   return (
     <div className="relative form-input flex flex-col gap-4 my-8">
         <input 
+          onChange={ onInputChange } 
           { ...inputProps} 
-          name={ name } 
           className="w-96 invalid-input peer border h-14 px-2 focus:outline-none rounded-lg placeholder-transparent text-gray-700 bg-white tracking-wider" 
         />
-        <label htmlFor={ name } 
+        <label
         className="
         px-2
         mx-2

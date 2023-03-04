@@ -19,7 +19,6 @@
     width: 100%;
     padding: 90px 40px;
     background-color: #fff;
-    position: relative;
 }
 
 /* Navbar Component */
@@ -76,13 +75,25 @@ td{
 
 /* user profile styles */
 .user-profile{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* background-color: #f02626; */
     position: absolute;
     right: 20px;
     top: 20px;
-    border-radius: 20px;
     padding: 2px 5px;
     grid-template-columns: auto 1fr;
+}
+
+.userSection{
+    width: auto;
+    height: auto;
+    top: 50px;  
+    right: -5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.09);
+}
+
+.user-profile::after {
+    content: "";
+    clear: both;
 }
 
 /* Modal user styles*/
