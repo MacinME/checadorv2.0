@@ -16,7 +16,7 @@ export const MainHome = ({ page }) => {
 
   return (
     <>
-        <div className="main-section relative">
+        <div className="main-section relative overflow-hidden">
 
             {/* Navbar Component */}
             <Navbar />

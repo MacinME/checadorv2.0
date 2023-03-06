@@ -7,9 +7,8 @@ export const useNewModal = ( inititalArray = []) => {
     const [showNewModal, setShowNewModal] = useState(inititalArray);
 
     const handleModal = (value = []) => {
-        console.log(showNewModal)
         const values = [...showNewModal]
-        values[value.id - 1] = {...value, id: value.id , status: !value.status}
+        values[value.id - 1] = {id: value.id , status: !value.status}
         setShowNewModal(values)
     }
 
@@ -18,13 +17,10 @@ export const useNewModal = ( inititalArray = []) => {
     const [showModal, setShowModal] = useState(inititalArray);
 
     const onShowModal = (value = []) => {
-
       const newValues = [...showModal];
       newValues[value.id - 1] = {id: value.id, className: !value.status ? 'visible' : 'invisible', status: !value.status};
-      
       // setModal
       setShowModal( newValues ); 
-
 
     }
 

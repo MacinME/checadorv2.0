@@ -21,7 +21,7 @@ export const Navbar = () => {
     const itemTwo = showNewModal[1];
 
   return (
-    <div className="navbar flex flex-col gap-8 border-r-2 border-gray-200">
+    <div className="navbar flex flex-col gap-8 border-r-2 border-gray-200 h-screen">
         <h1 className="text-2xl font-bold lowercase text-gray-900 text-center tracking-wider">CEUT Timer</h1>
 
         <div>
