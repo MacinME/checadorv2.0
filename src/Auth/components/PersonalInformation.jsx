@@ -36,7 +36,7 @@ export const PersonalInformation = () => {
             </div>
             <div className="bg-white rounded-2xl">
                 <div className="flex flex-col py-5 px-10 gap-5 rounded-2xl">
-                <h4 className="font-semibold text-gray-800">Estado de usuario</h4>
+                <h4 className="font-semibold text-gray-800 pl-3 border-l-4 border-purple-400">Estado de usuario</h4>
                     <div className="flex flex-col gap-5">
                         <div className="flex justify-between">
                             <span className="font-semibold text-sm">Estado</span>

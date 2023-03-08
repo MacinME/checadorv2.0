@@ -134,3 +134,32 @@ td{
 .input-color{
     background-color: #fcf9ff;
 }
+
+.text-over{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+}
+
+.text-over:hover{
+    opacity: 1;
+}
+
+/* File Modal */
+
+.file-modal{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.input-modal{
+    background-color:  #2666f0 ;
+
+}

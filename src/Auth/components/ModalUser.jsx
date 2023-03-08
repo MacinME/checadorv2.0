@@ -4,11 +4,19 @@ import { HiOutlineX } from 'react-icons/hi';
 import { UserBackground } from "./UserBackground";
 import { PersonalInformation } from "./PersonalInformation";
 import { users } from '../components/data';
+import { useNewModal } from "../Helpers/useNewModal";
+import { ModalFile } from "./ModalFile";
 
 export const ModalUser = ({ onShowModal, disUserModal }) => {
 
+  const { handleModal, showNewModal} = useNewModal([
+    {id: 1, status: false}
+  ]);
+
+  const status = showNewModal[0];
+
   return (
-    <div className={ `modal-user absolute flex justify-center w-full h-screen z-99 overflow-hidden ${ disUserModal.className }` }>
+        <div className={ `modal-user absolute flex justify-center w-full h-screen z-99 overflow-hidden ${ disUserModal.className }` }>
         <div className="modal-container rounded-2xl w-screen bg-white my-5 mx-10 flex justify-between relative overflow-hidden">
           {/* users Scroll section */}
           <div className="w-1/3 rounded-tl-2xl rounded-bl-2xl ">
@@ -31,7 +39,7 @@ export const ModalUser = ({ onShowModal, disUserModal }) => {
 
           <div className="user-settigns flex flex-col py-10 w-full rounded-tr-2xl rounded-br-2xl px-16 overflow-y-scroll">
             {/* Form Component */}
-            <UserBackground />
+            <UserBackground handleModal={ handleModal } status={ status } />
 
             {/* Personal Information */}
             <PersonalInformation />
@@ -41,6 +49,13 @@ export const ModalUser = ({ onShowModal, disUserModal }) => {
             <HiOutlineX />
           </button>
         </div>
+          {/* File Modal  */}
+          {
+            status.status && (
+              <ModalFile  handleModal={ handleModal } status={ status } />
+            )
+          }
     </div>
+
   )
 }
