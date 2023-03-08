@@ -10,7 +10,7 @@ export const EditInput = ( props ) => {
         <input 
           onChange={ onInputChange } 
           { ...inputProps} 
-          className="input-color text-gray-700 py-1 px-3 rounded focus:border-b-2 focus:border-purple-400 outline-none w-full" 
+          className="text-gray-700 py-1 px-3 rounded focus:border-b-2 focus:border-blueColor-400 outline-none w-full" 
         />
         <span className="pt-1 text-red-400 text-sm tracking-wide hidden">{ errorMessage }</span>
     </div>

@@ -9,7 +9,9 @@ export const UsersPage = ({ onShowModal, disUserModal}) => {
           <h1 className="font-bold text-2xl text-gray-800">Users <span className="bg-blue-100 text-sm px-2 py-1 text-blue-500 rounded rounded-3xl font-normal">100 users</span> </h1>
         </div>
           {/* Search Field  */}
-          <SearchField />
+          <div className='mb-5'>
+            <SearchField />
+          </div>
 
           {/* Table Component */}
           <TableUsers onShowModal={ onShowModal } disUserModal={ disUserModal } />

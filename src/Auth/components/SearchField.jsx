@@ -3,8 +3,7 @@ import { HiSearch } from 'react-icons/hi';
 export const SearchField = () => {
   return (
 
-        <div className="w-full flex items-center mb-5 rounded bg-white">
-            
+        <div className="w-full flex items-center rounded bg-white">
             <input 
                 type="text" 
                 name="seach" 

@@ -1,7 +1,14 @@
-/* TailwindCSS Tools */
+/*#######################################
+    TAILWIND CSS TOOLS
+#######################################*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/*#######################################
+    General - STYLES
+#######################################*/
 
 /* General Styles */
 .main-section{
@@ -16,15 +23,29 @@
 
 .container{
     width: 100%;
-    padding: 90px 40px;
+    padding: 60px 40px;
     background-color: #fff;
+}
+
+/* scrollbar styles */
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a1a1a1;
 }
 
 /* Navbar Component */
 
 .navbar{
     background-color: #f5f7f9;
-    padding: 30px 40px;
+    padding: 20px 40px;
 }
 
 /* Active */
@@ -35,6 +56,9 @@
     border-radius: 20px;
 }
 
+/*#######################################
+    Users Table - STYLES
+#######################################*/
 
 /* Table  styles */
 .table-section{
@@ -65,18 +89,15 @@ td{
     background-color: #edf5fa;
 }
 
-
-/* DRop shadow style */
-/* .drop-shadow-css {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.02);
-} */
+/*#######################################
+    User Profile Dashboard - STYLES
+#######################################*/
 
 /* user profile styles */
 .user-profile{
-    /* background-color: #f02626; */
-    position: absolute;
+    /* position: absolute;
     right: 20px;
-    top: 20px;
+    top: 20px; */
     padding: 2px 5px;
     grid-template-columns: auto 1fr;
 }
@@ -94,31 +115,11 @@ td{
     clear: both;
 }
 
-/* Modal user styles*/
-.modal-user{
-    background-color: rgba(0, 0, 0, 0.3);
-}
-.btnModal-close {
-    background-color: #f02626;
-    top: 0;
-    right: 0;
-}
 
-.btnModal-close:hover{
-    background-color: #fff;
-    border: 1px solid #f02626;
-    color: #1d1d1d;
-}
 
-.btnModal-save{
-    border: 1px solid #2666f0;
-}
-
-.btnModal-save:hover{
-    background-color: #2666f0;
-    color: #fff;
-}
-
+/*#######################################
+    User Settings -  STYLES
+#######################################*/
 
 /* user setting styles */
 .user-settigns{
@@ -128,11 +129,7 @@ td{
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
 }
 .drop-shadow-information{
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
-}
-
-.input-color{
-    background-color: #fcf9ff;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.09);
 }
 
 .text-over{
@@ -153,8 +150,52 @@ td{
     opacity: 1;
 }
 
-/* File Modal */
+.active-account{
+    background-color: #1c7ed6;
+}
 
+.active-account:hover{
+    background-color: #1971c2;
+}
+
+.active-lists{
+    border: #339af0 1px solid;
+}
+
+.active-lists:hover{
+    background-color: #339af0;
+    color: #fff;
+}
+
+/* Modal user styles*/
+.modal-user{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.btnModal-close {
+    background-color: #f02626;
+    top: 0;
+    right: 0;
+}
+
+.btnModal-close:hover{
+    background-color: #c51717;
+}
+
+.btnModal-save{
+    border: 1px solid #2666f0;
+}
+
+.btnModal-save:hover{
+    background-color: #2666f0;
+    color: #fff;
+}
+
+
+/*#######################################
+    Upload File Modal -  STYLES
+#######################################*/
+
+/* File Modal */
 .file-modal{
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -163,3 +204,4 @@ td{
     background-color:  #2666f0 ;
 
 }
+

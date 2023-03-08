@@ -8,11 +8,9 @@ export const MainHome = ({ page }) => {
     // Show Modal
     const { onShowModal, showModal } = useNewModal([
         {id: 1, className: 'invisible', status: false },
-        {id: 2, className: 'invisible', status: false }
     ]);
 
     const disUserModal = showModal[0];
-    const dispProfile = showModal[1];
 
   return (
     <>
@@ -33,9 +31,6 @@ export const MainHome = ({ page }) => {
 
                 {/* Registers Docentes */}
                 { page === 4 && <Formats /> }
-
-                {/* Profile Photo */}
-                <ProfileAdmin onShowModal={ onShowModal } dispProfile={ dispProfile } />
             </div>
 
             {/* Modal User */}\
