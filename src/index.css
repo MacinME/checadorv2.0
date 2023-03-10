@@ -87,25 +87,13 @@ table{
 th, 
 td{
     text-align: left;
-    border-top: 1px solid #edf5fa;
 }
 
-.user-status{
-    color: #2666f0;
-    font-weight: 500;
+.table-section tbody tr:nth-child(odd){
+    background-color: #f9fafc;
 }
-
-.user-status-wrong{
-    color: #f5af37;
-    font-weight: 500;
-}
-
-.table-register tbody tr:nth-child(odd){
-    background-color: #edf5fa;
-}
-
-.table-register tbody tr:nth-child(even){
-    background-color: #e7e7e7;
+.table-section tbody tr:nth-child(even){
+    background-color: #fff;
 }
 
 /*#######################################
