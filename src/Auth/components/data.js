@@ -119,4 +119,28 @@ export const users = [
         name: 'Giana Torff',
         alt: 'Perfil Usuario'
       },
+      {
+        id: 17,
+        img: '/src/Auth/assets/p2.png',
+        name: 'Steve Vaccaro',
+        alt: 'Perfil Usuario'
+      },
+      {
+        id: 18,
+        img: '/src/Auth/assets/p3.png',
+        name: 'Tiana Kenter',
+        alt: 'Perfil Usuario'
+      },
+      {
+        id: 19,
+        img: '/src/Auth/assets/p4.png',
+        name: 'Anika Levin',
+        alt: 'Perfil Usuario'
+      },
+      {
+        id: 20,
+        img: '/src/Auth/assets/p5.png',
+        name: 'Giana Torff',
+        alt: 'Perfil Usuario'
+      },
   ]

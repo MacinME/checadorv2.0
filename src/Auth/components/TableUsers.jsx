@@ -11,19 +11,18 @@ export const TableUsers = ({ onShowModal, disUserModal }) => {
 
   return (
     <>
-      <div className="table-section">
+      <div className="table-section drop-shadow-sm bg-white rounded-lg p-5 overflow-y-scroll">
         <table className="table w-full">
-            <thead>
+            <thead className='bg-bgc_white-primary drop-shadow-sm'>
                 <tr>
-                    <td>
+                    <td className="text-gray-900">
                         <input type="checkbox" name='1292'/>
                         
                     </td>
-                    <th>Name </th>
-                    <th>Status</th>
-                    <th>ID docente</th>
-                    <th>Correo</th>
-                    <th>Actions</th>
+                    <th className="p-3 text-gray-900">Name </th>
+                    <th className="p-3 text-gray-900">Estado</th>
+                    <th className="p-3 text-gray-900">ID</th>
+                    <th className="p-3 text-gray-900">Correo</th>
                 </tr>
             </thead>
 
@@ -55,11 +54,6 @@ export const TableUsers = ({ onShowModal, disUserModal }) => {
                     </td>
                     <td>Docente</td>
                     <td>email@gmail.com</td>
-                    <td> 
-                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg' onClick={ () => onShowModal(disUserModal) }>
-                            <HiOutlinePencil />
-                        </button> 
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -86,11 +80,6 @@ export const TableUsers = ({ onShowModal, disUserModal }) => {
                     </td>
                     <td>Administrativo</td>
                     <td>email@gmail.com</td>
-                    <td> 
-                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg'>
-                            <HiOutlinePencil />
-                        </button> 
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -117,11 +106,6 @@ export const TableUsers = ({ onShowModal, disUserModal }) => {
                     </td>
                     <td>Administrativo</td>
                     <td>email@gmail.com</td>
-                    <td> 
-                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg'>
-                            <HiOutlinePencil />
-                        </button> 
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -148,11 +132,6 @@ export const TableUsers = ({ onShowModal, disUserModal }) => {
                     </td>
                     <td>Administrativo</td>
                     <td>email@gmail.com</td>
-                    <td> 
-                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg'>
-                            <HiOutlinePencil />
-                        </button> 
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -179,12 +158,216 @@ export const TableUsers = ({ onShowModal, disUserModal }) => {
                     </td>
                     <td>Administrativo</td>
                     <td>email@gmail.com</td>
-                    <td> 
-                        <button className='w-6 h-6 border-none flex justify-center items-center hover:text-gray-700 text-lg'>
-                            <HiOutlinePencil />
-                        </button> 
-                    </td>
                 </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name='1292'/>
+                    </td>
+                    <th className='flex flex-wrap gap-4 py-2'>
+                        <div className='userPhoto w-14 rounded rounded-full'>
+                            <img 
+                                src={ img5 } 
+                                alt="user profile" 
+                                className='w-14 rounded rounded-full' 
+                            />
+                        </div>
+                        <p className='flex flex-col'>
+                            Giana Torff
+                            <span className='user-rol text-gray-500 font-normal italic'> Administrativo </span>
+                        </p>
+                        </th>
+                    <td>
+                        <div className='user-status flex items-center gap-1'>
+                            <HiCheckCircle />
+                            Active
+                        </div>
+                    </td>
+                    <td>Administrativo</td>
+                    <td>email@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name='1292'/>
+                    </td>
+                    <th className='flex flex-wrap gap-4 py-2'>
+                        <div className='userPhoto w-14 rounded rounded-full'>
+                            <img 
+                                src={ img5 } 
+                                alt="user profile" 
+                                className='w-14 rounded rounded-full' 
+                            />
+                        </div>
+                        <p className='flex flex-col'>
+                            Giana Torff
+                            <span className='user-rol text-gray-500 font-normal italic'> Administrativo </span>
+                        </p>
+                        </th>
+                    <td>
+                        <div className='user-status flex items-center gap-1'>
+                            <HiCheckCircle />
+                            Active
+                        </div>
+                    </td>
+                    <td>Administrativo</td>
+                    <td>email@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name='1292'/>
+                    </td>
+                    <th className='flex flex-wrap gap-4 py-2'>
+                        <div className='userPhoto w-14 rounded rounded-full'>
+                            <img 
+                                src={ img5 } 
+                                alt="user profile" 
+                                className='w-14 rounded rounded-full' 
+                            />
+                        </div>
+                        <p className='flex flex-col'>
+                            Giana Torff
+                            <span className='user-rol text-gray-500 font-normal italic'> Administrativo </span>
+                        </p>
+                        </th>
+                    <td>
+                        <div className='user-status flex items-center gap-1'>
+                            <HiCheckCircle />
+                            Active
+                        </div>
+                    </td>
+                    <td>Administrativo</td>
+                    <td>email@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name='1292'/>
+                    </td>
+                    <th className='flex flex-wrap gap-4 py-2'>
+                        <div className='userPhoto w-14 rounded rounded-full'>
+                            <img 
+                                src={ img5 } 
+                                alt="user profile" 
+                                className='w-14 rounded rounded-full' 
+                            />
+                        </div>
+                        <p className='flex flex-col'>
+                            Giana Torff
+                            <span className='user-rol text-gray-500 font-normal italic'> Administrativo </span>
+                        </p>
+                        </th>
+                    <td>
+                        <div className='user-status flex items-center gap-1'>
+                            <HiCheckCircle />
+                            Active
+                        </div>
+                    </td>
+                    <td>Administrativo</td>
+                    <td>email@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name='1292'/>
+                    </td>
+                    <th className='flex flex-wrap gap-4 py-2'>
+                        <div className='userPhoto w-14 rounded rounded-full'>
+                            <img 
+                                src={ img5 } 
+                                alt="user profile" 
+                                className='w-14 rounded rounded-full' 
+                            />
+                        </div>
+                        <p className='flex flex-col'>
+                            Giana Torff
+                            <span className='user-rol text-gray-500 font-normal italic'> Administrativo </span>
+                        </p>
+                        </th>
+                    <td>
+                        <div className='user-status flex items-center gap-1'>
+                            <HiCheckCircle />
+                            Active
+                        </div>
+                    </td>
+                    <td>Administrativo</td>
+                    <td>email@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name='1292'/>
+                    </td>
+                    <th className='flex flex-wrap gap-4 py-2'>
+                        <div className='userPhoto w-14 rounded rounded-full'>
+                            <img 
+                                src={ img5 } 
+                                alt="user profile" 
+                                className='w-14 rounded rounded-full' 
+                            />
+                        </div>
+                        <p className='flex flex-col'>
+                            Giana Torff
+                            <span className='user-rol text-gray-500 font-normal italic'> Administrativo </span>
+                        </p>
+                        </th>
+                    <td>
+                        <div className='user-status flex items-center gap-1'>
+                            <HiCheckCircle />
+                            Active
+                        </div>
+                    </td>
+                    <td>Administrativo</td>
+                    <td>email@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name='1292'/>
+                    </td>
+                    <th className='flex flex-wrap gap-4 py-2'>
+                        <div className='userPhoto w-14 rounded rounded-full'>
+                            <img 
+                                src={ img5 } 
+                                alt="user profile" 
+                                className='w-14 rounded rounded-full' 
+                            />
+                        </div>
+                        <p className='flex flex-col'>
+                            Giana Torff
+                            <span className='user-rol text-gray-500 font-normal italic'> Administrativo </span>
+                        </p>
+                        </th>
+                    <td>
+                        <div className='user-status flex items-center gap-1'>
+                            <HiCheckCircle />
+                            Active
+                        </div>
+                    </td>
+                    <td>Administrativo</td>
+                    <td>email@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name='1292'/>
+                    </td>
+                    <th className='flex flex-wrap gap-4 py-2'>
+                        <div className='userPhoto w-14 rounded rounded-full'>
+                            <img 
+                                src={ img5 } 
+                                alt="user profile" 
+                                className='w-14 rounded rounded-full' 
+                            />
+                        </div>
+                        <p className='flex flex-col'>
+                            Giana Torff
+                            <span className='user-rol text-gray-500 font-normal italic'> Administrativo </span>
+                        </p>
+                        </th>
+                    <td>
+                        <div className='user-status flex items-center gap-1'>
+                            <HiCheckCircle />
+                            Active
+                        </div>
+                    </td>
+                    <td>Administrativo</td>
+                    <td>email@gmail.com</td>
+                </tr>
+                
             </tbody>
         </table>
     </div>

@@ -3,7 +3,7 @@ import { HiOutlineSave, HiX } from "react-icons/hi"
 export const ModalFile = ({ handleModal, status }) => {
 
   return (
-    <div className="file-modal w-screen h-screen absolute flex justify-center items-center">
+    <div className="file-modal w-screen h-screen absolute flex justify-center items-center z-50">
         <div className="bg-white w-1/3 h-1/3 py-10 flex items-center relative justify-center flex-col rounded-2xl">
                 <div
                     onClick={ () => handleModal( status ) }

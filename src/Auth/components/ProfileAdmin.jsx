@@ -23,7 +23,7 @@ export const ProfileAdmin = ({ handleModal, itemThree }) => {
                   <HiOutlineSun />
                 </div>
               </li> 
-              <li className='w-full flex items-center gap-2 cursor-pointer hover:bg-blueColor-50 p-2 rounded-lg'>
+              <li className='w-full flex items-center gap-2 cursor-pointer hover:bg-blueColor-50 p-2 rounded-lg '>
                 <p>Cerrar Sesion</p>
                 <div className='text-red-600 text-lg'>
                   <HiOutlineLogout />

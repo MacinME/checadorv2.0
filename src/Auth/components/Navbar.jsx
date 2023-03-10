@@ -24,7 +24,7 @@ export const Navbar = () => {
     const itemThree = showNewModal[2];
 
   return (
-    <div className="navbar flex flex-col gap-8 border-r-2 border-gray-100 user-settings h-screen">
+    <div className="navbar flex flex-col gap-8 border-r border-gray-200 user-settings h-screen">
         <div>
             <ul className="group-item grid gap-6">
                 <div className='pb-6 border-b border-gray-300'>
@@ -68,12 +68,12 @@ export const Navbar = () => {
                          </div>
                     </div>
                     { itemTwo.status && (
-                        <ul className="bg-white rounded-lg drop-shadow-sm pt-2 pb-2 mt-2">
+                        <ul className="bg-white rounded-lg  pt-2 pb-2 mt-2">
                             <NavLink className={ ({isActive}) => `${isActive ? 'active' : ''}` } to="/registers-admon"> <div className='py-1 px-2 pl-6'> Registros </div> </NavLink>
                         </ul>
                     )}
                 </li>
-                <li className="list-item true">
+                <li className="list-item ">
                     <NavLink to="/formats" className={ ({isActive}) => `block ${isActive ? 'bg-primary rounded-lg drop-shadow-sm text-white' : ''}` }>
                         <div className="flex gap-2 py-1 px-2 items-center">
                             <HiOutlineUser />

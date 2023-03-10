@@ -16,6 +16,10 @@ module.exports = {
           700: '#4263eb',
           800: '#3b5bdb',
           900: '#364fc7'
+        },
+        bgc_white: {
+          primary: '#edf5fa',
+          50: '#f5f9ff;'
         }
       }
     },
