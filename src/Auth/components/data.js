@@ -5,7 +5,7 @@ export const users = [
       img: '/src/Auth/assets/p1.png',
       name: 'Ahamd Ekstrom Bothman',
       alt: 'Perfil Usuario',
-      status: true,
+      status: false,
       rol: 'administrativo',
       email: 'user@gmail.com'
     },
@@ -15,7 +15,7 @@ export const users = [
       img: '/src/Auth/assets/p2.png',
       name: 'Steve Vaccaro',
       alt: 'Perfil Usuario',
-      status: true,
+      status: false,
       rol: 'administrativo',
       email: 'user@gmail.com'
     },
@@ -25,7 +25,7 @@ export const users = [
       img: '/src/Auth/assets/p3.png',
       name: 'Tiana Kenter',
       alt: 'Perfil Usuario',
-      status: false,
+      status: true,
       rol: 'administrativo',
       email: 'user@gmail.com'
     },
@@ -45,7 +45,7 @@ export const users = [
       img: '/src/Auth/assets/p5.png',
       name: 'Giana Torff',
       alt: 'Perfil Usuario',
-      status: true,
+      status: false,
       rol: 'administrativo',
       email: 'user@gmail.com'
     },
@@ -55,7 +55,7 @@ export const users = [
       img: '/src/Auth/assets/p6.png',
       name: 'Olivia Rhye',
       alt: 'Perfil Usuario',
-      status: true,
+      status: false,
       rol: 'administrativo',
       email: 'user@gmail.com'
     },
@@ -75,7 +75,7 @@ export const users = [
       img: '/src/Auth/assets/p1.png',
       name: 'Ahamd Ekstrom Bothman',
       alt: 'Perfil Usuario',
-      status: true,
+      status: false,
       rol: 'administrativo',
       email: 'user@gmail.com'
     },

@@ -6,7 +6,7 @@ export const UserBackground = ({handleModal, status }) => {
 
   return (
     <div className='p-5 pb-0 h-auto'>
-        <div className='h-44 w-full bg-gradient-to-b from-orange-200 via-yellow-100 to-amber-200 relative rounded-tl-xl rounded-tr-xl'>
+        <div className='h-44 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative rounded-tl-xl rounded-tr-xl'>
           <div 
             onClick={ () => handleModal( status ) }
             className='h-32 w-32 absolute rounded-full -bottom-16 left-12 flex flex-wrap items-center gap-6 cursor-pointer'

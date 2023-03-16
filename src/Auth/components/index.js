@@ -1,7 +1,6 @@
 // File to export all components
 export * from './FormInput';
 export * from './ModalUser';
-export * from './Navbar';
 export * from './ProfileAdmin';
 export * from './SearchField';
 export * from './TableRegisterDoc';

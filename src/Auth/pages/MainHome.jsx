@@ -1,7 +1,7 @@
 // Import React librarys and components
-import { ModalUser, Navbar, ProfileAdmin} from '../components/index';
+import { ModalUser} from '../components/index';
 import { useNewModal } from "../Helpers/useNewModal";
-import { Formats, RegisterAdmon, RegisterDoc, UsersPage } from './index'
+import { RegisterDoc } from './index'
 export const MainHome = ({ page }) => {
 
 
@@ -15,22 +15,9 @@ export const MainHome = ({ page }) => {
   return (
     <>
         <div className="main-section relative">
-
-            {/* Navbar Component */}
-            <Navbar />
-
-            <div className="container-section">
-                {/* Registers Docentes */}
-                { page === 1 && <UsersPage onShowModal={ onShowModal } disUserModal={ disUserModal } /> } 
-                
-                {/* Registers Docentes */}
-                { page === 2 && <RegisterDoc /> }
-
-                {/* Registers Docentes */}
-                { page === 3 && <RegisterAdmon /> }
-
-                {/* Registers Docentes */}
-                { page === 4 && <Formats /> }
+            <div className="container-section grid justify-items-center items-center">
+                {/* Main Page */}
+                <RegisterDoc onShowModal={ onShowModal } disUserModal={ disUserModal }  /> 
             </div>
 
             {/* Modal User */}\
@@ -39,7 +26,6 @@ export const MainHome = ({ page }) => {
                     <ModalUser onShowModal={ onShowModal } disUserModal={ disUserModal } />
                 )
             }
-
         </div>
     </>
   )

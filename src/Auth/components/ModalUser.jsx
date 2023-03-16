@@ -16,7 +16,7 @@ export const ModalUser = ({ onShowModal, disUserModal }) => {
   const status = showNewModal[0];
 
   return (
-        <div className={ `modal-user absolute flex justify-center w-full h-screen z-40 overflow-hidden ${ disUserModal.className }` }>
+        <div className={ `modal-user absolute flex justify-center w-screen top-0 left-0 h-screen z-40 overflow-hidden ${ disUserModal.className }` }>
         <div className="modal-container rounded-2xl w-screen bg-white my-5 mx-10 flex justify-between relative overflow-hidden">
           {/* users Scroll section */}
           <div className="w-1/3 rounded-tl-2xl rounded-bl-2xl bg-bgc_white-50">
