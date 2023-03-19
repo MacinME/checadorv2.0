@@ -15,7 +15,8 @@ export const MainHome = ({ page }) => {
   return (
     <>
         <div className="main-section relative">
-            <div className="container-section grid justify-items-center items-center">
+            
+            <div className="container-section relative w-screen h-screen">
                 {/* Main Page */}
                 <RegisterDoc onShowModal={ onShowModal } disUserModal={ disUserModal }  /> 
             </div>
