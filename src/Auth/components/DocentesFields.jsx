@@ -75,8 +75,8 @@ export const DocentesFields = () => {
         <div className="flex flex-col gap-5 flex-wrap">
             <div className="flex flex-col gap-2">
                 <label htmlFor="" className="text-gray-700">
-                <div className="flex items-center gap-2">
-                    <HiCalendar className=" text-teal-500" /> Fecha:
+                <div className="flex items-center gap-2 bg-primary w-full text-white rounded-lg px-2">
+                    <HiCalendar className="text-sm" /> Fecha:
                 </div>
                 </label>
                 <DatePicker 
@@ -93,8 +93,8 @@ export const DocentesFields = () => {
             </div>
             <div className="flex flex-col gap-2">
                 <label htmlFor="" className="text-gray-700">
-                    <div className="flex items-center gap-2">
-                        <HiUser className=" text-teal-500" /> Nombre:
+                    <div className="flex items-center gap-2 bg-primary w-full text-white rounded-lg px-2">
+                        <HiUser className="text-sm" /> Nombre:
                     </div>
                 </label>
                 <input type="text" className="bg-white rounded-lg outline-none border-b focus:border-gray-900 focus:border-1 focus:border-blue-600 focus:rounded-none py-1 px-2 text-gray-700 w-auto" />
@@ -104,7 +104,7 @@ export const DocentesFields = () => {
         <div className="bg-gbc_white-50  px-2 rounded-lg">
                 <h5 className="text-gray-700 font-semibold">Opciones</h5>
                 <div className="border-t">
-                    <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1"> <HiOutlineClock className=" text-teal-500" /> Tiempo: </h6>
+                    <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1 text-md"> <HiOutlineClock className="bg-primary rounded-lg text-white text-sm" /> Tiempo: </h6>
                     <div className="flex items-center gap-1 xl:ml-3">
                         <label htmlFor="" className="text-gray-500 text-sm">
                             Contar Tolerancia
@@ -134,7 +134,7 @@ export const DocentesFields = () => {
                     </div>
                 </div>
             <div className="border-t">
-                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1"> <HiCheckCircle  className=" text-teal-500" /> Usuarios: </h6>
+                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1 text-md"> <HiCheckCircle  className="bg-primary rounded-lg text-white text-sm" /> Usuarios: </h6>
                 <div className="flex items-center gap-1 xl:ml-3">
                     <label htmlFor="" className="text-gray-500 text-sm">
                     Activos
@@ -163,7 +163,7 @@ export const DocentesFields = () => {
                 </div>
             </div>
             <div className="border-t"> 
-                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1"> <HiSortAscending className=" text-teal-500" /> Filtrar Por:</h6>
+                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1 text-md"> <HiSortAscending className="bg-primary rounded-lg text-white text-sm" /> Filtrar Por:</h6>
                 <div className="flex items-center gap-1 xl:ml-3">
                     <label htmlFor="" className="text-gray-500 text-sm">
                         Fecha Actual
@@ -205,7 +205,7 @@ export const DocentesFields = () => {
                 </div>
             </div>
             <div className="border-t">
-                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1"> <HiXMark className=" text-teal-500" /> Remover campos:</h6>
+                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1 text-md"> <HiXMark className="bg-primary rounded-lg text-white text-lg text-sm" /> Remover campos:</h6>
                 <div className="flex items-center gap-1 xl:ml-3">
                     <label htmlFor="" className="text-gray-500 text-sm">
                         Lienciatura
@@ -280,7 +280,7 @@ export const DocentesFields = () => {
             <button className="bg-gray-600 text-white rounded-full flex items-center justify-center flex-wrap gap-2 w-full"> <HiDocumentDownload />  </button>
 
             <button className="bg-primary rounded-full text-white  mx-auto py-1 hover:bg-blueColor-900 w-full">
-                Buscar
+                Filtrar
             </button>
         </div>
 

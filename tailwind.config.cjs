@@ -5,6 +5,22 @@ module.exports = {
     extend: {
       colors: {
         primary: '#2666f0',
+        blueDarkColor: {
+          600: '#291d5a', //icons
+          700: '#1f1545', //buttons
+          800: '#1e1738', //cards - texts
+          900: '#111827'  //Background
+        },
+        yellowColor: {
+          600: '#ffc500', //icons 
+          700: '#d0940e', //buttons
+          800: '#e49b00', //cards - texts
+          900: '#9b6f00', //Background
+        },
+        primaryYellow: '#ffc500',
+        mainBlue: '',
+        blueback: '#1f1545',
+        mainYellow: '#d0940e',
         blueColor: {
           50: '#edf2ff',
           100: '#dbe4ff',
@@ -33,7 +49,8 @@ module.exports = {
           700: '#0ca678',
           800: '#099268',
           900: '#087f5b'
-        }
+        },
+        
       }
     },
   },

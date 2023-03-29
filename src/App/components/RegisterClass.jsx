@@ -2,6 +2,7 @@
 import { HiAcademicCap, HiBookmarkAlt, HiClipboard, HiClipboardCheck, HiClipboardList, HiClock, HiOutlineSave, HiPaperClip } from 'react-icons/hi';
 import { useForm } from '../../Auth/Helpers/useForm';
 import { RegisterField } from './RegisterField';
+import { degree } from './Degree';
 
 export const RegisterClass = ({clockState, handleModal}) => {
 
@@ -15,55 +16,8 @@ export const RegisterClass = ({clockState, handleModal}) => {
         logoutTime: ''
     });
 
-    // const {userName, userRol, userID, userEmail} = formState;
-
-    // const inputs = [
-    //     {
-    //         id: 1,
-    //         type: "select",
-    //         label: "Mis clases",
-    //         name: "degree",
-    //         placeholder: "Ingresa la licenciatura",
-    //         errorMessage: "El nivel academico es requerido",
-    //         required: true
-    //     },
-    //     {
-    //         id: 2,
-    //         type: "text",
-    //         label: "Clase",
-    //         name: "subject",
-    //         placeholder: "Elegir materia",
-    //         errorMessage: "La materia es requerida",
-    //         required: true
-    //     },
-    //     {
-    //         id: 4,
-    //         type: "text",
-    //         label: "Tema de Clase",
-    //         name: "topic",
-    //         placeholder: "Ingresa el tema de la clase",
-    //         errorMessage: "El tema es requerido",
-    //         required: true
-    //     },
-    //     {
-    //         id: 5,
-    //         type: "text",
-    //         name: "date",
-    //         hidden: true,
-    //         required: true       
-    //     },
-    //     {
-    //         id: 6,
-    //         type: "text",
-    //         name: "loginTime",
-    //               hidden: true,
-    //         required: true       
-    //     }
-    // ]
-
     const onSubmitForm = (evt) => {
         evt.preventDefault();
-        console.log('You are cliked')
     }
 
   return (
@@ -84,9 +38,12 @@ export const RegisterClass = ({clockState, handleModal}) => {
             <select 
             className="w-80 invalid-input peer border h-12 px-2 focus:outline-none rounded-lg placeholder-transparent text-gray-700 bg-white tracking-wider" 
             >
-                <option value="opt0">Seleccionar Licenciatura</option>
-                <option value="opt1">Licenciatura - INFORMÁTICA</option>
-                <option value="opt2">Preparatoria - SEAD</option>
+                <option value="defaultValue" > Elegir Nivel Academico </option>
+                {
+                    degree.map(({id, degree, level}) => (
+                        <option className='bg-blueColor-50 text-gray-600 hover:bg-red-300'  key={ id } value={ `opt${ id }` }>{ `${ level } - ${ degree }` }</option>
+                    ))
+                }
             </select>
         </div>
         <div className="relative form-input flex flex-col gap-4 my-8">
@@ -105,9 +62,9 @@ export const RegisterClass = ({clockState, handleModal}) => {
             className="w-80 invalid-input peer border h-12 px-2 focus:outline-none rounded-lg placeholder-transparent text-gray-700 bg-white tracking-wider" 
             >
                 <option value="opt0">Seleccionar Clase</option>
-                <option value="opt1">Informatica</option>
-                <option value="opt2">Ingles</option>
-                <option value="opt3">Contabilidad</option>
+                <option value="opt1">Informatica - Preparatoria</option>
+                <option value="opt2">Ingles - Licenciatura</option>
+                <option value="opt3">Contabilidad - Licenciatura</option>
             </select>
         </div>
         <div className="relative form-input flex flex-col gap-4 my-8">

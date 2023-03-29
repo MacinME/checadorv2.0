@@ -18,7 +18,7 @@ export const TableRegisterDoc = () => {
     <div className=''>
     <div className="table-section relative rounded-lg">
         <table className="table w-full">
-            <thead className='bg-gray-700 sticky top-0 w-full z-10'>
+            <thead className='bg-blueDarkColor-700 sticky top-0 w-full z-10'>
                 <tr>
                     {
                         dataTH.map(({id, name}) => (
@@ -58,7 +58,7 @@ export const TableRegisterDoc = () => {
                         <th> <div className='text-gray-700 font-normal'> { register.grade } </div> </th>
                         <th> <div className='text-gray-700 font-normal'> { register.date } </div> </th>
                         <th> <div className='text-gray-700 font-normal'> { register.input } </div> </th>
-                        <th> <div className='text-gray-700 font-normal'> { register.output.length <= 0 ? <span className='text-teal-400 font-semibold bg-white py-1 px-2 rounded-full'> en clase </span> : register.output } </div> </th>
+                        <th> <div className='text-gray-700 font-normal'> { register.output.length <= 0 ? <span className='text-gray-800 font-semibold bg-white py-1 px-2 rounded-full'> en clase </span> : register.output } </div> </th>
                     </tr>  
                     ))
                 }              

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { HiClock, HiCog, HiDatabase, HiDotsVertical, HiLogout, HiUser } from 'react-icons/hi';
 import { HiSun } from 'react-icons/hi2';
+import { Link } from 'react-router-dom';
 import { AdmonFields } from '../components/AdmonFields';
 import { DocentesFields } from '../components/DocentesFields';
 import { ProfileAdmin, TableRegisterDoc, TableUsers } from '../components/index';
@@ -47,35 +48,37 @@ export const RegisterDoc = ({ onShowModal, disUserModal}) => {
                       onClick={ () => onShowModal(disUserModal) }
                       className='bg-white gap-2 text-gray-900 text-sm p-2 rounded-lg flex flex-wrap items-center hover:bg-gray-200'
                     >
-                      <HiUser className='text-teal-500' /> Configuracion de usuarios
+                      <HiUser className='text-yellowColor-900' /> Configuracion de usuarios
                     </div>
                   </div>
                   <div className='p-1 rounded-lg flex items-center gap-4 text-lg cursor-pointer rounded-full'>
                     <div
                       className='bg-white flex gap-2 text-gray-900 text-sm p-2 rounded-lg flex items-center hover:bg-gray-200'
                     >
-                      <HiSun className='text-teal-500' /> Tema
+                      <HiSun className='text-yellowColor-900' />
                     </div>
                   </div>
                   <div className='p-1 rounded-lg flex items-center gap-4 text-lg cursor-pointer rounded-full'>
                     <div
                       className='bg-white flex gap-2 text-gray-900 text-sm p-2 rounded-lg flex items-center hover:bg-gray-200'
                     >
-                      <HiCog className='text-teal-500' /> Configuracion Sistema
+                      <HiCog className='text-yellowColor-900' /> Configuracion Sistema
                     </div>
+                  </div>
+                  <div className='p-1 rounded-lg flex items-center gap-4 text-lg cursor-pointer rounded-full'>
+                    <Link
+                      to="/register"
+                      target="_blank"
+                      className='bg-white flex gap-2 text-gray-900 text-sm p-2 rounded-lg flex items-center hover:bg-gray-200'
+                    >
+                      <HiClock className='text-yellowColor-900' /> Checador
+                    </Link>
                   </div>
                   <div className='p-1 rounded-lg flex items-center gap-4 text-lg cursor-pointer rounded-full'>
                     <div
                       className='bg-white flex gap-2 text-gray-900 text-sm p-2 rounded-lg flex items-center hover:bg-gray-200'
                     >
-                      <HiClock className='text-teal-500' /> Checador
-                    </div>
-                  </div>
-                  <div className='p-1 rounded-lg flex items-center gap-4 text-lg cursor-pointer rounded-full'>
-                    <div
-                      className='bg-white flex gap-2 text-gray-900 text-sm p-2 rounded-lg flex items-center hover:bg-gray-200'
-                    >
-                      <HiLogout className='text-teal-500' /> Cerrar Sesion
+                      <HiLogout className='text-yellowColor-900' /> Cerrar Sesion
                     </div>
                   </div>
                 </div>   
@@ -114,7 +117,7 @@ export const RegisterDoc = ({ onShowModal, disUserModal}) => {
 
               <div className='bg-bgc_white-50 rounded-lg h-full border border-gray-200'>
               {
-                  selectedOption === 'opt2' ? <TableUsers /> : selectedOption === 'opt3' ? <TableRegisterDoc /> : selectedOption === 'opt4' ? <TableRegisterDoc /> : <h2 className='text-gray-800 text-2xl text-center flex justify-center items-center gap-4 mt-60'> <HiDatabase /> Selecciona una base de datos</h2>
+                  selectedOption === 'opt2' ? <TableUsers /> : selectedOption === 'opt3' ? <TableRegisterDoc /> : selectedOption === 'opt4' ? <div className='text-center mt-48 text-2xl text-gray-700'>Datos Administrativos</div> : <h2 className='text-gray-800 text-2xl text-center flex justify-center items-center gap-4 mt-60'> <HiDatabase /> Selecciona una base de datos</h2>
               }
               </div>
             </div>

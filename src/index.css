@@ -33,7 +33,7 @@ li{
 }
 
 .h-60vh{
-    height: 93%;
+    height: 95%;
 }
 
 .h-300{
@@ -135,6 +135,13 @@ td{
 .user-settigns{
     background-color: #f8f9fd;
 }
+
+.background{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .drop-shadow-user{
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
 }

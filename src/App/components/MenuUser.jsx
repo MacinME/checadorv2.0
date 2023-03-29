@@ -7,10 +7,10 @@ export const MenuUser = ({menuState, handleModal}) => {
         <div className="relative w-full h-full bg-blueColor-50 grid justify-items-center items-center">
             <div className="p-4 bg-blueColor-50 w-72 text-center">
                 <div className="mb-4">
-                    <li className="text-gray-700 md:text-lg"> Ver mis clases</li>
+                    <li className="text-gray-700 md:text-lg"> Leer Documentacion </li>
                 </div>
                 <div>
-                    <li className="text-gray-700 md:text-lg"> <p className="mb-2">Clases totales: </p>
+                    <li className="text-gray-700 md:text-lg"> <p className="mb-2">Clases totales por quincena: </p>
                         <div className="border bg-bgc_white-50 p-4">
                             <p className="text-gray-800 text-2xl flex justify-center items-center gap-2"> <HiBookOpen /> 9 / 13 </p>
                         </div>

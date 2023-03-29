@@ -18,10 +18,17 @@ export const LoginClass = () => {
   return (
     <div className='bg-blueColor-50 w-screen h-screen grid justify-items-center items-center relative'>
             <div 
-              onClick={ () => handleModal( menuState ) }
-              className='absolute top-5 right-5 p-2 text-gray-90 cursor-pointer w-14 '
+              className='absolute top-5 right-5 flex p-2 text-gray-90 cursor-pointer w-auto items-center gap-4'
             >
-                <img src={ logo } alt="Foto Perfil" className='w-10 rounded-full md:w-14'/>
+                <div>
+                  <p className='text-gray-600 text-lg'>Ahamd Ekstrom</p>
+                  <span className='text-sm text-gray-500 italic'>Docente</span>
+                </div>
+                <div
+                  onClick={ () => handleModal( menuState ) }
+                >
+                  <img src={ logo } alt="Foto Perfil" className='w-10 rounded-full md:w-14'/>
+                </div>
             </div>
         <div className='pt-4 pb-2 px-4 relative xl:rounded-lg md:rounded-lg'>
             <div className='mt-20 tracking-wider'>

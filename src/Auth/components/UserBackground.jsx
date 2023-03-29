@@ -1,12 +1,12 @@
 import img1 from '../assets/p2.png';
 import { HiCheckCircle, HiClipboardList, HiPencil } from 'react-icons/hi'
-
+import logo from '../assets/fondo.png'
 export const UserBackground = ({handleModal, status }) => {
 
 
   return (
     <div className='p-5 pb-0 h-auto'>
-        <div className='h-44 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative rounded-tl-xl rounded-tr-xl'>
+        <div className='h-44 w-full bg-blueDarkColor-700 to-mainBlue relative rounded-tl-xl rounded-tr-xl'>
           <div 
             onClick={ () => handleModal( status ) }
             className='h-32 w-32 absolute rounded-full -bottom-16 left-12 flex flex-wrap items-center gap-6 cursor-pointer'
@@ -22,16 +22,21 @@ export const UserBackground = ({handleModal, status }) => {
             <p className='text-lg text-gray-900'>Ahamd Ekstrom Bothman</p>
             <span className='italic text-sm font-normal text'>Administrativo</span>
           </div>
+
+          {/* CEUT BACKGROUND */}
+          <div className='background flex items-center gap-2 text-white xl:text-3xl font-bold tracking-wider text-lg text-center absolute'>
+            <img src={ logo } alt="" />
+          </div>
       </div>
       <div className='rounded-bl-xl rounded-br-xl w-full pb-10 px-12 drop-shadow-user'>
       <div className='w-full flex gap-4 justify-end mt-6'>
-            <button className='border border-blueColor-900 hover:bg-blueColor-600 hover:text-white flex items-center justify-center gap-2 text-gray-800 py-2 px-2 rounded-lg'>
+            <button className='border flex items-center justify-center gap-2 text-gray-800 py-2 px-2 rounded-lg'>
             <div className='text-lg'>
                 <HiClipboardList />
               </div>
               3 / 7
             </button>
-            <button className='bg-primary hover:bg-blueColor-700 flex items-center justify-center gap-2 text-white py-2 px-4 rounded-lg'>
+            <button className='bg-yellowColor-800 flex items-center justify-center gap-2 text-gray-900 py-2 px-4 rounded-lg'>
               <div className='text-lg'>
                 <HiCheckCircle />
               </div>

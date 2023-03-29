@@ -17,9 +17,9 @@ export const ModalUser = ({ onShowModal, disUserModal }) => {
 
   return (
         <div className={ `absolute flex bg-blueColor-50 w-screen -top-4 left-0 h-60vh z-10 overflow-hidden ${ disUserModal.className }` }>
-        <div className="modal-container rounded-2xl w-screen bg-white my-5 mx-10 flex justify-between relative overflow-hidden">
+        <div className="modal-container rounded-2xl w-screen bg-white my-5 flex justify-between relative overflow-hidden">
           {/* users Scroll section */}
-          <div className="w-1/3 rounded-tl-2xl rounded-bl-2xl bg-white">
+          <div className="h-90 rounded-tl-2xl rounded-bl-2xl bg-blueColor-50">
               <div className="flex items-center mt-5 h-auto px-5">
                     <SearchField />
                     <div className="cursor-pointer">
