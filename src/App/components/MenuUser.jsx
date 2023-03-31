@@ -1,18 +1,17 @@
 import { HiBookOpen, HiX } from "react-icons/hi"
-import { Clock } from "./Clock"
 
 export const MenuUser = ({menuState, handleModal}) => {
   return (
-    <div className="absolute w-full h-full top-5 right-5 rounded-lg z-20 bg-blueColor-50">
-        <div className="relative w-full h-full bg-blueColor-50 grid justify-items-center items-center">
-            <div className="p-4 bg-blueColor-50 w-72 text-center">
+    <div className="absolute w-full h-full top-0 right-0 rounded-lg z-20 bg-blueColor-50 dark:bg-dark-900">
+        <div className="relative w-full h-full bg-blueColor-50 grid justify-items-center items-center dark:bg-dark-800">
+            <div className="p-4 bg-blueColor-50 w-72 text-center rounded-lg dark:bg-dark-800">
                 <div className="mb-4">
-                    <li className="text-gray-700 md:text-lg"> Leer Documentacion </li>
+                    <li className="text-gray-700 md:text-lg dark:text-gray-300"> Leer Documentacion </li>
                 </div>
                 <div>
-                    <li className="text-gray-700 md:text-lg"> <p className="mb-2">Clases totales por quincena: </p>
-                        <div className="border bg-bgc_white-50 p-4">
-                            <p className="text-gray-800 text-2xl flex justify-center items-center gap-2"> <HiBookOpen /> 9 / 13 </p>
+                    <li className="text-gray-700 md:text-lg dark:text-gray-300"> <p className="mb-2">Clases totales por quincena: </p>
+                        <div className="border bg-bgc_white-50 p-4 dark:bg-dark-700 dark:border-gray-700">
+                            <p className="text-gray-800 text-2xl flex justify-center items-center gap-2 dark:text-gray-400 "> <HiBookOpen /> 9 / 13 </p>
                         </div>
                     </li>
                 </div>

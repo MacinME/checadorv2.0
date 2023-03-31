@@ -1,11 +1,12 @@
 
-import { RegisterClass } from '../components/RegisterClass';
-import logo from '../assets/p3.png'
+import { useTheme } from '../Helpers/useTheme';
+import { EnterClass, InClass, MenuUser, UserProfile } from '../components/index';
 import { useNewModal } from '../../Auth/Helpers/useNewModal';
-import { MenuUser } from '../components/MenuUser';
-import { Loading } from '../components/Loading';
+import { HiDesktopComputer, HiMoon, HiSun } from 'react-icons/hi';
 
 export const LoginClass = () => {
+
+  const {theme, setTheme} = useTheme();
 
   const {showNewModal, handleModal} = useNewModal([
     {id: 1, status: false},
@@ -15,34 +16,52 @@ export const LoginClass = () => {
   const menuState = showNewModal[0];
   const clockState = showNewModal[1]
 
+  const themeOptions = [
+    {
+      text: 'light',
+      icon: <HiSun />
+    },
+    {
+      text: 'dark',
+      icon: <HiMoon />
+    },
+    {
+      text: 'system',
+      icon: <HiDesktopComputer />
+    }
+  ];
+
   return (
-    <div className='bg-blueColor-50 w-screen h-screen grid justify-items-center items-center relative'>
-            <div 
-              className='absolute top-5 right-5 flex p-2 text-gray-90 cursor-pointer w-auto items-center gap-4'
-            >
-                <div>
-                  <p className='text-gray-600 text-lg'>Ahamd Ekstrom</p>
-                  <span className='text-sm text-gray-500 italic'>Docente</span>
-                </div>
-                <div
-                  onClick={ () => handleModal( menuState ) }
-                >
-                  <img src={ logo } alt="Foto Perfil" className='w-10 rounded-full md:w-14'/>
-                </div>
-            </div>
+    <div className={`bg-blueColor-50 w-screen h-screen grid justify-items-center items-center relative duration-100 dark:bg-dark-800` }>
+
+        <div className='bg-white absolute top-5 left-5 rounded-lg dark:bg-dark-700 duration-100'>
+          {
+            themeOptions.map( (icon) => (
+              <button
+                key={ icon.text }
+                onClick={ () => setTheme( icon.text )}
+                className={`text-gray-600 p-3 rounded-lg hover:bg-bgc_white-50 md:p-4 dark:text-white dark:hover:bg-dark-900 ${ theme === icon.text && ('text-yellowColor-700 dark:text-yellowColor-700')}`}
+              >
+                { icon.icon }
+              </button>
+            ))
+          }
+        </div>
         <div className='pt-4 pb-2 px-4 relative xl:rounded-lg md:rounded-lg'>
-            <div className='mt-20 tracking-wider'>
-              <h2 className='text-gray-500 font-semibold text-center md:text-2xl'> { clockState.status ? 'En clase...' : 'Registrar Clase' }</h2>
+            <div className='tracking-wider rounded'>
+              {/* User Profile */}
+              <UserProfile menuState={ menuState } handleModal={ handleModal } />
             </div>
             {
-              clockState.status ? <Loading /> : <RegisterClass clockState={ clockState } handleModal={ handleModal }  />
+              clockState.status ? <InClass /> : <EnterClass theme={ theme } setTheme={ setTheme } clockState={ clockState } handleModal={ handleModal }  />
             }
         </div>
-        {
+          {/* User Menu */}
+          {
               menuState.status && (
                 <MenuUser menuState={ menuState } handleModal={ handleModal } />
               )
-        }
+          }
     </div>
   )
 }
