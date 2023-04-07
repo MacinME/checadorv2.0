@@ -69,7 +69,8 @@ li{
 .table-section{
     background-color: #e7edf8;
     overflow-y: scroll;
-    height: 750px;
+    height: 650px;
+    background-color: url('./App/assets/logo.png');
 }
 
 /* .table-section tbody tr:nth-child(odd){
