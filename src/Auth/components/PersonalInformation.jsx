@@ -7,7 +7,7 @@ import { TextInformation } from "./TextInformation";
 import { ClassCard } from "./users/ClassCard";
 import { classess } from './class'
 
-export const PersonalInformation = () => {
+export const PersonalInformation = ({ userInfo }) => {
 
     const {showNewModal, handleModal} = useNewModal([
         {id: 1, status: false},
@@ -18,10 +18,8 @@ export const PersonalInformation = () => {
     const stateClass = showNewModal[1];
 
   return (
-    <div className="">
-    <div className="rounded-2xl">
-        <div className="grid grid-cols-1 p-5 gap-4 w-full">
-        <div className="drop-shadow-information bg-white rounded-2xl">
+    <div className="grid grid-cols-1 mt-4 gap-4 w-full h-full">
+        <div className="bg-blueColor-50 border-t border-gray-300 mx-4">
                 <div className="flex flex-col py-5 px-10 gap-5 rounded-2xl">
                     <div className="flex items-center gap-2">
                         <h4 className="font-semibold text-blueDarkColor-600 flex items-center gap-2"> <HiBookmarkSquare /> Clases </h4>
@@ -54,28 +52,26 @@ export const PersonalInformation = () => {
                         }
                     </div>
                 </div>
-            </div>
-            <div className="rounded-2xl drop-shadow-information bg-white">
-                <div className="flex flex-col py-5 px-10 gap-5 rounded-2xl relative">
-                    <h4 className="font-semibold text-blueDarkColor-600 flex items-center gap-2"> <HiUser />  Informacion de usuario</h4>
-                    {/* Edit Bottom */}
-                    {
-                        !state.status && (
-                            <div 
-                                onClick={ () => handleModal(state) }
-                                className="flex item-center justify-center rounded absolute top-3 right-3 border border-gray-300 p-1 hover:bg-gray-100 cursor-pointer"
-                            >   
-                            <HiPencil />
-                        </div>
-                        )
-                    }
-                    {
-                        state.status ? <EditPersonalInformation state={ state } handleModal={ handleModal } />  : <TextInformation />
-                    }
-                </div>
+        </div>
+        <div className="bg-blueColor-50 border-t border-gray-300 mb-5 mx-4">
+            <div className="flex flex-col py-5 px-10 gap-5 rounded-2xl relative">
+                <h4 className="font-semibold text-blueDarkColor-600 flex items-center gap-2"> <HiUser />  Informacion de usuario</h4>
+                {/* Edit Bottom */}
+                {
+                    !state.status && (
+                        <div 
+                            onClick={ () => handleModal(state) }
+                            className="flex item-center justify-center rounded absolute top-3 right-3 border border-gray-300 p-1 hover:bg-gray-100 cursor-pointer"
+                        >   
+                        <HiPencil />
+                    </div>
+                    )
+                }
+                {
+                    state.status ? <EditPersonalInformation state={ state } handleModal={ handleModal } />  : <TextInformation userInfo={ userInfo }/>
+                }
             </div>
         </div>
-    </div>
     </div>
 
   )

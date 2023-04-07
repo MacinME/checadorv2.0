@@ -24,7 +24,7 @@ export const RegisterDoc = ({ onShowModal, disUserModal}) => {
             <FilterData selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } /> 
 
             {/* Filtered Data - Query */}
-            <QueryData selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } />
+            <QueryData selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } onShowModal={ onShowModal } disUserModal={ disUserModal } />
           </div>
       </div>
     </>

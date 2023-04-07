@@ -1,19 +1,36 @@
 // Import React librarys and components
-import { HiCheckCircle, HiChevronLeft, HiChevronRight, HiOutlineArrowSmDown, HiOutlineMail, HiXCircle} from 'react-icons/hi';
-import { users } from './data'
+import { HiCheckCircle, HiChevronLeft, HiChevronRight, HiOutlineArrowSmDown, HiOutlineMail, HiUserRemove, HiXCircle} from 'react-icons/hi';
+import { users } from './data';
+import { SearchField } from './SearchField';
 
 
 const dataTH = [
     {id: 1, name: 'Nombre'}, 
     {id: 2, name: 'Estado'}, 
     {id: 3, name: 'Id Docente'}, 
-    {id: 4, name: 'Correo'}
+    {id: 4, name: 'Correo'},
+    {id: 5, name: 'Eliminar'}
 ];
 
-export const TableUsers = () => {    
+export const TableUsers = ({ onShowModal ,disUserModal}) => {    
 
   return (
-    <div className=''>
+    <div className='bg-bgc_white-100 border rounded-lg px-4'>
+        <div className='w-full flex flex-col gap-2 py-2 px-4 mb-2'>
+            <div className='flex items-center gap-5'>
+                <p className='text-gray-800'>Datos Filtrados: <span className='bg-primary text-white p-1 px-3 rounded-full text-sm'>430</span></p>
+                <button 
+                    onClick={ () => onShowModal(disUserModal) }
+                    className='w-44 bg-white border border-gray-300 py-1 px-3 rounded-lg hover:bg-gray-200'
+                >
+                    Ver Usuarios
+                </button>
+                <button className='w-44 bg-white border border-gray-300 py-1 px-3 rounded-lg hover:bg-gray-200'>
+                    Eliminar Filtrados
+                </button>
+            </div>
+            <SearchField />
+        </div>
       <div className="table-section relative rounded-lg">
         <table className="table w-full">
             <thead className='bg-gray-700 sticky top-0 w-full z-10'>
@@ -66,14 +83,19 @@ export const TableUsers = () => {
                                 email@gmail.com
                             </div>
                         </td>
+                        <td> 
+                            <div className='bg-red-300 w-8 p-1 flex items-center justify-center rounded-lg cursor-pointer'>
+                                <HiUserRemove />
+                            </div>
+                        </td>
                     </tr>  
                     ))
                 }              
             </tbody>
         </table>
     </div>
-    <div className='w-full flex items-center justify-between py-4 px-5 bg-bgc_white-50'>
-        <button className='border border-gray-300 text-gray-900 flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-700 hover:text-white'> <HiChevronLeft /> Anterior</button>
+    <div className='w-full flex items-center justify-between py-4 px-5 bg-bgc_white-100 border-t border-gray-300'>
+        <button className='border border-gray-300 text-gray-900 flex items-center gap-2 py-2 px-4 rounded-full hover:bg-gray-700 hover:text-white'> <HiChevronLeft /> Anterior</button>
         <div className='grid grid-cols-6 py-2 px-4 gap-4 rounded'>
             {
                 [{id: 1, status: true},{id: 2, status: false},{id: 3, status: false},{id: 4, status: false},{id: 5, status: false}].map(pag => (
@@ -84,7 +106,7 @@ export const TableUsers = () => {
                 ))
             }
         </div>
-        <button className='border border-gray-300 bg-white text-gray-900 flex items-center gap-2 py-2 px-4 rounded-lg hover:bg-gray-700 hover:text-white'>Siguiente <HiChevronRight /> </button>
+        <button className='border border-gray-300 bg-white text-gray-900 flex items-center gap-2 py-2 px-4 rounded-full hover:bg-gray-700 hover:text-white'>Siguiente <HiChevronRight /> </button>
     </div>
           
     </div>

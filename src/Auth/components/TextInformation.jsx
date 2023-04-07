@@ -1,22 +1,23 @@
 
-export const TextInformation = () => {
+export const TextInformation = ({ userInfo }) => {
+
   return (
     <div className="flex flex-col gap-4">
         <div className="items-center">
-            <span className="font-semibold text-sm"> Nombre </span>
-            <p className="text-gray-600"> Ahamd Ekstrom Bothman </p>
+            <span className="font-semibold text-sm text-gray-800"> Nombre </span>
+            <p className="text-gray-600"> { userInfo.name } </p>
         </div>
         <div className="items-center">
-            <span className="font-semibold text-sm"> Id Usuario </span>
-            <p className="text-gray-600"> 23123 </p>
+            <span className="font-semibold text-sm text-gray-800"> Id Usuario </span>
+            <p className="text-gray-600"> { userInfo.idCEUT } </p>
         </div>
         <div className="items-center">
-            <span className="font-semibold text-sm"> Rol </span>
-            <p className="text-gray-600">Administrativo</p>
+            <span className="font-semibold text-sm text-gray-800"> Rol </span>
+            <p className="text-gray-600"> { userInfo.rol } </p>
         </div>
         <div className="items-center">
-            <span className="font-semibold text-sm">Correo</span>
-            <p className="text-gray-600"> user@gmai.com </p>
+            <span className="font-semibold text-sm text-gray-800">Correo</span>
+            <p className="text-gray-600"> { userInfo.email } </p>
         </div>
     </div>
     )

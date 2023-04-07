@@ -186,6 +186,10 @@ td{
 }
 
 /* Modal user styles*/
+.modal-user{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 .btnModal-close {
     background-color: #f02626;
     top: 0;

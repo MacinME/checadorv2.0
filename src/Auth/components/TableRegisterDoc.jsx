@@ -14,7 +14,6 @@ const dataTH = [
 
 export const TableRegisterDoc = () => {
   return (
-    <>
     <div className=''>
     {/* Registers Table */}
     <div className='bg-bgc_white-100 border rounded-lg px-4'>
@@ -89,6 +88,5 @@ export const TableRegisterDoc = () => {
 
     </div>
 
-    </>
   )
 }
