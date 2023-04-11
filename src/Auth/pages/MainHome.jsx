@@ -5,12 +5,7 @@ import { RegisterDoc } from './index'
 export const MainHome = ({ page }) => {
 
 
-    // Show Modal
-    const { onShowModal, showModal } = useNewModal([
-        {id: 1, className: 'invisible', status: false },
-    ]);
 
-    const disUserModal = showModal[0];
 
   return (
     <>
@@ -18,15 +13,8 @@ export const MainHome = ({ page }) => {
             
             <div className="container-section relative w-screen h-screen">
                 {/* Main Page */}
-                <RegisterDoc onShowModal={ onShowModal } disUserModal={ disUserModal }  /> 
+                <RegisterDoc /> 
             </div>
-
-            {/* Modal User */}\
-            {
-                disUserModal.status && (
-                    <ModalUser onShowModal={ onShowModal } disUserModal={ disUserModal } />
-                )
-            }
         </div>
     </>
   )

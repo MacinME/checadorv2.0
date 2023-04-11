@@ -4,20 +4,20 @@ export const TextInformation = ({ userInfo }) => {
   return (
     <div className="flex flex-col gap-4">
         <div className="items-center">
-            <span className="font-semibold text-sm text-gray-800"> Nombre </span>
-            <p className="text-gray-600"> { userInfo.name } </p>
+            <span className="font-semibold text-sm text-gray-800 dark:text-gray-400"> Nombre </span>
+            <p className="text-gray-600 dark:text-gray-300"> { userInfo.name } </p>
         </div>
         <div className="items-center">
-            <span className="font-semibold text-sm text-gray-800"> Id Usuario </span>
-            <p className="text-gray-600"> { userInfo.idCEUT } </p>
+            <span className="font-semibold text-sm text-gray-800 dark:text-gray-400"> Id Usuario </span>
+            <p className="text-gray-600 dark:text-gray-300"> { userInfo.idCEUT } </p>
         </div>
         <div className="items-center">
-            <span className="font-semibold text-sm text-gray-800"> Rol </span>
-            <p className="text-gray-600"> { userInfo.rol } </p>
+            <span className="font-semibold text-sm text-gray-800 dark:text-gray-400"> Rol </span>
+            <p className="text-gray-600 dark:text-gray-300"> { userInfo.rol } </p>
         </div>
         <div className="items-center">
-            <span className="font-semibold text-sm text-gray-800">Correo</span>
-            <p className="text-gray-600"> { userInfo.email } </p>
+            <span className="font-semibold text-sm text-gray-800 dark:text-gray-400">Correo</span>
+            <p className="text-gray-600 dark:text-gray-300"> { userInfo.email } </p>
         </div>
     </div>
     )

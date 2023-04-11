@@ -75,11 +75,11 @@ export const EditPersonalInformation = ({ state, handleModal }) => {
         <div className="flex flex-wrap items-center justify-center gap-2 mt-5">
             <button
                 onClick={ () => handleModal (state)}
-                className="hover:bg-gray-700 hover:text-white border border-gray-700 flex items-center justify-center gap-2 rounded text-gray-900 py-2 px-2 text-sm"
+                className="dark:border-gray-700 dark:text-gray-300 hover:bg-gray-700 hover:text-white border border-gray-700 flex items-center justify-center gap-2 rounded-full text-gray-900 py-2 px-2 text-sm"
             >
                 Cancelar
             </button>
-            <button className="btnModal-save flex items-center justify-center gap-2 rounded text-gray-900 py-2 px-2 text-sm">
+            <button className=" dark:text-gray-300 btnModal-save flex items-center justify-center gap-2 rounded-full text-gray-900 py-2 px-2 text-sm">
                 <HiOutlineSave /> Guardar Cambios
             </button>
         </div>

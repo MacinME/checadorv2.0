@@ -71,10 +71,10 @@ export const DocentesFields = () => {
 
     return (
     <div className="flex flex-col gap-5 mx-auto h-full">
-        <div className="flex flex-col gap-5 flex-wrap">
+        <div className="flex flex-col gap-5 pt-4 flex-wrap">
             <div className="flex flex-col gap-2">
                 <label htmlFor="" className="text-gray-700">
-                    <div className="flex items-center gap-2 w-full text-gray-800 rounded-lg px-2">
+                    <div className="flex items-center gap-2 w-full text-gray-800 dark:text-gray-300 rounded-lg px-2">
                         <HiCalendar className="text-sm" /> Fecha:
                     </div>
                 </label>
@@ -86,25 +86,25 @@ export const DocentesFields = () => {
                     selectsRange
                     showMonthDropdown
                     locale='es'            
-                    className="bg-transparent outline-none border-b border-gray-400 focus:border-gray-900 focus:border-1 focus:border-blue-600 focus:rounded-none py-1 px-2 text-gray-700" 
+                    className=" dark:border-gray-700 dark:text-gray-200 bg-transparent outline-none border-b border-gray-400 focus:border-gray-900 focus:border-1 focus:border-blue-600 focus:rounded-none py-1 px-2 text-gray-700" 
                 />
             </div>
 
             <div className="flex flex-col gap-2">
                 <label htmlFor="" className="text-gray-700">
-                    <div className="flex items-center gap-2 w-full text-gray-800 rounded-lg px-2">
+                    <div className="flex items-center gap-2 w-full text-gray-800 dark:text-gray-300 rounded-lg px-2">
                         <HiUser className="text-sm" /> Nombre:
                     </div>
                 </label>
-                <input type="text" className="bg-transparent outline-none border-b border-gray-400 focus:border-gray-900 focus:border-1 focus:border-blue-600 focus:rounded-none py-1 px-2 text-gray-700" />
+                <input type="text" className=" dark:border-gray-700 dark:text-gray-200 bg-transparent outline-none border-b border-gray-400 focus:border-gray-900 focus:border-1 focus:border-blue-600 focus:rounded-none py-1 px-2 text-gray-700" />
             </div>
         </div>
 
         <div className="px-2">
             <div className="">
-                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1 text-md"> <HiOutlineClock className="rounded-lg text-gray-800 text-sm" /> Tiempo: </h6>
+                <h6 className="text-gray-600 dark:text-gray-400 pt-3 pb-1 flex items-center gap-1 text-md"> <HiOutlineClock className="rounded-lg text-gray-800 dark:text-gray-300  text-sm " /> Tiempo: </h6>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                         Tolerancia
                     </label>
 
@@ -118,7 +118,7 @@ export const DocentesFields = () => {
                     />
                 </div>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                         Retardo
                     </label>
                     <input 
@@ -132,9 +132,9 @@ export const DocentesFields = () => {
                 </div>
             </div>
             <div className="">
-                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1 text-md"> <HiOutlineCheckCircle className="rounded-lg text-gray-800 text-sm" /> Usuarios: </h6>
+                <h6 className="text-gray-600 dark:text-gray-400 pt-3 pb-1 flex items-center gap-1 text-md"> <HiOutlineCheckCircle className="rounded-lg text-gray-800 dark:text-gray-300 text-sm" /> Usuarios: </h6>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300   text-sm">
                     Online
                     </label>
                     <input 
@@ -147,7 +147,7 @@ export const DocentesFields = () => {
                     />
                 </div>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300   text-sm">
                     Offline
                     </label>
                     <input 
@@ -161,9 +161,9 @@ export const DocentesFields = () => {
                 </div>
             </div>
             <div className=""> 
-                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1 text-md"> <HiSortAscending className="rounded-lg text-gray-800    text-sm" /> Filtrar Por:</h6>
+                <h6 className="text-gray-600 dark:text-gray-400 pt-3 pb-1 flex items-center gap-1 text-md"> <HiSortAscending className="rounded-lg text-gray-800 dark:text-gray-300 text-sm" /> Filtrar Por:</h6>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                         Fecha Actual
                     </label>
                     <input 
@@ -176,7 +176,7 @@ export const DocentesFields = () => {
                     />
                 </div>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                     Fecha Anterior
                     </label>
                     <input 
@@ -189,7 +189,7 @@ export const DocentesFields = () => {
                     />
                 </div>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                     Nombre a-z
                     </label>
                     <input 
@@ -203,9 +203,9 @@ export const DocentesFields = () => {
                 </div>
             </div>
             <div className="">
-                <h6 className="text-gray-600 pt-3 pb-1 flex items-center gap-1 text-md"> <HiXMark className="rounded-lg text-gray-800 text-lg text-sm" /> Remover campos:</h6>
+                <h6 className="text-gray-600 dark:text-gray-400 pt-3 pb-1 flex items-center gap-1 text-md"> <HiXMark className="rounded-lg text-gray-800 dark:text-gray-300 text-lg text-sm" /> Remover campos:</h6>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                         Lienciatura
                     </label>
                     <input 
@@ -218,7 +218,7 @@ export const DocentesFields = () => {
                     />
                 </div>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                         Materia
                     </label>
                     <input 
@@ -231,7 +231,7 @@ export const DocentesFields = () => {
                     />
                 </div>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                     Tema
                     </label>
                     <input 
@@ -244,7 +244,7 @@ export const DocentesFields = () => {
                     />
                 </div>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                         Semestre
                     </label>
                     <input 
@@ -257,7 +257,7 @@ export const DocentesFields = () => {
                     />
                 </div>
                 <div className="flex items-center gap-1 xl:ml-3">
-                    <label htmlFor="" className="text-gray-500 text-sm">
+                    <label htmlFor="" className="text-gray-500 dark:text-gray-300 text-sm">
                         Horario de salida
                     </label>
                     <input 

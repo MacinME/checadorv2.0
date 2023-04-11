@@ -70,7 +70,6 @@ li{
     background-color: #e7edf8;
     overflow-y: scroll;
     height: 650px;
-    background-color: url('./App/assets/logo.png');
 }
 
 /* .table-section tbody tr:nth-child(odd){
@@ -86,12 +85,12 @@ td{
     text-align: left;
 }
 
-.table-section tbody tr:nth-child(even){
+/* .table-section tbody tr:nth-child(even){
     background-color: #f5f9ff;
 }
 .table-section tbody tr:nth-child(odd){
     background-color: #e7edf8;
-}
+} */
 
 /* Height Filter - styles */
 
@@ -142,7 +141,6 @@ td{
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 .drop-shadow-user{
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
 }

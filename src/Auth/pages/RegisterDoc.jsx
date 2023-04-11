@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { TopBar } from '../components/TopBar';
 import { FilterData } from '../components/FilterData';
 import { QueryData } from '../components/QueryData';
+import { useNewModal } from '../Helpers/useNewModal';
 
-export const RegisterDoc = ({ onShowModal, disUserModal}) => {
+export const RegisterDoc = () => {
 
   const [selectedOption, setSelectedOption] = useState('opt1');
     
@@ -12,6 +13,17 @@ export const RegisterDoc = ({ onShowModal, disUserModal}) => {
       setSelectedOption(evt.target.value)
   }
 
+  const [userInfo, setUserInfo] = useState(false);
+
+  const handleUserInfo = ( user ) => {
+      setUserInfo(user);
+  }
+    // Show Modal
+    const { onShowModal, showModal } = useNewModal([
+      {id: 1, className: 'invisible', status: false },
+  ]);
+
+  const userSettings = showModal[0];
   return (
     <>
       {/* Top Bar */}
@@ -21,10 +33,10 @@ export const RegisterDoc = ({ onShowModal, disUserModal}) => {
       <div className="grid justify-items-center items-center w-screen overflow-y-scroll h-screen overflow-x-hidden mt-12">
         <div className='grid-register w-screen h-full'>
             {/* Filter Data */}
-            <FilterData selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } /> 
+            <FilterData handleUserInfo={ handleUserInfo } userSettings={ userSettings } selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } /> 
 
             {/* Filtered Data - Query */}
-            <QueryData selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } onShowModal={ onShowModal } disUserModal={ disUserModal } />
+            <QueryData userInfo={ userInfo } selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } onShowModal={ onShowModal } userSettings={ userSettings } />
           </div>
       </div>
     </>

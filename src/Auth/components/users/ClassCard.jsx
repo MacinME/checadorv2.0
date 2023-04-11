@@ -14,30 +14,30 @@ export const ClassCard = ( classess ) => {
                 <button className="bg-yellowColor-800 w-full h-6 flex items-center justify-center rounded-tr-lg text-gray-900 hover:text-white hover:bg-red-600 outline-none"> <HiXMark /> </button>
             </div>
         </div>
-        <div className="flex flex-wrap justify-around gap-6 bg-white rounded-bl-lg rounded-br-lg px-4 py-5 w-full border border-gray-300">
+        <div className="flex flex-wrap justify-around gap-6 bg-white dark:bg-dark-700 dark:border-gray-700 rounded-bl-lg rounded-br-lg px-4 py-5 w-full border border-gray-300">
             <div className="">
-                <p className="text-gray-700"> Lunes </p>
-                <span className="text-blue-600">{ monday }</span>
+                <p className="text-gray-800 dark:text-gray-300"> Lunes </p>
+                <span className="text-gray-800 dark:text-gray-500 ">{ monday }</span>
             </div>
             <div className="">
-                <p className="text-gray-700">Martes</p>
-                <span className="text-blue-600">{ tuesday } </span>
+                <p className="text-gray-700 dark:text-gray-300">Martes</p>
+                <span className="text-gray-800 dark:text-gray-500">{ tuesday } </span>
             </div>
             <div className="">
-                <p className="text-gray-700">Miercoles</p>
-                <span className="text-blue-600"> { wednesday } </span>
+                <p className="text-gray-700 dark:text-gray-300">Miercoles</p>
+                <span className="text-gray-800 dark:text-gray-500"> { wednesday } </span>
             </div>
-            <div className="text-gray-700">
+            <div className="text-gray-700 dark:text-gray-300">
                 <p>Jueves</p>
-                <span className="text-red-500"> { thrusday } </span>
+                <span className="text-gray-800 dark:text-gray-500"> { thrusday } </span>
             </div>
             <div className="">
-                <p className="text-gray-700">Viernes</p>
-                <span className="text-blue-600"> { friday } </span>
+                <p className="text-gray-700 dark:text-gray-300">Viernes</p>
+                <span className="text-gray-800 dark:text-gray-500"> { friday } </span>
             </div>
             <div className="">
-                <p className="text-gray-700">Sabado</p>
-                <span className="text-blue-600"> { saturday } </span>
+                <p className="text-gray-700 dark:text-gray-300">Sabado</p>
+                <span className="text-gray-800 dark:text-gray-500"> { saturday } </span>
             </div>
         </div>  
     </div>
