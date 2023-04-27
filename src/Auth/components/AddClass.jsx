@@ -51,40 +51,8 @@ export const AddClass = () => {
     setDays(updateDays)
   }
 
-
-
-//   const handleSubmit = (evt) => {
-//     evt.preventDefault();
-
-//     const validateSchedule = days.map(({ subjects }) =>{
-//       return subjects.map((subject) => {
-//         return subject.start.length < 5 || subject.end.length < 5 ? false : true
-//       });
-
-//     });
-
-//     const results = validateSchedule;
-//     const [monday, thuesday, wednesday, thrusday, friday, saturday] = results;
-//     const scheduleMonday = monday.every((mondayIsEmpty) => mondayIsEmpty);
-//     const scheduleTuesday = thuesday.every((mondayIsEmpty) => mondayIsEmpty);
-//     const scheduleWednesday = wednesday.every((mondayIsEmpty) => mondayIsEmpty);
-//     const scheduleThrusday = thrusday.every((mondayIsEmpty) => mondayIsEmpty);
-//     const scheduleFriday = friday.every((mondayIsEmpty) => mondayIsEmpty);
-//     const scheduleSaturday = saturday.every((mondayIsEmpty) => mondayIsEmpty);
-
-//     const msg = [ scheduleMonday, scheduleTuesday, scheduleWednesday, scheduleThrusday, scheduleFriday, scheduleSaturday].every((msg) => msg !== false );
-
-//     setMessage(msg);
-
-//     setTimeout(() => {
-//       setMessage(true)
-//     }, 3000);
-
-// }
-
-
   return (
-    <form className="col-span-3 xl:px-10 sm:px-0">
+    <form className="col-span-4 xl:px-10 sm:px-0">
       <h4 className="flex items-center justify-center gap-3 text-gray-600 font-bold text-center text-lg mb-10 dark:text-gray-400"> Registrar Horarios de Clase </h4>
       <div className="">
         <label className="flex flex-col font-bold text-gray-600 mt-4 tracking-wider">
@@ -140,7 +108,7 @@ export const AddClass = () => {
                       value={subject.start}
                       placeholder="Entrada"
                       onChange={(event) => handleInputChange(event, dayIndex, subjectIndex, "start")}
-                      className="w-full border m-2 border-gray-200 text-gray-700 py-1 px-2 focus:border-gray-500 rounded-lg outline-none dark:bg-dark-700 dark:border-gray-700 dark:text-gray-200"
+                      className="w-full dark:focus:border-gray-500 border m-2 border-gray-200 text-gray-700 py-1 px-2 focus:border-gray-500 rounded-lg outline-none dark:bg-dark-700 dark:border-gray-700 dark:text-gray-200"
                   />
                 </div>
                 <div className="xl:mr-2">
@@ -150,7 +118,7 @@ export const AddClass = () => {
                       placeholder="salida"
                       value={subject.end}
                       onChange={(event) => handleInputChange(event, dayIndex, subjectIndex, "end")}
-                      className="w-full border m-2 border-gray-200 text-gray-700 py-1 px-2 focus:border-gray-500 rounded-lg outline-none dark:bg-dark-700 dark:border-gray-700 dark:text-gray-200"
+                      className="w-full dark:focus:border-gray-500 border m-2 border-gray-200 text-gray-700 py-1 px-2 focus:border-gray-500 rounded-lg outline-none dark:bg-dark-700 dark:border-gray-700 dark:text-gray-200"
                   />
                 </div>
                 <div className="xl:mr-2">
@@ -159,7 +127,7 @@ export const AddClass = () => {
                       placeholder="Grado"
                       value={subject.grade}
                       onChange={(event) => handleInputChange(event, dayIndex, subjectIndex, "grade")}
-                      className="w-full border m-2 border-gray-200 text-gray-700 py-1 px-2 focus:border-gray-500 rounded-lg outline-none dark:bg-dark-700 dark:border-gray-700 dark:text-gray-200"
+                      className="w-full dark:focus:border-gray-500 border m-2 border-gray-200 text-gray-700 py-1 px-2 focus:border-gray-500 rounded-lg outline-none dark:bg-dark-700 dark:border-gray-700 dark:text-gray-200"
                   />
                 </div>
               </div>

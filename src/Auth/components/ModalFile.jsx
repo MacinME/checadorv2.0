@@ -1,4 +1,4 @@
-import { HiOutlineSave, HiX } from "react-icons/hi"
+import { HiOutlineSave, HiX } from "react-icons/hi";
 
 export const ModalFile = ({ handleModal, status }) => {
 

@@ -8,8 +8,14 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-src/Auth/assets
-src/App/assets
+src/Auth/assets/*.png
+src/Auth/assets/*.jpg
+src/Auth/assets/*.jpeg
+
+src/App/assets/*.png
+src/App/assets/*.jpg
+src/App/assets/*.jpeg
+
 dist
 dist-ssr
 *.local

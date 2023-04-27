@@ -6,14 +6,12 @@ export const MenuOptions = () => {
 
     const menuItems = [
         {
-            text: 'Tema',
-        },
-        {
             text: 'Configuracion',
+            navigate: '#'
         },
         {
             text: 'Checador',
-            navigate: '/register'
+            navigate: '/auth/login'
         },
         {
             text: 'Cerrar Sesion',

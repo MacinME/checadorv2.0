@@ -1,13 +1,6 @@
 // Import components
-import { SearchField } from "../components/index";
-import { HiDotsVertical, HiOutlineX } from 'react-icons/hi';
-import { UserBackground } from "./UserBackground";
-import { PersonalInformation } from "./PersonalInformation";
-import { users } from '../components/data';
 import { useNewModal } from "../Helpers/useNewModal";
-import { ModalFile } from "./ModalFile";
 import { ProfileUser } from "./ProfileUser";
-import { useState } from "react";
 
 export const ModalUser = ({userInfo}) => {
   console.log(userInfo)

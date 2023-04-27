@@ -8,8 +8,8 @@ export const TextInformation = ({ userInfo }) => {
             <p className="text-gray-600 dark:text-gray-300"> { userInfo.name } </p>
         </div>
         <div className="items-center">
-            <span className="font-semibold text-sm text-gray-800 dark:text-gray-400"> Id Usuario </span>
-            <p className="text-gray-600 dark:text-gray-300"> { userInfo.idCEUT } </p>
+            <span className="font-semibold text-sm text-gray-800 dark:text-gray-400"> Id CEUT</span>
+            <p className="text-gray-600 dark:text-gray-300"> { userInfo.idCeut } </p>
         </div>
         <div className="items-center">
             <span className="font-semibold text-sm text-gray-800 dark:text-gray-400"> Rol </span>

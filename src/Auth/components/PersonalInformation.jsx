@@ -42,11 +42,11 @@ export const PersonalInformation = ({ userInfo }) => {
                             </button>
                         }
                     </div>
-                    <div className="grid xl:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 gap-3 xl:px-10 py-5 rounded-lg h-auto">
+                    <div className="grid xl:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 xl:px-10 py-5 rounded-lg h-auto">
                         {
                             stateClass.status ? <AddClass stateClass={ stateClass } handleModal={ handleModal } /> : (
-                                classess.map( oneClass => (
-                                    <ClassCard key={ oneClass.id  } {...oneClass} />
+                                userInfo.subjects.map( oneClass => (
+                                    <ClassCard key={ oneClass.idSubject  } {...oneClass} />
                                 ))
                             )
                         }

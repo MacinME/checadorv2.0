@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import { MainHome } from "../pages/MainHome"
 
 export const MainRouter = () => {
@@ -8,7 +8,7 @@ export const MainRouter = () => {
 
             <Route path="/" element={ <MainHome  /> } />
 
-            <Route path="/*" element={ <MainHome  /> } />
+            <Route path="/*" element={ <Navigate to='/' /> } />
 
         </Routes>
     </>
