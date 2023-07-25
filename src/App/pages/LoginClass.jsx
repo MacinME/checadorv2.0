@@ -1,4 +1,3 @@
-
 import { useTheme } from '../Helpers/useTheme';
 import { EnterClass, InClass, MenuUser, UserProfile } from '../components/index';
 import { useNewModal } from '../../Auth/Helpers/useNewModal';
@@ -15,8 +14,6 @@ export const LoginClass = () => {
 
   const menuState = showNewModal[0];
   const clockState = showNewModal[1]
-
-
 
   return (
     <div className={`bg-blueColor-50 w-screen h-screen grid justify-items-center items-center relative duration-100 dark:bg-dark-800` }>

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { FirstRouter } from './FirstRouter';
 import './index.css';
+import { UseProvider } from './App/components/context/UseProvider';
 
 const divRoot = document.querySelector("#root");
 const root = createRoot(divRoot);
@@ -12,6 +13,6 @@ root.render(
     <BrowserRouter >
       <FirstRouter />
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
 

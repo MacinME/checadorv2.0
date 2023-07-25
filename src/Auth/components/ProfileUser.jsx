@@ -1,5 +1,5 @@
-import { PersonalInformation } from "./PersonalInformation";
-import { UserBackground } from "./UserBackground";
+import { PersonalInformation } from './PersonalInformation';
+import { UserBackground } from './UserBackground';
 
 export const ProfileUser = ({ userInfo }) => {
   return (

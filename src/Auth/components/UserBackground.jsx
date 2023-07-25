@@ -22,7 +22,7 @@ export const UserBackground = ({ handleModal, status, userInfo }) => {
   
   return (
     <div className='bg-blueColor-50 dark:bg-dark-800 rounded-lg'>
-      <div className='h-44 w-full bg-blueDarkColor-700 relative'>
+      <div className='h-20 w-full bg-blueDarkColor-700 relative rounded-lg'>
         <div 
             // onClick={ () => handleModal( status ) }
             className='h-32 w-32 absolute rounded-full -bottom-16 left-12 flex flex-wrap items-center gap-6 cursor-pointer'

@@ -70,7 +70,12 @@ export const TableUsers = ({ onShowModal, userSettings , userInfo}) => {
                     { userSettings.status ? 'Usuarios' : 'Configurar usuarios' }
                 </button>
             </div>
-            <SearchField />
+            {
+                !userSettings.status && (
+                    <SearchField />
+                )
+            }
+     
         </div>
 
         {/* Content */}

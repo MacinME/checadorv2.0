@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
-import jwt_decode from 'jwt-decode';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Auth/context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const SingUp = () => {
-
-    const [googleUser, setGoogleUser] = useState(false);
-
+    const [token, setToken] = useState('');
+    const { onLogin } = useContext( AuthContext );
+    const navigate = useNavigate();
 
     const handleSingInGoogle = async () => {
 
-        const body = { id_token:  googleUser }
-        const response = await fetch('http://localhost:8081/api/auth/singUp', {
+        const body = { id_token:  token }
+        await fetch('http://localhost:8081/api/auth/singUp', {
             method: 'POST',
             headers: {
                 'Content-Type': "application/json"
@@ -17,27 +18,26 @@ export const SingUp = () => {
             body: JSON.stringify(body)
         })
         .then( resp => resp.json())
-        .then( data => console.log(data))
+        .then( data => {
+            const user = {
+                ...data,
+                logged: true
+            }
+            onLogin( user );
+            localStorage.setItem('jwtReact', data.token);
+            navigate('/')            
+        })
         .catch( console.error );
-
-        // const data = await response.json();
-        // console.log(data);
-
     }
+
 
     useEffect(() => {
-        googleUser && handleSingInGoogle()
-    }, [googleUser])
-    
-
-
+        token && handleSingInGoogle() 
+    }, [token])
 
     const handleCallBackResponse = (response) => {
-        // console.log('Encoded JWT ID token' + response.credential);
-        // const credential = jwt_decode( response.credential );
-        setGoogleUser( response.credential );
+        setToken( response.credential );
     }
-
 
     useEffect(() => {
       
@@ -56,8 +56,6 @@ export const SingUp = () => {
                 logo_alignment: "left"
             }
         )
-
-
     
     }, [])
     
@@ -65,11 +63,8 @@ export const SingUp = () => {
   return (
     <div id="SingInGoogles">
         <div className="bg-blueColor-50 w-screen h-screen flex flex-col justify-center items-center">
-            
             <div id="signInDiv"></div>
         </div>
-        
     </div>
-
   )
 }
