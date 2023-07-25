@@ -3,6 +3,7 @@ import { AuthContext } from '../../Auth/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export const SingUp = () => {
+
     const [token, setToken] = useState('');
     const { onLogin } = useContext( AuthContext );
     const navigate = useNavigate();
@@ -15,17 +16,19 @@ export const SingUp = () => {
             headers: {
                 'Content-Type': "application/json"
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
+            credentials: 'include'
         })
-        .then( resp => resp.json())
+        .then( resp => {
+            return resp.json()
+        })
         .then( data => {
             const user = {
                 ...data,
                 logged: true
             }
             onLogin( user );
-            localStorage.setItem('jwtReact', data.token);
-            navigate('/')            
+            navigate('/');   
         })
         .catch( console.error );
     }
