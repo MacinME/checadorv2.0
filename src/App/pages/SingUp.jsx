@@ -1,11 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Auth/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { Loader } from '../../Auth/components/Loader';
+import { GoogleBtn } from '../components/context/GoogleBtn';
 
 export const SingUp = () => {
 
-    const [token, setToken] = useState('');
     const { onLogin } = useContext( AuthContext );
+    const [token, setToken] = useState('');
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate();
 
     const handleSingInGoogle = async () => {
@@ -33,9 +36,11 @@ export const SingUp = () => {
         .catch( console.error );
     }
 
-
     useEffect(() => {
-        token && handleSingInGoogle() 
+        token && handleSingInGoogle();
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000)
     }, [token])
 
     const handleCallBackResponse = (response) => {
@@ -43,31 +48,34 @@ export const SingUp = () => {
     }
 
     useEffect(() => {
-      
-        google.accounts.id.initialize({
-            client_id: "99551602094-k3t9erqjhlrepelnpiogduppcbr1lmlm.apps.googleusercontent.com",
-            callback: handleCallBackResponse
-
-        });
-
-        google.accounts.id.renderButton(
-            document.getElementById('signInDiv'),
-            { 
-                theme: "filled_blue", 
-                size: "large",
-                shape: "circle",
-                logo_alignment: "left"
-            }
-        )
+        if(!loading){
+            google.accounts.id.initialize({
+                client_id: "99551602094-k3t9erqjhlrepelnpiogduppcbr1lmlm.apps.googleusercontent.com",
+                callback: handleCallBackResponse
     
-    }, [])
+            });
+    
+            google.accounts.id.renderButton(
+                document.getElementById('signInDiv'),
+                { 
+                    theme: "filled_blue", 
+                    size: "large",
+                    shape: "circle",
+                    logo_alignment: "left"
+                }
+            )
+        
+        }
+    }, [loading])
     
 
   return (
-    <div id="SingInGoogles">
-        <div className="bg-blueColor-50 w-screen h-screen flex flex-col justify-center items-center">
-            <div id="signInDiv"></div>
-        </div>
-    </div>
+    <>
+        {
+           !loading 
+            ? <GoogleBtn />
+            : <Loader />
+        }
+    </>
   )
 }

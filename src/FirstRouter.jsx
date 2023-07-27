@@ -1,11 +1,10 @@
-import { LoginContext } from "./App/components/context/UseContext"
-import { UseProvider } from "./App/components/context/UseProvider"
-import { AppRouter } from "./router/AppRouter"
+import { AuthProvider } from './Auth/context/AuthProvider';
+import { AppRouter } from './router/AppRouter';
 
 export const FirstRouter = () => {
   return (
-      <>
+      <AuthProvider>
           <AppRouter />
-      </>
+      </AuthProvider>
   )
 }
