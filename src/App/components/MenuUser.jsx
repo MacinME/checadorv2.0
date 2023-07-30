@@ -1,4 +1,5 @@
-import { HiBookOpen, HiX } from "react-icons/hi"
+import { HiBookOpen, HiX } from 'react-icons/hi';
+import { Logout } from './Logout';
 
 export const MenuUser = ({menuState, handleModal}) => {
   return (
@@ -13,6 +14,9 @@ export const MenuUser = ({menuState, handleModal}) => {
                         <div className="border bg-bgc_white-50 p-4 dark:bg-dark-700 dark:border-gray-700">
                             <p className="text-gray-800 text-2xl flex justify-center items-center gap-2 dark:text-gray-400 "> <HiBookOpen /> 9 / 13 </p>
                         </div>
+                    </li>
+                    <li>
+                        <Logout />
                     </li>
                 </div>
             </div>

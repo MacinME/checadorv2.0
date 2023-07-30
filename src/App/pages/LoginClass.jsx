@@ -18,12 +18,9 @@ export const LoginClass = () => {
   return (
     <div className={`bg-blueColor-50 w-screen h-screen grid justify-items-center items-center relative duration-100 dark:bg-dark-800` }>
         {/* Change theme */}
-        {
-          <div className='bg-white flex absolute top-5 left-5 rounded-lg dark:bg-dark-700 duration-100'>
-            <ThemeButtons />
-          </div>
-    
-        }
+        <div className='bg-white flex absolute top-5 left-5 rounded-lg dark:bg-dark-700 duration-100'>
+          <ThemeButtons />
+        </div>
 
         <div className='pt-4 pb-2 px-4 relative xl:rounded-lg md:rounded-lg'>
             <div className='tracking-wider rounded'>
