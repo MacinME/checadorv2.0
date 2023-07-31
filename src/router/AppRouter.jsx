@@ -1,10 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
-import { LoginRouter } from '../App/router/LoginRouter';
-import { MainRouter } from '../Auth/routes/MainRouter';
-import { PrivateRoutes } from './PrivateRoutes';
-import { PublicRoutes } from './PublicRoutes';
 import { useContext } from 'react';
-import { AuthContext } from '../Auth/context/AuthContext';
+import { DashboardPage } from '../pages';
+import { PublicRoutes, PrivateRoutes, LoginRouter, MainRouter } from './';
+import { Route, Routes } from 'react-router-dom';
+import { AuthContext } from '../context';
 
 
 export const AppRouter = () => {
@@ -27,6 +25,8 @@ export const AppRouter = () => {
           { isLogged && <MainRouter /> }
         </PrivateRoutes>
       } />
+
+      <Route path="dashboard" element={ <DashboardPage /> } />
     </Routes>
   )
 }

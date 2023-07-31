@@ -8,13 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-src/Auth/assets/*.png
-src/Auth/assets/*.jpg
-src/Auth/assets/*.jpeg
-
-src/App/assets/*.png
-src/App/assets/*.jpg
-src/App/assets/*.jpeg
+src/assets/*.png
+src/assets/*.jpg
+src/assets/*.jpeg
 
 dist
 dist-ssr

@@ -1,5 +1,5 @@
-import { AuthProvider } from './Auth/context/AuthProvider';
-import { AppRouter } from './router/AppRouter';
+import { AuthProvider } from './context'
+import { AppRouter } from './router'
 
 export const FirstRouter = () => {
   return (
