@@ -1,11 +1,14 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { CheckerPage } from '../pages';
+import { RegisterProvider } from '../context';
 
 export const MainRouter = () => {
   return (
-    <Routes >
-        <Route path="checador" element={ <CheckerPage  /> } />
-        <Route path="/*" element={ <Navigate to='/checador' /> } />
-    </Routes>
+    <RegisterProvider>
+      <Routes >
+          <Route path="checador" element={ <CheckerPage  /> } />
+          <Route path="/*" element={ <Navigate to='/checador' /> } />
+      </Routes>
+    </RegisterProvider>
   )
 }

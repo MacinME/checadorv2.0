@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import { CommonThemeBtn, CheckerForm, CheckerOutput, CheckerMenu, CheckerProfilePhoto } from '../components';
+import { RegisterContext } from '../context';
 import { useTheme, useNewModal } from '../hooks';
 
 export const CheckerPage = () => {
 
   const {theme, setTheme} = useTheme();
+  const { registeredData } = useContext(RegisterContext);
+  const { lastClass } = registeredData;
 
   const {showNewModal, handleModal} = useNewModal([
     {id: 1, status: false},
@@ -26,7 +30,17 @@ export const CheckerPage = () => {
               <CheckerProfilePhoto menuState={ menuState } handleModal={ handleModal } />
             </div>
             {
-              clockState.status ? <CheckerOutput /> : <CheckerForm theme={ theme } setTheme={ setTheme } clockState={ clockState } handleModal={ handleModal }  />
+              lastClass?.logout === null
+                ? <CheckerOutput 
+                    clockState={ clockState } 
+                    handleModal={ handleModal }  
+                  /> 
+                : <CheckerForm 
+                    theme={ theme } 
+                    setTheme={ setTheme } 
+                    clockState={ clockState } 
+                    handleModal={ handleModal }  
+                  />
             }
         </div>
           {/* User Menu */}

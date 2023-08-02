@@ -1,11 +1,48 @@
+import { useContext, useState } from 'react';
 import { CheckerClock } from './';
+import { RegisterContext } from '../../context';
+import { onGet24TimeFormat } from '../../helpers';
+
+let currentTime = onGet24TimeFormat();
 
 export const CheckerOutput = () => {
+
+    const { registeredData, onUpdateData } = useContext(RegisterContext);
+    const { lastClass } = !!registeredData && registeredData;
+    const [newTime, setNewtime] = useState( currentTime );
+
+    const onSetLogout = async(evt) => {
+        evt.preventDefault();
+        try {
+            const body = {  id: lastClass._id, logout: newTime }
+            const resp = await fetch('http://localhost:8081/users/api/updateRegister', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify( body )
+            })
+
+            if(resp.ok){
+                const updatedData = await resp.json();
+                onUpdateData( {...updatedData} )
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }   
+
+
   return (
     <div className="mt-5">
         {/* Checker Clock - component */}
-        <CheckerClock />
-        <form >
+        <CheckerClock 
+            setNewtime={ setNewtime }
+            newTime={ newTime }
+        />
+        <form 
+            onSubmit={ onSetLogout }
+        >
             <div className="relative form-input flex flex-col gap-4 my-8">
                 <textarea 
                     placeholder="motivo de salida antes del horario"

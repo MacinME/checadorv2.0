@@ -1,15 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { onGet24TimeFormat } from '../../helpers';
 
-export const CheckerClock = () => {
-
-    let currentTime = new Date().toLocaleTimeString();
-
-    const [newTime, setNewtime] = useState( currentTime );
+export const CheckerClock = ({ setNewtime, newTime }) => {
 
     useEffect(() => {
         const interval = setInterval( () => {
-            const date = new Date();
-            setNewtime( date.toLocaleTimeString() )
+            const time = onGet24TimeFormat()
+            setNewtime( time );
         }, 1000);
         return () => clearInterval( interval );
     }, [])

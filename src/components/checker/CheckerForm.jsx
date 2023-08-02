@@ -1,14 +1,15 @@
 import { useContext, useRef, useState } from 'react';
 import { HiBookmarkAlt, HiClipboard, HiClock } from 'react-icons/hi';
 import { useForm } from '../../hooks';
-import { AuthContext } from '../../context';
+import { AuthContext, RegisterContext } from '../../context';
 import { ErrorMessage } from '../dashboard/ErrorMessage';
 import { onGet24TimeFormat } from '../../helpers';
 import { days } from '../../data';
 
-export const CheckerForm = ({ clockState, handleModal }) => {
+export const CheckerForm = () => {
 
     const { userState } = useContext(AuthContext);
+    const { onUpdateData } = useContext(RegisterContext);
     const [chooseDegree, setChooseDegree] = useState(null);
     const errorRef = useRef();
     const { topic, onInputChange, formState } = useForm({
@@ -39,7 +40,9 @@ export const CheckerForm = ({ clockState, handleModal }) => {
             });
 
             if(resp.ok){
-                handleModal(clockState)
+                const data = await resp.json();
+                const { newRegister } = data;
+                onUpdateData( { lastClass: newRegister } );
             }
         } catch (error) {
             throw new Error(`Fetch Failed: ${ error }`);
@@ -61,7 +64,7 @@ export const CheckerForm = ({ clockState, handleModal }) => {
             idUser: userState.user.uid,
             date: new Date().toLocaleDateString(),
             login: onGet24TimeFormat(),
-            logout: ''
+            logout: null
         }
 
         await onSendRegister( data );
