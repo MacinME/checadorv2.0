@@ -12,5 +12,4 @@ export const colorsFrontend = {
     indigo: 'bg-indigo-500',
     gray: 'bg-gray-500',
     rose: "bg-rose-500"
-
 }

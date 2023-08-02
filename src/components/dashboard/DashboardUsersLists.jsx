@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { colorsFrontend } from '../../data';
+import { UserContext } from '../../context/dashboard/UserContext';
 
 export const DashboardUsersLists = ({ handleUserInfo }) => {
 
   const [users, setUsers] = useState([]);
+  const { onGetUserData } = useContext(UserContext);
 
   useEffect(() => {
       const fetchUsers = async () => {
           const response = await fetch('http://localhost:8081/users/api');
           const data = await response.json();
-
           setUsers(data)
       }
 
@@ -21,7 +22,7 @@ export const DashboardUsersLists = ({ handleUserInfo }) => {
         {
         users.map( (user, index) => (
             <div 
-                onClick={ () => handleUserInfo(user)  }
+                onClick={ () => onGetUserData(user.uid)  }
                 key={ index } 
                 className="flex gap-3 items-center rounded-full cursor-pointer transition-all pl-1 hover:bg-blueColor-100 dark:hover:bg-dark-900"
             >

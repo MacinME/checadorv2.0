@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { DashboardTopBar, DashboardFilterContainer, DashboardTableContainer} from './';
 import { useNewModal } from '../../hooks';
+import { UserProvider } from '../../context/dashboard/UserProvider';
 
 export const Dashboard = () => {
 
@@ -22,7 +23,7 @@ export const Dashboard = () => {
 
   const userSettings = showModal[0];
   return (
-    <>
+    <UserProvider>
       {/* Top Bar */}
       <DashboardTopBar selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } />
 
@@ -36,7 +37,7 @@ export const Dashboard = () => {
             <DashboardTableContainer userInfo={ userInfo } selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } onShowModal={ onShowModal } userSettings={ userSettings } />
           </div>
       </div>
-    </>
+    </UserProvider>
 
 
   )

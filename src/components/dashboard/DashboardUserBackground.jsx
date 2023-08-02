@@ -1,24 +1,13 @@
+import { useContext } from 'react';
 import { HiCheckCircle, HiClipboardList } from 'react-icons/hi';
 import Background from '../../assets/fondo.png';
+import { UserContext } from '../../context/dashboard/UserContext';
+import { colorsFrontend } from '../../data';
 
 export const DashboardUserBackground = ({ handleModal, status, userInfo }) => {
 
-    const colorsFrontend = { 
-        green: 'bg-green-500',
-        emerald: "bg-emerald-500",
-        teal: 'bg-teal-500',
-        red: 'bg-red-500',
-        orange: 'bg-orange-500',
-        yellow: 'bg-yellow-500',
-        purple: 'bg-purple-500',
-        pink: 'bg-pink-500',
-        blue: 'bg-blue-500',
-        sky: "bg-sky-500",
-        indigo: 'bg-indigo-500',
-        gray: 'bg-gray-500',
-        rose: "bg-rose-500"
-    
-    };
+    const { user } = useContext(UserContext);
+    const { oneUser }= !!user && user;
   
   return (
     <div className='bg-blueColor-50 dark:bg-dark-800 rounded-lg'>
@@ -34,14 +23,14 @@ export const DashboardUserBackground = ({ handleModal, status, userInfo }) => {
                 </div>
             </div> */}
             <div className={`userPhoto rounded rounded-full relative border-4 dark:border-dark-800 `}>
-                <div className={`xl:w-24 sm:w-20 rounded rounded-full xl:h-24 sm:h-20 flex justify-center items-center text-3xl ${ colorsFrontend[userInfo.img.color] }`}>
-                    { userInfo.img.letter }
+                <div className={`xl:w-24 sm:w-20 rounded rounded-full xl:h-24 sm:h-20 flex justify-center items-center text-3xl ${ colorsFrontend[oneUser.img.color] }`}>
+                    { oneUser.img.letter }
                 </div>  
             </div>
         </div>
       <div className='font-semibold text-gray-700 -bottom-16 absolute left-40'>
-          <p className='text-lg text-gray-800 dark:text-gray-300'> { userInfo.name } </p>
-          <span className='italic text-sm font-normal text-gray-800 dark:text-gray-400'>{ userInfo.rol }</span>
+          <p className='text-lg text-gray-800 dark:text-gray-300'> { oneUser.name } </p>
+          <span className='italic text-sm font-normal text-gray-800 dark:text-gray-400'>{ oneUser.rol }</span>
       </div>
 
       {/* CEUT BACKGROUND */}

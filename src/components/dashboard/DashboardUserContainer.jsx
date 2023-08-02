@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import { useNewModal } from '../../hooks';
 import { DashboardUserBackground, DashboardUserData } from './';
+import { UserContext } from '../../context/dashboard/UserContext';
 
 export const DashboardUserContainer = ({ userInfo }) => {
+  const { user } = useContext(UserContext);
+  const { oneUser } = !!user && user;
 
   const { handleModal, showNewModal} = useNewModal([
     {id: 1, status: false}
@@ -14,7 +18,7 @@ export const DashboardUserContainer = ({ userInfo }) => {
       <div className="relative">
           <div className="bg-blueColor-50 dark:bg-dark-800 w-full overflow-y-scroll">
             { 
-                userInfo && (
+                oneUser && (
                   <div className="">
                     <DashboardUserBackground userInfo={ userInfo }/>
           
