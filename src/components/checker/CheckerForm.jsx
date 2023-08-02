@@ -26,7 +26,27 @@ export const CheckerForm = ({ clockState, handleModal }) => {
 
     const { user } = userState;
 
-    const onSubmitForm = (evt) => {
+    const onSendRegister = async(data) => {
+        const { id_Register, idCeut, idUser, degree, subject, topic, date, login, logout } = data;
+        try {
+            const body = { id_Register, idCeut, idUser, degree, subject, topic, date, login, logout }
+            const resp = await fetch('http://localhost:8081/users/api/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify( body )
+            });
+
+            if(resp.ok){
+                handleModal(clockState)
+            }
+        } catch (error) {
+            throw new Error(`Fetch Failed: ${ error }`);
+        }
+    }
+
+    const onSubmitForm = async(evt) => {
         evt.preventDefault();
         const { degree, subject, topic } = formState;
 
@@ -36,11 +56,15 @@ export const CheckerForm = ({ clockState, handleModal }) => {
 
         const data = {
             ...formState,
-            id: Date.now(), 
+            id_Register: Date.now(), 
+            idCeut: userState.user.idCeut,
+            idUser: userState.user.uid,
+            date: new Date().toLocaleDateString(),
             login: onGet24TimeFormat(),
             logout: ''
         }
 
+        await onSendRegister( data );
     }
 
   return (
