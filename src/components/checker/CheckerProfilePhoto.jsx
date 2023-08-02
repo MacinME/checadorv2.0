@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import Photo from '../../assets/p3.png';
 import { AuthContext } from '../../context';
+import { colorsFrontend } from '../../data';
 
 export const CheckerProfilePhoto = ({ menuState, handleModal }) => {
 
@@ -13,9 +13,11 @@ export const CheckerProfilePhoto = ({ menuState, handleModal }) => {
         onClick={ () => handleModal( menuState ) }
         className="flex justify-center flex-col items-center gap-2 p-2 cursor-pointer rounded-lg"
       >
-        <img src={ Photo } alt="Foto de Perfil" className='w-14 rounded-full md:w-20'/>
+        <div className={`w-16 rounded-full h-16 flex justify-center items-center ${ colorsFrontend[user.img.color] }`}>
+          <p className='font-bold text-center text-xl'>{ user.img.letter }</p>
+        </div>  
       </div>
-      <p className='text-gray-700 text-center dark:text-gray-200'>{ user.name }</p>
+      <p className='text-gray-700 text-center dark:text-gray-200 font-semibold'>{ user.name }</p>
     </div>
   )
 }
