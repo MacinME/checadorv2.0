@@ -4,3 +4,4 @@ export * from './tableTH';
 export * from './inputs';
 export * from './colors';
 export * from './inputsTime';
+export * from './weekDays';
