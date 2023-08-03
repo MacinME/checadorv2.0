@@ -1,21 +1,18 @@
 import { useContext } from 'react';
 import { CommonThemeBtn, CheckerForm, CheckerOutput, CheckerMenu, CheckerProfilePhoto } from '../components';
 import { RegisterContext } from '../context';
-import { useTheme, useNewModal } from '../hooks';
+import { useNewModal } from '../hooks';
 
 export const CheckerPage = () => {
 
-  const {theme, setTheme} = useTheme();
   const { registeredData } = useContext(RegisterContext);
   const { lastClass } = registeredData;
 
   const {showNewModal, handleModal} = useNewModal([
     {id: 1, status: false},
-    {id: 2, status: false}
   ]);
 
   const menuState = showNewModal[0];
-  const clockState = showNewModal[1]
 
   return (
     <div className={`bg-blueColor-50 w-screen h-screen grid justify-items-center items-center relative duration-100 dark:bg-dark-800` }>
@@ -31,16 +28,8 @@ export const CheckerPage = () => {
             </div>
             {
               lastClass?.logout === null
-                ? <CheckerOutput 
-                    clockState={ clockState } 
-                    handleModal={ handleModal }  
-                  /> 
-                : <CheckerForm 
-                    theme={ theme } 
-                    setTheme={ setTheme } 
-                    clockState={ clockState } 
-                    handleModal={ handleModal }  
-                  />
+                ? <CheckerOutput /> 
+                : <CheckerForm  />
             }
         </div>
           {/* User Menu */}

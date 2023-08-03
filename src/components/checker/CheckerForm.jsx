@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from 'react';
 import { HiBookmarkAlt, HiClipboard, HiClock } from 'react-icons/hi';
-import { useForm } from '../../hooks';
+import { useFetch, useForm } from '../../hooks';
 import { AuthContext, RegisterContext } from '../../context';
 import { ErrorMessage } from '../dashboard/ErrorMessage';
 import { onGet24TimeFormat } from '../../helpers';
@@ -8,9 +8,9 @@ import { days } from '../../data';
 
 export const CheckerForm = () => {
 
+    const [chooseDegree, setChooseDegree] = useState(null);
     const { userState } = useContext(AuthContext);
     const { onUpdateData } = useContext(RegisterContext);
-    const [chooseDegree, setChooseDegree] = useState(null);
     const errorRef = useRef();
     const { topic, onInputChange, formState } = useForm({
         degree: '',
@@ -19,34 +19,18 @@ export const CheckerForm = () => {
     });
 
     const today = days[new Date().getDay()];
+    const { user } = userState;
 
     const onChooseDegree = (evt) => {
         setChooseDegree( evt.target.value );
         onInputChange( evt );
     }
 
-    const { user } = userState;
+    const { onFetchData } = useFetch('http://localhost:8081/users/api/send', 'POST');
 
-    const onSendRegister = async(data) => {
-        const { id_Register, idCeut, idUser, degree, subject, topic, date, login, logout } = data;
-        try {
-            const body = { id_Register, idCeut, idUser, degree, subject, topic, date, login, logout }
-            const resp = await fetch('http://localhost:8081/users/api/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': "application/json"
-                },
-                body: JSON.stringify( body )
-            });
-
-            if(resp.ok){
-                const data = await resp.json();
-                const { newRegister } = data;
-                onUpdateData( { lastClass: newRegister } );
-            }
-        } catch (error) {
-            throw new Error(`Fetch Failed: ${ error }`);
-        }
+    const onSendData = async(myData) => {
+        const getData = await onFetchData(myData);
+        onUpdateData({ lastClass: getData.newRegister });
     }
 
     const onSubmitForm = async(evt) => {
@@ -67,7 +51,7 @@ export const CheckerForm = () => {
             logout: null
         }
 
-        await onSendRegister( data );
+        await onSendData( data );
     }
 
   return (

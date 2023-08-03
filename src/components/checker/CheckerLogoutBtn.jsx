@@ -1,33 +1,18 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context';
+import { useFetch } from '../../hooks';
 
 export const CheckerLogoutBtn = () => {
 
     const { onLogin } = useContext(AuthContext);
     const navigate = useNavigate();
+    const { onFetchData } = useFetch('http://localhost:8081/api/auth/logout', 'POST');
 
     const logout = async () => {
-
-        try {
-            const response = await fetch('http://localhost:8081/api/auth/logout', {
-                method: "POST",
-                headers: {
-                    'Content-Type': "application/json"
-                },
-                credentials: 'include'
-            });
-            if(response.ok){
-                const data = await response.json();
-                onLogin( data );
-                navigate('/login');
-            } else {
-                console.log("Logout failed " + response.status );
-            }
-        } catch (error) {
-            console.log(error);
-        }
-        
+        const getData = await onFetchData();
+        onLogin(getData);
+        navigate('/login');
     }
 
   return (

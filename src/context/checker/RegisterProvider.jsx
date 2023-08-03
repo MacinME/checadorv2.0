@@ -1,32 +1,19 @@
 import { useContext, useEffect, useState } from 'react';
 import { RegisterContext } from './';
 import { AuthContext } from '../login';
+import { useFetch } from '../../hooks';
 
 export const RegisterProvider = ({ children }) => {
 
     const [registeredData, setRegisteredData] = useState({});
     const { userState } = useContext(AuthContext);
     const { user } = userState;
+    const { onFetchData } = useFetch('http://localhost:8081/users/api/lastRegister', 'POST');
 
     const onGetLastRegister = async( id ) => {
-      try {
-        const body = { id }
-        const resp = await fetch('http://localhost:8081/users/api/lastRegister', {
-          method: 'POST',
-          headers: {
-            'Content-Type': "application/json"
-          },
-          body: JSON.stringify(body)
-        });
-
-        if(!resp.ok) return;
-
-        const data = await resp.json();
-        setRegisteredData( data )
-
-      } catch (error) {
-        console.log(error);
-      }
+      const data = { id }
+      const getData = await onFetchData( data );
+      setRegisteredData( getData );
     }
 
     useEffect(() => {
