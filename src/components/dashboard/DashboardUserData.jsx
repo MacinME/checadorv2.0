@@ -8,8 +8,6 @@ import { UserContext } from '../../context';
 export const DashboardUserData = ({ userInfo }) => {
 
     const { user } = useContext(UserContext);
-    const { oneUser } = !!user && user;
-
     const {showNewModal, handleModal} = useNewModal([
         {id: 1, status: false},
         {id: 2, status: false}
@@ -17,7 +15,6 @@ export const DashboardUserData = ({ userInfo }) => {
 
     const state = showNewModal[0];
     const stateClass = showNewModal[1];
-
 
   return (
     <div className="grid grid-cols-1 mt-4 gap-4 w-full h-full">
@@ -46,11 +43,19 @@ export const DashboardUserData = ({ userInfo }) => {
                     </div>
                     <div className="grid xl:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 xl:px-10 py-5 rounded-lg h-auto">
                         {
-                            stateClass.status ? <DashboardAddSubjects userInfo={ userInfo } stateClass={ stateClass } handleModal={ handleModal } /> : (
-                                oneUser.subjects.map( oneClass => (
-                                    <DashboardSubjectCard key={ oneClass.id } {...oneClass} />
-                                ))
-                            )
+                            stateClass.status 
+                                ? (<DashboardAddSubjects 
+                                        stateClass={ stateClass } 
+                                        handleModal={ handleModal } 
+                                    />) 
+                                : ( 
+                                    user.subjects.map( oneClass => (
+                                        <DashboardSubjectCard 
+                                            key={ oneClass.id } 
+                                            {...oneClass} 
+                                        />
+                                    ))
+                                )
                         }
                     </div>
                 </div>

@@ -4,10 +4,9 @@ import Background from '../../assets/fondo.png';
 import { UserContext } from '../../context/dashboard/UserContext';
 import { colorsFrontend } from '../../data';
 
-export const DashboardUserBackground = ({ handleModal, status, userInfo }) => {
+export const DashboardUserBackground = () => {
 
     const { user } = useContext(UserContext);
-    const { oneUser }= !!user && user;
   
   return (
     <div className='bg-blueColor-50 dark:bg-dark-800 rounded-lg'>
@@ -23,14 +22,14 @@ export const DashboardUserBackground = ({ handleModal, status, userInfo }) => {
                 </div>
             </div> */}
             <div className={`userPhoto rounded rounded-full relative border-4 dark:border-dark-800 `}>
-                <div className={`xl:w-24 sm:w-20 rounded rounded-full xl:h-24 sm:h-20 flex justify-center items-center text-3xl ${ colorsFrontend[oneUser.img.color] }`}>
-                    { oneUser.img.letter }
+                <div className={`xl:w-24 sm:w-20 rounded rounded-full xl:h-24 sm:h-20 flex justify-center items-center text-3xl ${ colorsFrontend[user.img.color] }`}>
+                    { user.img.letter }
                 </div>  
             </div>
         </div>
       <div className='font-semibold text-gray-700 -bottom-16 absolute left-40'>
-          <p className='text-lg text-gray-800 dark:text-gray-300'> { oneUser.name } </p>
-          <span className='italic text-sm font-normal text-gray-800 dark:text-gray-400'>{ oneUser.rol }</span>
+          <p className='text-lg text-gray-800 dark:text-gray-300'> { user.name } </p>
+          <span className='italic text-sm font-normal text-gray-800 dark:text-gray-400'>{ user.rol }</span>
       </div>
 
       {/* CEUT BACKGROUND */}

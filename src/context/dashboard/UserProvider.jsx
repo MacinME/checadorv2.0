@@ -3,14 +3,14 @@ import { UserContext } from './';
 
 export const UserProvider = ({ children }) => {
 
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
 
     const onGetUserData = async(id) => {
         try {
             const response = await fetch(`http://localhost:8081/users/api/user/${ id }`);
             if(response.ok){
-                const data = await response.json();
-                setUser( data )
+                const { user } = await response.json();
+                setUser( user )
             }
             
         } catch (error) {

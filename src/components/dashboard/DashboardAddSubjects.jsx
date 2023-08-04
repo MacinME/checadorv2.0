@@ -5,12 +5,13 @@ import { UserContext } from '../../context';
 import { ErrorMessage } from './ErrorMessage';
 import { OnErrorValidator } from '../../helpers';
 import { DashboardTimeCard } from './DashboardTimeCard';
+import { useFetch } from '../../hooks';
 
 export const DashboardAddSubjects = ({ handleModal, stateClass }) => {
 
   const { onGetUserData, user } = useContext(UserContext);
-  const { oneUser } = !!user && user;
   const errorRef = useRef(null);
+  const { onFetchData } = useFetch('http://localhost:8081/users/api/addSubject', 'POST');
 
   const [days, setDays] = useState({
       id: null, degree: '', data: [
@@ -63,24 +64,11 @@ export const DashboardAddSubjects = ({ handleModal, stateClass }) => {
       return errorRef.current.style.display = "block";
     };
 
-    const data = {...days, id: Date.now() };
-
-    try {
-      await fetch('http://localhost:8081/users/api/addSubject', {
-        method: 'POST',
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify({ subjects: data, id: oneUser.uid }),
-      })
-      .then( resp => resp.json())
-      .then( async( { user } ) => {
-         await onGetUserData( user.uid );
-         handleModal(stateClass);
-      })
-    } catch (error) {
-      console.log(error);
-    }
+    const subjects = {...days, id: Date.now() };
+    const data = { subjects, id: user.uid };
+    const getUserData = await onFetchData( data );
+    await onGetUserData(getUserData.user.uid);
+    handleModal(stateClass);
   }
 
   return (
