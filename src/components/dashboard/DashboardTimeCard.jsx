@@ -5,7 +5,7 @@ import { inputsTime } from '../../data';
 export const DashboardTimeCard = ({ dayIndex, subject, subjectIndex, handleRemoveSubject, handleInputChange }) => {
   return (
     <div className="bg-bgc_white-50 dark:bg-dark-700 m-2 rounded-lg flex flex-wrap flex-col justify-center items-center overflow-hidden">
-        <label className="h-10 flex items-center justify-between bg-blueDarkColor-600 py-1 px-2 text-white w-auto rounded-tl-lg rounded-tr-lg w-full"> Horario { subjectIndex + 1 }: 
+        <label className="text-gray-700 dark:text-gray-200 h-10 flex items-center justify-between py-1 px-2 w-auto rounded-tl-lg rounded-tr-lg w-full"> Horario { subjectIndex + 1 }: 
         {
             subjectIndex !== 0 &&
                 (<div
@@ -22,6 +22,7 @@ export const DashboardTimeCard = ({ dayIndex, subject, subjectIndex, handleRemov
                     <DashboardTimeInput 
                         key={ input.id }
                         {...input} 
+                        data={ subject[input.name] }
                         subject={ subject }
                         dayIndex={ dayIndex }
                         subjectIndex={ subjectIndex }
@@ -30,6 +31,6 @@ export const DashboardTimeCard = ({ dayIndex, subject, subjectIndex, handleRemov
                 ))
             }
         </div>
-  </div>
+    </div>
   )
 }

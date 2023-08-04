@@ -3,3 +3,4 @@ export * from './useTheme';
 export * from './useCheckbox';
 export * from './useNewModal';
 export * from './useFetch';
+export * from './useSubject';

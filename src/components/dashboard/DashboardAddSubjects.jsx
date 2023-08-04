@@ -1,70 +1,39 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useRef } from 'react';
 import { HiBookmark, HiCalendarDays, HiOutlinePlus } from 'react-icons/hi2';
 import { academic } from '../../data';
 import { UserContext } from '../../context';
 import { ErrorMessage } from './ErrorMessage';
 import { OnErrorValidator } from '../../helpers';
 import { DashboardTimeCard } from './DashboardTimeCard';
-import { useFetch } from '../../hooks';
+import { useFetch, useSubject } from '../../hooks';
+import { IconAddSubject } from './IconAddSubject';
 
 export const DashboardAddSubjects = ({ handleModal, stateClass }) => {
 
   const { onGetUserData, user } = useContext(UserContext);
-  const errorRef = useRef(null);
   const { onFetchData } = useFetch('http://localhost:8081/users/api/addSubject', 'POST');
-
-  const [days, setDays] = useState({
-      id: null, degree: '', data: [
-          { idDay: 1, day: 'Lunes', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-          { idDay: 2, day: 'Martes', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-          { idDay: 3, day: 'Miercoles', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-          { idDay: 4, day: 'Jueves', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-          { idDay: 5, day: 'Viernes', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-          { idDay: 6, day: 'Sabado', subjects: [ { subject:'', start: '', end: '', grade: ''} ] }
-      ]
+  const { handleInputChange, handleAddSubject, handleRemoveSubject, formState } = useSubject({
+    id: null, degree: '', data: [
+        { idDay: 1, day: 'Lunes', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 2, day: 'Martes', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 3, day: 'Miercoles', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 4, day: 'Jueves', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 5, day: 'Viernes', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 6, day: 'Sabado', subjects: [ { subject:'', start: '', end: '', grade: ''} ] }
+    ]
   });
-
-  const handleAddSubject = (evt,index) => {
-    evt.preventDefault();
-    const updatedDays = {...days};
-    updatedDays.data[index].subjects.push({ subject: "", start: "", end: "", grade: "" });
-    setDays(updatedDays);
-  };
-
-  const handleInputChange = (event, dayIndex, subjectIndex, field) => {
-    const updatedDays = {...days};
-    if( dayIndex === 'subject') {
-       updatedDays.subject = event.target.value;
-       setDays(updatedDays);
-    } else if ( dayIndex === 'degree' ){
-      updatedDays.degree = event.target.value;
-      setDays(updatedDays);
-    }else if ( dayIndex === 'uid') {
-      updatedDays.id = event.target.value;
-      setDays( updatedDays );
-    } else {
-      updatedDays.data[dayIndex].subjects[subjectIndex][field] = event.target.value;
-      setDays(updatedDays);
-    }
-  };
-
-  const handleRemoveSubject = (evt, index, subject) => {
-    evt.preventDefault();
-    const updateDays = {...days};
-    updateDays.data[index].subjects.splice(subject, 1)
-    setDays(updateDays)
-  }
+  const errorRef = useRef(null);
 
   const onNewSubject = async(evt) => {
     evt.preventDefault();
 
-    const getErrors = OnErrorValidator( days );
+    const getErrors = OnErrorValidator( formState );
 
-    if(!getErrors.includes(false) || days.degree.trim().length < 1){
+    if(!getErrors.includes(false) || formState.degree.trim().length < 1){
       return errorRef.current.style.display = "block";
     };
 
-    const subjects = {...days, id: Date.now() };
+    const subjects = {...formState, id: Date.now() };
     const data = { subjects, id: user.uid };
     const getUserData = await onFetchData( data );
     await onGetUserData(getUserData.user.uid);
@@ -95,14 +64,13 @@ export const DashboardAddSubjects = ({ handleModal, stateClass }) => {
         </label>
       </div>
       { 
-        days.data.map((day, dayIndex) => (
+        formState.data.map((day, dayIndex) => (
           <div key={ dayIndex }>
-            <h2 className="flex items-center gap-2 font-bold text-gray-600 mt-4 tracking-wider dark:text-gray-300 "> <HiCalendarDays /> { day.day } 
-              <button 
-                  onClick={ (evt) => handleAddSubject(evt,dayIndex) }
-                  className="bg-yellowColor-800 p-1 mt-2 rounded-lg text-gray-900 hover:bg-yellowColor-700"
-              > <HiOutlinePlus /> </button>
-            </h2>
+            <IconAddSubject 
+              handleAddSubject= { handleAddSubject } 
+              dayIndex={ dayIndex } 
+              day={ day.day }
+            />
             <div className="grid rounded-lg pt-2 md:grid-cols-2 xl:grid-cols-4">
               { 
                 day.subjects.map((subject, subjectIndex) => (
