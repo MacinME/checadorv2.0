@@ -68,8 +68,8 @@ li{
 /* Table  styles */
 .table-section{
     background-color: #e7edf8;
-    overflow-y: scroll;
-    height: 650px;
+    /* overflow-y: scroll;
+    height: 650px; */
 }
 
 /* .table-section tbody tr:nth-child(odd){

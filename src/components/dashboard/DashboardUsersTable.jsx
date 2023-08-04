@@ -25,7 +25,7 @@ export const DashboardUsersTable = ({ onShowModal, userSettings , userInfo}) => 
     const dataFiltered = users.slice(firstIndex, lastIndex);
 
   return (
-    <div className='bg-bgc_white-100 border border-gray-300 dark:bg-dark-800 dark:border-gray-700 rounded-lg px-4'>
+    <div className='bg-bgc_white-100 dark:bg-dark-800 rounded-lg px-4'>
         {/* Filter Datas */}
         <div className='w-full flex flex-col gap-2 py-2 px-4 mb-2'>
             <div className='flex items-center gap-5'>

@@ -28,7 +28,7 @@ export const Dashboard = () => {
       <DashboardTopBar selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } />
 
       {/*  */}
-      <div className="grid justify-items-center items-center w-screen overflow-y-scroll h-screen overflow-x-hidden mt-12">
+      <div className="grid justify-items-center items-center w-screen h-screen overflow-x-hidden mt-12">
         <div className='grid-register w-screen h-full'>
             {/* Filter Data */}
             <DashboardFilterContainer handleUserInfo={ handleUserInfo } userSettings={ userSettings } selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } /> 

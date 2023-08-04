@@ -21,7 +21,7 @@ export const DashboardUserBackground = () => {
                 <HiPencil />
                 </div>
             </div> */}
-            <div className={`userPhoto rounded rounded-full relative border-4 dark:border-dark-800 `}>
+            <div className={`userPhoto rounded rounded-full relative border-4 border-blueColor-50 dark:border-dark-800 `}>
                 <div className={`xl:w-24 sm:w-20 rounded rounded-full xl:h-24 sm:h-20 flex justify-center items-center text-3xl ${ colorsFrontend[user.img.color] }`}>
                     { user.img.letter }
                 </div>  
@@ -52,7 +52,7 @@ export const DashboardUserBackground = () => {
                   <div className='text-lg'>
                       <HiCheckCircle />
                   </div>
-                  Cuenta Activada
+                  Cuenta Activa
               </button>
           </div>
       </div>

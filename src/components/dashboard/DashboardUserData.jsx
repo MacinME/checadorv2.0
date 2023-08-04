@@ -17,8 +17,8 @@ export const DashboardUserData = ({ userInfo }) => {
     const stateClass = showNewModal[1];
 
   return (
-    <div className="grid grid-cols-1 mt-4 gap-4 w-full h-full">
-        <div className="bg-blueColor-50 dark:bg-dark-800 dark:border-gray-700 border-t border-gray-300 mx-4">
+    <div className="grid grid-cols-1 mt-4 pb-12 gap-4 w-full h-full">
+        <div className="bg-blueColor-50 dark:bg-dark-800 dark:border-gray-700 border-gray-300 mx-4">
                 <div className="flex flex-col py-5 px-10 gap-5 rounded-2xl">
                     <div className="flex items-center gap-2">
                         <h4 className="font-semibold text-gray-800 dark:text-gray-300 flex items-center gap-2"> <HiBookmarkSquare /> Clases </h4>

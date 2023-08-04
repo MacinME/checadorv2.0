@@ -4,7 +4,7 @@ import { inputsTime } from '../../data';
 
 export const DashboardTimeCard = ({ dayIndex, subject, subjectIndex, handleRemoveSubject, handleInputChange }) => {
   return (
-    <div className="dark:border-gray-700 border m-2 rounded-lg flex flex-wrap flex-col justify-center items-center">
+    <div className="bg-bgc_white-50 dark:bg-dark-700 m-2 rounded-lg flex flex-wrap flex-col justify-center items-center overflow-hidden">
         <label className="h-10 flex items-center justify-between bg-blueDarkColor-600 py-1 px-2 text-white w-auto rounded-tl-lg rounded-tr-lg w-full"> Horario { subjectIndex + 1 }: 
         {
             subjectIndex !== 0 &&
@@ -16,7 +16,7 @@ export const DashboardTimeCard = ({ dayIndex, subject, subjectIndex, handleRemov
                 </div>)
         }
         </label>
-        <div className="xl:mr-2">
+        <div className="p-2 w-full flex flex-col gap-2">
             {
                 inputsTime.map( input => (
                     <DashboardTimeInput 
