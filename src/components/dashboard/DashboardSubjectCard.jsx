@@ -10,6 +10,9 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
         {id: 1, status: false}
     ]);
 
+    console.log(data)
+
+
     const [editSubject, setEditSubject] = useState(null);
 
     const onEditSubject = (idClass) =>{
@@ -22,7 +25,11 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
 
         {
             showNewModal[0].status 
-                ? ( <DashboardEditSubject editSubject={ editSubject } /> )
+                ? ( <DashboardEditSubject 
+                        editSubject={ editSubject } 
+                        showNewModal={ showNewModal }
+                        handleModal={ handleModal }
+                    /> )
                 : <>
                     <div className="w-full bg-white dark:bg-dark-700 h-auto to-yellow-800 rounded-tl-lg rounded-tr-lg py-5 hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer">
                         <div className="flex text-center text-lg text-gray-700 items-center justify-center flex-wrap dark:text-gray-400 gap-2 uppercase"> 

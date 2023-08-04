@@ -2,19 +2,22 @@ import { useContext } from 'react';
 import { HiAcademicCap } from 'react-icons/hi';
 import { HiCheck } from 'react-icons/hi2';
 import { UserContext } from '../../context';
-import { useSubject } from '../../hooks';
+import { useFetch, useSubject } from '../../hooks';
 import { DashboardTimeCard, IconAddSubject } from './';
 
-export const DashboardEditSubject = ({ editSubject }) => {
+export const DashboardEditSubject = ({ editSubject, handleModal, showNewModal }) => {
 
-    const { user } = useContext(UserContext);
+    const { user, onGetUserData} = useContext(UserContext);
     const dataFiltered = user.subjects.filter( subject => subject.id === editSubject );
     const { handleInputChange, handleAddSubject, handleRemoveSubject, formState } = useSubject(dataFiltered[0]);
+    const { onFetchData } = useFetch('http://localhost:8081/users/api/updateSubject', 'PUT');
 
-    const onSubmit = (evt) => {
+    const onSubmit = async(evt) => {
         evt.preventDefault();
-
-        console.log(formState.data)
+        const data = { formState, _id: user.uid }
+        await onFetchData( data );
+        await onGetUserData( user.uid );
+        handleModal(showNewModal[0]);
     }
 
   return (
