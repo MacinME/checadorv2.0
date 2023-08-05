@@ -2,22 +2,29 @@ import { HiAcademicCap, HiPencil } from 'react-icons/hi';
 import { HiXMark } from 'react-icons/hi2';
 import { useNewModal } from '../../hooks/useNewModal';
 import { DashboardEditSubject } from './';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useFetch } from '../../hooks';
+import { UserContext } from '../../context';
 
 export const DashboardSubjectCard = ( { data, degree, id }) => {
 
     const { showNewModal, handleModal } = useNewModal([
         {id: 1, status: false}
     ]);
-
-    console.log(data)
-
+    const { user, onGetUserData } = useContext(UserContext);
 
     const [editSubject, setEditSubject] = useState(null);
+    const { onFetchData } = useFetch('http://localhost:8081/users/api/deleteSubject', 'DELETE');
 
-    const onEditSubject = (idClass) =>{
+    const onEditSubject = (idSubject) =>{
         handleModal(showNewModal[0]);
-        setEditSubject( idClass );
+        setEditSubject( idSubject );
+    }
+
+    const onDeleteSubject = async(idSubject) => {
+        const data = { _id: user.uid,  idSubject };
+        await onFetchData( data );
+        onGetUserData( user.uid );
     }
 
   return (
@@ -41,7 +48,10 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
                                 onClick={ () => onEditSubject(id) }
                                 className="bg-blueColor-100 dark:bg-dark-800 dark:text-white w-full h-6 flex items-center justify-center rounded-bl-lg text-gray-800 hover:text-gray-800 dark:hover:text-gray-800 dark:hover:bg-indigo-200 hover:bg-indigo-200 border-white outline-none"
                             > <HiPencil /> </button>
-                            <button className="bg-blueColor-100 dark:bg-dark-800 dark:text-white w-full h-6 flex items-center justify-center rounded-tr-lg text-gray-900 hover:text-gray-800 dark:hover:text-gray-800 dark:hover:bg-red-300 hover:bg-red-300 outline-none"> <HiXMark /> </button>
+                            <button 
+                                onClick={ () => onDeleteSubject(id) }
+                                className="bg-blueColor-100 dark:bg-dark-800 dark:text-white w-full h-6 flex items-center justify-center rounded-tr-lg text-gray-900 hover:text-gray-800 dark:hover:text-gray-800 dark:hover:bg-red-300 hover:bg-red-300 outline-none"
+                            > <HiXMark /> </button>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 bg-white dark:bg-dark-700 dark:border-gray-700 rounded-bl-lg rounded-br-lg px-4 py-5 w-full">

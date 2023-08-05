@@ -13,8 +13,6 @@ export const DashboardUserData = ({ userInfo }) => {
         {id: 2, status: false}
     ]);
 
-    console.log(user)
-
     const state = showNewModal[0];
     const stateClass = showNewModal[1];
 
