@@ -60,7 +60,7 @@ export const DashboardUserData = ({ userInfo }) => {
                     </div>
                 </div>
         </div>
-        <div className="bg-blueColor-50 dark:bg-dark-800 dark:border-gray-700 border-t border-gray-300 mb-5 mx-4">
+        <div className="bg-blueColor-50 dark:bg-dark-800 dark:border-gray-700 border-gray-300 mb-5 mx-4">
             <div className="flex flex-col py-5 px-10 gap-5 rounded-2xl relative">
                 <h4 className="font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2"> <HiUser />  Informacion de usuario</h4>
                 {/* Edit Bottom */}
@@ -75,7 +75,15 @@ export const DashboardUserData = ({ userInfo }) => {
                     )
                 }
                 {
-                    state.status ? <DashboardUpdateUser state={ state } handleModal={ handleModal } />  : <DashboardUserInformation userInfo={ userInfo }/>
+                    state.status 
+                        ?   <DashboardUpdateUser 
+                                state={ state } 
+                                handleModal={ handleModal } 
+                                user={ user }
+                            />  
+                        :   <DashboardUserInformation 
+                                user={ user }
+                            />
                 }
             </div>
         </div>

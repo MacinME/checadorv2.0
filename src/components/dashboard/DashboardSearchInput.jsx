@@ -1,12 +1,18 @@
+import { HiSearch } from 'react-icons/hi';
+
 export const DashboardSearchInput = () => {
   return (
-      <div className="w-full flex items-center rounded-full">
-          <input 
-              type="text" 
-              name="seach" 
-              className="w-full bg-transparent outline-0 py-2 px-5 text-lg tracking-wider font-normal text-gray-500 dark:text-gray-300 dark:border-gray-900 tracking-wider border-b"
-              placeholder="Buscar ..."
-          />
+      <div className="w-full bg-blueColor-50 dark:bg-dark-800 flex items-center rounded-full px-4">
+        <div className="text-gray-600 bg-blueColor-50 cursor-pointer dark:text-white dark:bg-dark-800">
+            <HiSearch />
+        </div>
+        <input 
+            type="text" 
+            name="seach" 
+            autoComplete="off"
+            className="w-full bg-blueColor-50 outline-0 py-2 px-5 text-lg tracking-wider font-normal text-gray-500 dark:text-gray-300 tracking-wider dark:bg-dark-800"
+            placeholder="Buscar ..."
+        />
       </div>
   )
 }

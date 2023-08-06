@@ -22,6 +22,8 @@ export * from './DashboardUsersLists';
 export * from './DashboardUsersTable';
 export * from './DashboardTimeCard';
 export * from './DashboardEditSubject';
+export * from './DashboardCheckbox';
+export * from './DashboardBar';
 
 export * from './IconAddSubject';
 export * from './ErrorMessage';

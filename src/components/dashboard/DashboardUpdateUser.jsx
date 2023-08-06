@@ -3,14 +3,11 @@ import { DashboardInputElement } from './';
 import { useForm } from '../../hooks';
 import { inputs } from '../../data';
 
-export const DashboardUpdateUser = ({ state, handleModal }) => {
+export const DashboardUpdateUser = ({ user, state, handleModal }) => {
 
-    const { onInputChange, formState } = useForm({
-        userName: '',
-        userRol: '',
-        userID: '',
-        userEmail: ''
-    });
+    console.log(user)
+
+    const { onInputChange, formState } = useForm(user);
 
     const {userName, userRol, userID, userEmail} = formState;
 

@@ -22,7 +22,7 @@ export const useFetch = ( url = '', method = '') => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: method === 'POST' || method === 'PUT' || method === 'DELETE' ? JSON.stringify( body ) : false,
+                body: method === 'POST' || method === 'PUT' || method === 'DELETE' ? JSON.stringify( body ) : null,
                 credentials: 'include'
             });
 

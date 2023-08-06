@@ -1,7 +1,31 @@
 import { HiChevronLeft, HiChevronRight, HiOutlineArrowSmDown } from 'react-icons/hi';
 import { dataTH, registers } from '../../data';
+import { useFetch } from '../../hooks/useFetch';
+import { useEffect, useState } from 'react';
+import { DashboardFilterModal } from './DashboardFilterModal';
 
 export const DashboardRegistersTable = () => {
+
+    const { onFetchData } = useFetch('http://localhost:8081/users/api/registers', 'GET');
+    const [getRegisters, setGetregisters] = useState([])
+    const [modalFilter, setModalfilter] = useState(true);
+
+    const getAllData = async() => {
+        const { registers } = await onFetchData();
+        setGetregisters( registers );
+    }
+    
+    const onModalFilter = () => {
+        setModalfilter(!modalFilter);
+    }
+
+    useEffect(() => {
+        getAllData();
+    }, [])
+
+    // console.log( getRegisters );
+
+
   return (
     <div className=''>
     {/* Registers Table */}
@@ -29,31 +53,31 @@ export const DashboardRegistersTable = () => {
                 <tbody>
 
                     {
-                        registers.map( (register, index) => (
-                            <tr key={ register.id } className={ index % 2 === 0? 'bg-bgc_white-50 dark:bg-dark-700 dark:hover:bg-gray-900 cursor-pointer' : 'bg-bgc_white-100 dark:bg-dark-800 dark:hover:bg-gray-900 cursor-pointer'}>
-                            <th>
-                                <div className='flex items-center flex-wrap gap-2 py-1'>
-                                    <div className={`userPhoto w-10 rounded rounded-full relative ${register.output.length <= 0 ? 'bg-yellowColor-600 p-1': null} `}>
-                                        <img 
-                                            src={ register.img } 
-                                            alt='Perfil de usuario'
-                                            className='w-12 rounded rounded-full' 
-                                        />
-                                    </div>
-                                    <p className='flex flex-col text-gray-800 dark:text-gray-300 font-normal'>
-                                        { register.name }
-                                    </p>
-                                </div>
-                            </th>
-                            <td> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.licenciatura } </div> </td>
-                            <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.materia } </div> </th>
-                            <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.topic } </div> </th>
-                            <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.grade } </div> </th>
-                            <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.date } </div> </th>
-                            <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.input } </div> </th>
-                            <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.output.length <= 0 ? <span className='text-gray-800 font-semibold py-1 px-2 rounded-full text-sm text-yellowColor-800 dark:text-yellowColor-800'> en clase... </span> : register.output } </div> </th>
-                        </tr>  
-                        ))
+                        // registers.map( (register, index) => (
+                        //     <tr key={ register.id } className={ index % 2 === 0? 'bg-bgc_white-50 dark:bg-dark-700 dark:hover:bg-gray-900 cursor-pointer' : 'bg-bgc_white-100 dark:bg-dark-800 dark:hover:bg-gray-900 cursor-pointer'}>
+                        //     <th>
+                        //         <div className='flex items-center flex-wrap gap-2 py-1'>
+                        //             <div className={`userPhoto w-10 rounded rounded-full relative ${register.output.length <= 0 ? 'bg-yellowColor-600 p-1': null} `}>
+                        //                 <img 
+                        //                     src={ register.img } 
+                        //                     alt='Perfil de usuario'
+                        //                     className='w-12 rounded rounded-full' 
+                        //                 />
+                        //             </div>
+                        //             <p className='flex flex-col text-gray-800 dark:text-gray-300 font-normal'>
+                        //                 { register.name }
+                        //             </p>
+                        //         </div>
+                        //     </th>
+                        //     <td> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.licenciatura } </div> </td>
+                        //     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.materia } </div> </th>
+                        //     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.topic } </div> </th>
+                        //     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.grade } </div> </th>
+                        //     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.date } </div> </th>
+                        //     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.input } </div> </th>
+                        //     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { register.output.length <= 0 ? <span className='text-gray-800 font-semibold py-1 px-2 rounded-full text-sm text-yellowColor-800 dark:text-yellowColor-800'> en clase... </span> : register.output } </div> </th>
+                        // </tr>  
+                        // ))
                     }              
                 </tbody>
             </table>
@@ -75,7 +99,9 @@ export const DashboardRegistersTable = () => {
             <button className='dark:border-gray-700 border border-gray-300 dark:text-gray-300 dark:hover:bg-gray-800 text-gray-900 flex items-center gap-2 py-2 px-4 rounded-full hover:bg-gray-300'>Siguiente <HiChevronRight /> </button>
         </div>
     </div>
-
+    {
+        modalFilter && (<DashboardFilterModal onModalFilter={ onModalFilter } />)
+    }
     </div>
 
   )
