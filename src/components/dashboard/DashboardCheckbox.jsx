@@ -1,18 +1,21 @@
+import { HiCheckCircle } from "react-icons/hi"
+
 export const DashboardCheckbox = ({ i, index, handleGroupSelect, groups }) => {
   return (
-    <div className="py-2 flex justify-between">
+    <div className="py-2 flex justify-between items-center">
         <label className="text-gray-600 dark:text-gray-300 text-md font-bold">
             { i.title }
         </label>
-
-        <input 
-            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            type="checkbox" 
-            name={ i.name }
-            value={ `option${ index + 1 }` }
-            checked={ groups[i.name][`option${ index + 1 }`] }
-            onChange={ handleGroupSelect }
-        />
+        <div className="relative w-auto h-auto">
+          <input 
+              className="appearance-none w-4 h-4 border-2 border-primary rounded-md bg-white mt-1 checked:bg-primary checked:border-0 focus:outline-none focus:ring-offset-0 focus:ring-2 focus:ring-blue-100 disabled:border-steel-400 disabled:bg-steel-400 dark:bg-gray-700 dark:checked:bg-primary"
+              type="checkbox" 
+              name={ i.name }
+              value={ `option${ index + 1 }` }
+              checked={ groups[i.name][`option${ index + 1 }`] }
+              onChange={ handleGroupSelect }
+          />
+        </div>
     </div>
   )
 }

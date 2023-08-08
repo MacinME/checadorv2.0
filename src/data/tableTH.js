@@ -3,7 +3,7 @@ export const dataTH = [
     {id: 2, name: 'Nivel Academico'}, 
     {id: 3, name: 'Materia'}, 
     {id: 4, name: 'Tema'}, 
-    {id: 5, name: 'Semestrre'}, 
+    // {id: 5, name: 'Semestrre'}, 
     {id: 6, name: 'Fecha'}, 
     {id: 7, name: 'Entrada'}, 
     {id: 8, name: 'Salida'}

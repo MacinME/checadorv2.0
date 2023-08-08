@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { HiCalendar } from 'react-icons/hi';
-import { useCheckbox } from '../../hooks';
+import { useCheckbox, useForm } from '../../hooks';
 
 // DatePicker Settings
 import DatePicker, { registerLocale } from 'react-datepicker';
@@ -10,9 +10,22 @@ import { DashboardCheckbox, DashboardSearchInput } from './';
 import { filterTypes } from '../../data';
 registerLocale('es', es);
 
-export const DashboardFilter = () => {
+export const DashboardFilter = ({ getAllData }) => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
+    const { onInputChange, formState } = useForm({
+        search: '',
+        date: '',
+        gorup1_tolerancia: null,
+        group1_retardo: null,
+        group2_online: null,
+        group2_offline: null,
+        group3_sortBy: null,
+        group4_degree: null,
+        group4_maestria: null,
+        group4_topic: null,
+        group4_time: null,
+    });
 
     const onChangeDate = (date) => {
         const [start, end] = date;
@@ -63,10 +76,16 @@ export const DashboardFilter = () => {
     }
 
     return (
-    <form className="w-full flex flex-col gap-3 h-full">
+    <form 
+        onSubmit={ (evt) => getAllData( evt, formState ) }
+        className="w-full flex flex-col gap-3 h-full"
+    >
         <div className="w-full gap-5 flex flex-col gap-3">
             <div className="w-full">
-                <DashboardSearchInput />
+                <DashboardSearchInput 
+                    onInputChange={ onInputChange }
+                    search={ formState.search }
+                />
             </div>
             <div className="flex flex-col gap-2">
                 <label htmlFor="" className="text-gray-700">
@@ -80,9 +99,10 @@ export const DashboardFilter = () => {
                     startDate={ startDate }
                     endDate={ endDate }
                     selectsRange
+                    name="date"
                     showMonthDropdown
                     locale='es'            
-                    className="w-full dark:border-gray-700 dark:text-gray-200 bg-transparent outline-none border-b border-gray-200 focus:border-gray-300 focus:rounded-none py-1 px-2 text-gray-700" 
+                    className="w-full dark:border-gray-800 dark:text-gray-200 bg-transparent outline-none border-b border-gray-100 focus:border-gray-300 focus:rounded-none py-1 px-2 text-gray-700" 
                 />
             </div>
 
@@ -117,13 +137,13 @@ export const DashboardFilter = () => {
 
             <div className="w-full py-2 w-full flex justify-end gap-2">
                 <button 
-                    className="w-24 h-11 flex items-center justify-center font-semibold bg-gray-200 text-gray-600 rounded-md text-center gap-2 w-24 h-24 hover:bg-gray-300"
+                    className="w-24 h-8 flex items-center justify-center font-semibold bg-gray-200 text-gray-600 rounded-md text-center gap-2 w-24 h-24 hover:bg-gray-300"
                 > 
                     Descargar 
                 </button>
 
                 <button 
-                    className="w-24 h-11 flex items-center font-semibold justify-center bg-primary rounded-md text-white text-center hover:bg-blueColor-900 w-24 h-24"
+                    className="w-24 h-8 flex items-center font-semibold justify-center bg-primary rounded-md text-white text-center hover:bg-blueColor-900 w-24 h-24"
                 >
                     Filtrar
                 </button>
