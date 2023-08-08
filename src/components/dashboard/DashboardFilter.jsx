@@ -13,26 +13,6 @@ registerLocale('es', es);
 export const DashboardFilter = ({ getAllData }) => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
-    const { onInputChange, formState } = useForm({
-        search: '',
-        date: '',
-        gorup1_tolerancia: null,
-        group1_retardo: null,
-        group2_online: null,
-        group2_offline: null,
-        group3_sortBy: null,
-        group4_degree: null,
-        group4_maestria: null,
-        group4_topic: null,
-        group4_time: null,
-    });
-
-    const onChangeDate = (date) => {
-        const [start, end] = date;
-        setStartDate(start);
-        setEndDate(end)
-    }
-
     const [ group1, onSelectOptionsTime ] = useCheckbox({
         option1: false,
         option2: false,
@@ -47,17 +27,39 @@ export const DashboardFilter = ({ getAllData }) => {
         option1: false,
         option2: false,
         option3: false,
-        option4: false 
     })
 
     const [ group4, onSelectOptionsField ] = useCheckbox({
         option1: false,
         option2: false,
+        option3: false,
+        option4: false 
     })
 
+    const { onInputChange, formState, onCheckbox } = useForm({
+        search: '',
+        date: '',
+        group1_tolerance: null,
+        group1_delayedTime: null,
+        group2_online: null,
+        group2_offline: null,
+        group3_sortBy: null,
+        group4_degree: null,
+        group4_subject: null,
+        group4_topic: null,
+        group4_time: null,
+    });
+
+    const onChangeDate = (date) => {
+        const [start, end] = date;
+        setStartDate(start);
+        setEndDate(end)
+    }
+
+
     const handleGroupSelect = (evt) => {
-        const { name } = evt.target;
-        switch (name) {
+        const { id } = evt.target;
+        switch (id) {
             case 'group1':
                 onSelectOptionsTime(evt);
                 break;
@@ -124,6 +126,7 @@ export const DashboardFilter = ({ getAllData }) => {
                                             key={ i.title }
                                             i={ i }
                                             index={ index }
+                                            onCheckbox={ onCheckbox }
                                             handleGroupSelect={ handleGroupSelect }
                                             groups={ { group1, group2, group3, group4 }}
                                         />

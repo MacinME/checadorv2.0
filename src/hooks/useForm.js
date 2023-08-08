@@ -10,9 +10,18 @@ export const useForm = ( initialForm = {} ) => {
             ...formState,
             [ name ]: value
         });
-
-
     };
+
+    const onCheckbox = ({ target }) => {
+      const { name, value} = target;
+      const newValue = value.split(' ')[1].trim();
+      console.log(value.split(' ')[1])
+      setFormState({
+          ...formState,
+          [ name ]: newValue === 'false' ? true : false
+      });
+  };
+
 
     const onResetForm = () => {
         setFormState( initialForm );
@@ -22,6 +31,7 @@ export const useForm = ( initialForm = {} ) => {
     ...formState,
     formState,
     onInputChange,
-    onResetForm
+    onResetForm,
+    onCheckbox
   }
 }

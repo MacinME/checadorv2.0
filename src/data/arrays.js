@@ -6,12 +6,14 @@ export const filterTypes = [
             {
                 id: 1,
                 title: 'Tolerancia',
-                name: 'group1'
+                group: 'group1',
+                name: 'group1_tolerance'
             },
             {
                 id: 2,
                 title: 'Retardo',
-                name: 'group1'
+                group: 'group1',
+                name: 'group1_delayedTime'
             }
         ],
 
@@ -23,12 +25,14 @@ export const filterTypes = [
             {
                 id: 1,
                 title: 'Online',
-                name: 'group2'
+                group: 'group2',
+                name: 'group2_online'
             },
             {
                 id: 2,
                 title: 'Offline',
-                name: 'group2'
+                group: 'group2',
+                name: 'group2_offline'
             }
         ],
 
@@ -40,17 +44,20 @@ export const filterTypes = [
             {
                 id: 1,
                 title: 'Fecha Actual',
-                name: 'group3'
+                group: 'group3',
+                name: 'group3_sortBy'
             },
             {
                 id: 2,
                 title: 'Fecha Anterior',
-                name: 'group3'
+                group: 'group3',
+                name: 'group3_sortBy'
             },
             {
                 id: 3,
                 title: 'Nombre a-z',
-                name: 'group3'
+                group: 'group3',
+                name: 'group3_sortBy'
             }
         ],
     },
@@ -61,23 +68,27 @@ export const filterTypes = [
             {
                 id: 1,
                 title: 'Licenciatura',
-                name: 'group4'
+                group: 'group4',
+                name: 'group4_degree'
             },
             {
                 id: 2,
                 title: 'Maestria',
-                name: 'group4'
+                group: 'group4',
+                name: 'group4_subject'
             },
             {
                 id: 3,
                 title: 'Tema',
-                name: 'group4'
+                group: 'group4',
+                name: 'group4_topic'
             }
             ,
             {
                 id: 4,
                 title: 'Horario de salida',
-                name: 'group4'
+                group: 'group4',
+                name: 'group4_time'
             }
         ],
     }

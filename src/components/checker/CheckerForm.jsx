@@ -10,7 +10,7 @@ export const CheckerForm = () => {
 
     const [chooseDegree, setChooseDegree] = useState(null);
     const { userState } = useContext(AuthContext);
-    const { onUpdateData } = useContext(RegisterContext);
+    const { registeredData, onUpdateData } = useContext(RegisterContext);
     const errorRef = useRef();
     const { topic, onInputChange, formState } = useForm({
         degree: '',
@@ -23,6 +23,7 @@ export const CheckerForm = () => {
 
     const onChooseDegree = (evt) => {
         setChooseDegree( evt.target.value );
+        console.log(evt.target.value)
         onInputChange( evt );
     }
 
@@ -41,14 +42,56 @@ export const CheckerForm = () => {
             return errorRef.current.style.display = 'block';
         }
 
+        const onDelayTime = () => {
+            let originalString;
+
+            for (let i = 0; i < user.subjects.length; i++) {
+                if(user.subjects[i].id === Number(degree)){
+                    console.log(1);
+                    for (let j = 0; j < user.subjects[i].data.length; j++) {
+                        if(user.subjects[i].data[j].day.toLowerCase() === today.toLowerCase()){
+                            for (let t = 0; t < user.subjects[i].data[j].subjects.length; t++) {
+                                console.log(user.subjects[i].data[j].subjects[t].id_Time);
+                                if(user.subjects[i].data[j].subjects[t].id_Time === Number(subject)){
+                                    console.log(3);
+                                    originalString = user.subjects[i].data[j].subjects[t];
+                                }
+                            }
+                        }   
+                    }
+                }
+            }
+
+            const [hours, minutes] = originalString.start.split(':').map(Number);
+            const newTime = new Date();
+            const currentTime = new Date();
+            newTime.setHours( hours );
+            newTime.setMinutes( minutes );
+            newTime.setSeconds(0);
+            newTime.getTime();
+
+            const oneHour = 60*60*1000;
+            const oneMinute = 60*1000;
+            const time = newTime - currentTime.getTime();   
+
+            if(newTime > currentTime){  
+                return Number(-Math.floor((time % oneHour) / oneMinute));
+            }else{
+                return Math.ceil((time % oneHour) / oneMinute).toString().split('-')[1];
+            }
+        }
+
         const data = {
             ...formState,
+            degree: user.subjects.filter( l => l.id === Number(degree) )[0].degree,
+            subject: subject,
             id_Register: Date.now(), 
             idCeut: userState.user.idCeut,
             idUser: userState.user.uid,
             date: new Date().toLocaleDateString(),
             login: onGet24TimeFormat(),
-            logout: null
+            logout: null,
+            delayedTime: onDelayTime()
         }
 
         await onSendData( data );
@@ -69,7 +112,7 @@ export const CheckerForm = () => {
                     user.subjects.map(( level ) => (
                         <option 
                             key={ level.id }
-                            value={ level.degree }
+                            value={ level.id }
                         >
                             { level.degree }
                         </option>
@@ -88,14 +131,14 @@ export const CheckerForm = () => {
                         <option value="">Seleccrionar clase</option>
                         {
                             user.subjects.map((level) => {
-                                if(level.degree === chooseDegree){
+                                if(level.id === Number(chooseDegree)){
                                     return level.data.map( data => {
                                         if(data.day.toLowerCase() === today.toLowerCase() ){
                                             return data.subjects.map( subject => (
                                                 subject.subject.trim().length > 1 
                                                     && (<option 
-                                                        key={ subject.subject + subject.start }
-                                                        value={ subject.subject } 
+                                                        key={ subject.id_Time }
+                                                        value={ subject.id_Time } 
                                                     > { `${ subject.subject.toUpperCase() } - ${ subject.start } - ${ subject.end }` } </option>)
                                             ))
                                         }

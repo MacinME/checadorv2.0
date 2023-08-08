@@ -24,7 +24,7 @@ export const useSubject = ( initialForm = {}) => {
     const handleAddSubject = (evt,index) => {
         evt.preventDefault();
         const updatedDays = {...formState};
-        updatedDays.data[index].subjects.push({ subject: "", start: "", end: "", grade: "" });
+        updatedDays.data[index].subjects.push({ id_Time: Date.now(), subject: "", start: "", end: "", grade: "" });
         setFormState(updatedDays);
     };
 

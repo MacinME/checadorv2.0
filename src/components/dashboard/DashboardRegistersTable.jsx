@@ -1,4 +1,4 @@
-import { HiChevronLeft, HiChevronRight, HiOutlineArrowSmDown } from 'react-icons/hi';
+import { HiOutlineArrowSmDown } from 'react-icons/hi';
 import { colorsFrontend, dataTH } from '../../data';
 import { useFetch } from '../../hooks/useFetch';
 import { useContext, useState } from 'react';
@@ -77,6 +77,7 @@ export const DashboardRegistersTable = () => {
                                     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.date } </div> </th>
                                     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.login } </div> </th>
                                     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.logout } </div> </th>
+                                    <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg?.delayedTime } </div> </th>
                                 </tr>  
                             ))
                         ))
@@ -86,20 +87,6 @@ export const DashboardRegistersTable = () => {
         </div>
 
         <DashboardPagination totalPosts={ total } postPerPage={ postPerPage } currentPage={ currentPage } setCurrentPage={ setCurrentPage } />
-        {/* <div className='w-full flex items-center justify-between py-4 px-5 bg-bgc_white-100 dark:bg-dark-800 dark:border-gray-700 border-t border-gray-300 h-24'>
-            <button className='dark:border-gray-700 border border-gray-300 dark:text-gray-300 dark:hover:bg-gray-800 text-gray-900 flex items-center gap-2 py-2 px-4 rounded-full hover:bg-gray-300'> <HiChevronLeft /> Anterior</button>
-            <div className='grid grid-cols-6 py-2 px-4 gap-4 rounded'>
-                {
-                    [{id: 1, status: true},{id: 2, status: false},{id: 3, status: false},{id: 4, status: false},{id: 5, status: false}].map(pag => (
-                        <div 
-                            key={ pag.id }
-                            className={ `${ pag.status ? 'bg-primary text-white' : 'dark:border-gray-700 dark:bg-dark-700 dark:text-gray-300 dark:hover:bg-gray-800 border border-gray-300 bg-white text-gray-900'} w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-300 cursor-pointer`}
-                        > { pag.id } </div>
-                    ))
-                }
-            </div>
-            <button className='dark:border-gray-700 border border-gray-300 dark:text-gray-300 dark:hover:bg-gray-800 text-gray-900 flex items-center gap-2 py-2 px-4 rounded-full hover:bg-gray-300'>Siguiente <HiChevronRight /> </button>
-        </div> */}
     </div>
     {
         modalFilter && (<DashboardFilterModal onModalFilter={ onModalFilter } getAllData={ getAllData } />)

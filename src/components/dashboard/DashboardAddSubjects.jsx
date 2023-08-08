@@ -14,12 +14,12 @@ export const DashboardAddSubjects = ({ handleModal, stateClass }) => {
   const { onFetchData } = useFetch('http://localhost:8081/users/api/addSubject', 'POST');
   const { handleInputChange, handleAddSubject, handleRemoveSubject, formState } = useSubject({
     id: null, degree: '', data: [
-        { idDay: 1, day: 'Lunes', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-        { idDay: 2, day: 'Martes', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-        { idDay: 3, day: 'Miercoles', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-        { idDay: 4, day: 'Jueves', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-        { idDay: 5, day: 'Viernes', subjects: [ { subject:'', start: '', end: '', grade: ''} ] },
-        { idDay: 6, day: 'Sabado', subjects: [ { subject:'', start: '', end: '', grade: ''} ] }
+        { idDay: 1, day: 'Lunes', subjects: [ { id_Time: 1, subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 2, day: 'Martes', subjects: [ { id_Time: 2, subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 3, day: 'Miercoles', subjects: [ { id_Time: 3, subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 4, day: 'Jueves', subjects: [ { id_Time: 4, subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 5, day: 'Viernes', subjects: [ { id_Time: 5, subject:'', start: '', end: '', grade: ''} ] },
+        { idDay: 6, day: 'Sabado', subjects: [ { id_Time: 6, subject:'', start: '', end: '', grade: ''} ] }
     ]
   });
   const errorRef = useRef(null);

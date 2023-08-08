@@ -5,25 +5,26 @@ export const useCheckbox = ( initialValue) => {
     const [selectOption, setSelectOption] = useState(initialValue);
 
     const handleSelectOptions = (evt) => {
-        console.log(evt.target.value)
         const { name, value, checked } = evt.target;
+        const firstValue = value.split(' ')[0];
         setSelectOption( options => ({
             ...options,
-            [value]: checked
+            [firstValue]: checked
         }))
     }
 
     function handleChange(event) {
         const { name, value, checked } = event.target;
+        const firstValue = value.split(' ')[0];
         if (checked) {
           setSelectOption(prevState => ({
             ...Object.fromEntries(Object.entries(prevState).map(([key]) => [key, false])),
-            [value]: true,
+            [firstValue]: true,
           }));
         } else {
           setSelectOption(prevState => ({
             ...prevState,
-            [value]: false,
+            [firstValue]: false,
           }));
         }
       }
