@@ -19,7 +19,7 @@ export const DashboardFilter = ({ getAllData }) => {
     })
 
     const [ group2, onSelectOptionsUser ] = useCheckbox({
-        option1: false,
+        option1: true,
         option2: false,
     })
 
@@ -41,7 +41,7 @@ export const DashboardFilter = ({ getAllData }) => {
         date: '',
         group1_tolerance: null,
         group1_delayedTime: null,
-        group2_online: null,
+        group2_online: true,
         group2_offline: null,
         group3_sortBy: null,
         group4_degree: null,

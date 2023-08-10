@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { HiCheckCircle, HiMinus, HiOutlineArrowSmDown, HiOutlineMail, HiXCircle} from 'react-icons/hi';
-import { DashboardSearchInput, DashboardPagination, DashboardUserContainer } from './';
+import { DashboardPagination } from './';
 import { colorsFrontend, dataTHUsers } from '../../data';
 
-export const DashboardUsersTable = ({ onShowModal, userSettings , userInfo}) => {    
+export const DashboardUsersTable = () => {    
 
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -30,29 +30,13 @@ export const DashboardUsersTable = ({ onShowModal, userSettings , userInfo}) => 
         <div className='w-full flex flex-col gap-2 py-2 px-4 mb-2'>
             <div className='flex items-center gap-5'>
                 <p className='text-gray-800 dark:text-gray-300'>Datos Filtrados: <span className='bg-primary text-white p-1 px-3 rounded-full text-sm'>{ users.length }</span></p>
-                <button 
-                    onClick={ () => onShowModal(userSettings) }
-                    className='w-44 bg-white dark:bg-dark-700 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800 border border-gray-300 py-1 px-3 rounded-lg hover:bg-gray-200'
-                >
-                    { userSettings.status ? 'Usuarios' : 'Configurar usuarios' }
-                </button>
             </div>
-            {
-                !userSettings.status && (
-                    <DashboardSearchInput />
-                )
-            }
         </div>
 
         {/* Content */}
-        {
-            userSettings.status
-            ?
-            <DashboardUserContainer userInfo={ userInfo } />
-            : 
-            <div className="table-section relative dark:bg-dark-800">
+        <div className="table-section relative dark:bg-dark-800">
             <table className="table w-full">
-                <thead className='bg-gray-800 sticky top-0 w-full z-10'>
+                <thead className="bg-gray-800 sticky top-0 w-full z-10">
                     <tr>
                         {
                             dataTHUsers.map(({ id, name }) => (
@@ -73,11 +57,6 @@ export const DashboardUsersTable = ({ onShowModal, userSettings , userInfo}) => 
                             <th>
                                 <div className='flex flex-wrap items-center gap-4 py-1'>
                                     <div className={`userPhoto w-10 rounded rounded-full relative `}>
-                                        {/* <img 
-                                            src={ user.img } 
-                                            alt="Foto Perfil"
-                                            className='w-12 rounded rounded-full' 
-                                        /> */}
                                         <div className={`w-10 rounded rounded-full h-10 flex justify-center items-center ${ colorsFrontend[user.img.color] }`}>
                                             { user.img.letter }
                                         </div>  
@@ -114,13 +93,9 @@ export const DashboardUsersTable = ({ onShowModal, userSettings , userInfo}) => 
                     }              
                 </tbody>
             </table>
-            </div>
-        }
-        {
-            !userSettings.status && (
-                <DashboardPagination totalPosts={ users.length } postPerPage={ postPerPage } setCurrentPage={ setCurrentPage } currentPage={ currentPage }/>
-            )
-        }
+        </div>
+        
+        <DashboardPagination totalPosts={ users.length } postPerPage={ postPerPage } setCurrentPage={ setCurrentPage } currentPage={ currentPage }/>
     </div>
   )
 }

@@ -6,10 +6,11 @@ import { DashboardFilterModal } from './DashboardFilterModal';
 import { FilterContext } from '../../context';
 import { DashboardPagination } from './DashboardPagination';
 
-export const DashboardRegistersTable = () => {
+let total = 0
+
+export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
 
     const { onFetchData } = useFetch('http://localhost:8081/users/api/registers', 'POST');
-    const [modalFilter, setModalfilter] = useState(true);
     const { dataFiltered, onDataFiltered } = useContext(FilterContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, serPostPerPage] = useState(5);
@@ -18,14 +19,8 @@ export const DashboardRegistersTable = () => {
         evt.preventDefault();
         const { registers } = await onFetchData( state );
         onDataFiltered( registers );
-        setModalfilter(!modalFilter);
+        onModalFilter();
     }
-    
-    const onModalFilter = () => {
-        setModalfilter(!modalFilter);
-    }
-
-    let total = 0
 
     dataFiltered.map((item) => {
         total += item.allData.length
@@ -58,7 +53,7 @@ export const DashboardRegistersTable = () => {
                     {
                         dataFiltered.map( (register) => (
                             register.allData.map( (reg, index) => (
-                                <tr key={ reg.id } className={ index % 2 === 0? 'bg-bgc_white-50 dark:bg-dark-700 dark:hover:bg-gray-900 cursor-pointer' : 'bg-bgc_white-100 dark:bg-dark-800 dark:hover:bg-gray-900 cursor-pointer'}>
+                                <tr key={ reg.id } className={ index % 2 === 0 ? 'bg-bgc_white-50 dark:bg-dark-700 dark:hover:bg-gray-900 cursor-pointer' : 'bg-bgc_white-100 dark:bg-dark-800 dark:hover:bg-gray-900 cursor-pointer'}>
                                     <th>
                                         <div className='flex items-center flex-wrap gap-2 py-1'>
                                             <div className={`userPhoto w-10 rounded rounded-full relative `}>
@@ -78,6 +73,7 @@ export const DashboardRegistersTable = () => {
                                     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.login } </div> </th>
                                     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.logout } </div> </th>
                                     <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg?.delayedTime } </div> </th>
+                                    <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg?.tolerance } </div> </th>
                                 </tr>  
                             ))
                         ))
@@ -89,7 +85,7 @@ export const DashboardRegistersTable = () => {
         <DashboardPagination totalPosts={ total } postPerPage={ postPerPage } currentPage={ currentPage } setCurrentPage={ setCurrentPage } />
     </div>
     {
-        modalFilter && (<DashboardFilterModal onModalFilter={ onModalFilter } getAllData={ getAllData } />)
+        modalState.status && (<DashboardFilterModal onModalFilter={ onModalFilter } getAllData={ getAllData } />)
     }
     </div>
   )

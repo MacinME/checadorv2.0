@@ -7,7 +7,7 @@ export const dataTH = [
     {id: 7, name: 'Entrada'}, 
     {id: 8, name: 'Salida'},
     {id: 5, name: 'Retardo'}, 
-
+    {id: 9, name: 'Tolerancia'}, 
 ]
 
 export const dataTHUsers = [

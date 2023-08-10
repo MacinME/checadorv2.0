@@ -29,7 +29,6 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
 
   return (
     <div className="col-span-2 flex items-center flex-col h-full bg-white rounded-lg dark:bg-dark-700 relative">
-
         {
             showNewModal[0].status 
                 ? ( <DashboardEditSubject 
@@ -38,7 +37,7 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
                         handleModal={ handleModal }
                     /> )
                 : <>
-                    <div className="w-full bg-white dark:bg-dark-700 h-auto to-yellow-800 rounded-tl-lg rounded-tr-lg py-5 hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer">
+                    <div className="w-full bg-blueColor-50 dark:bg-dark-800 h-auto to-yellow-800 rounded-tl-lg rounded-tr-lg py-5 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
                         <div className="flex text-center text-lg text-gray-700 items-center justify-center flex-wrap dark:text-gray-400 gap-2 uppercase"> 
                             <HiAcademicCap/>    
                             <p className="text-sm text-gray-500 dark:text-gray-300">{ degree }</p>
@@ -54,7 +53,7 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
                             > <HiXMark /> </button>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 bg-white dark:bg-dark-700 dark:border-gray-700 rounded-bl-lg rounded-br-lg px-4 py-5 w-full">
+                    <div className="grid grid-cols-2 bg-blueColor-50 dark:bg-dark-800 dark:border-gray-700 rounded-bl-lg rounded-br-lg px-4 py-5 w-full">
                         {
                             data.map( item => (
                                 <div key={ item.day } className="xl:w-full">
@@ -62,7 +61,7 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
                                     <div className="xl: xl:w-full xl:justify-start xl:gap-3 py-2 px-2">
                                         {   
                                             item.subjects.map( (subject, index) => (
-                                                <div key={ index } className="xl:flex flex-col bg-blueColor-50 dark:bg-dark-800 dark:border-gray-800 rounded-lg md:mb-2 sm:mb-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer py-2 px-3">
+                                                <div key={ index } className="xl:flex flex-col bg-white dark:bg-dark-700 dark:border-gray-800 rounded-lg md:mb-2 sm:mb-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer py-2 px-3">
                                                     <p className="text-gray-500 dark:text-gray-200 w-full">{ subject.subject }</p>
                                                     <p className="text-gray-600 dark:text-gray-300 p-1 text-sm font-semibold">{ subject.start ? subject.start + ' - ' + subject.end: 'No establecido' } </p>
                                                     <div className="p-1 h-full">

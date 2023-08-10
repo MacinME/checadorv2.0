@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { DashboardTopBar, DashboardFilterContainer, DashboardTableContainer} from './';
+import { DashboardTopBar, DashboardFilterContainer, DashboardTableContainer, DashboardUserContainer} from './';
 import { useNewModal } from '../../hooks';
-import { UserProvider } from '../../context/dashboard/UserProvider';
 
 export const Dashboard = () => {
 
@@ -11,19 +10,20 @@ export const Dashboard = () => {
       setSelectedOption(evt.target.value)
   }
 
-  const [userInfo, setUserInfo] = useState(false);
-
-  const handleUserInfo = ( user ) => {
-      setUserInfo(user);
-  }
-    // Show Modal
-  const { onShowModal, showModal } = useNewModal([
-      {id: 1, className: 'invisible', status: false },
+  const { handleModal, showNewModal } = useNewModal([
+      {id: 1, status: false },
+      {id: 2, status: false },
   ]);
 
-  const userSettings = showModal[0];
+  const onModalUsers = () => {
+    handleModal(showNewModal[0]);
+  }
+  const onModalFilter = () => {
+    handleModal(showNewModal[1]);
+  }
+
   return (
-    <UserProvider>
+    <>
       {/* Top Bar */}
       <DashboardTopBar selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } />
 
@@ -31,13 +31,25 @@ export const Dashboard = () => {
       <div className="grid justify-items-center items-center w-screen h-screen overflow-x-hidden mt-12">
         <div className='grid-register w-screen h-full'>
             {/* Filter Data */}
-            <DashboardFilterContainer handleUserInfo={ handleUserInfo } userSettings={ userSettings } selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } /> 
+            <DashboardFilterContainer 
+              onShowModal={ onModalUsers } 
+              onModalFilter={ onModalFilter }
+            /> 
 
             {/* Filtered Data - Query */}
-            <DashboardTableContainer userInfo={ userInfo } selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } onShowModal={ onShowModal } userSettings={ userSettings } />
+            <DashboardTableContainer 
+              onModalFilter={ onModalFilter }
+              modalState={ showNewModal[1] }
+              selectedOption={ selectedOption } 
+              handleSelectedOption={ handleSelectedOption } 
+              onShowModal={ onModalUsers }
+            />
           </div>
       </div>
-    </UserProvider>
+      {
+        showNewModal[0].status && (<DashboardUserContainer onModal={ onModalUsers } />)
+      }
+    </>
 
 
   )
