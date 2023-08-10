@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { HiCheckCircle, HiMinus, HiOutlineArrowSmDown, HiOutlineMail, HiXCircle} from 'react-icons/hi';
-import { DashboardPagination } from './';
+import { DashboardPagination, DashboardUserContainer } from './';
 import { colorsFrontend, dataTHUsers } from '../../data';
 
-export const DashboardUsersTable = () => {    
+export const DashboardUsersTable = ({ userState, onModal }) => { 
 
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -19,29 +19,31 @@ export const DashboardUsersTable = () => {
 
         fetchUsers();
     }, []);
+
     
     const lastIndex = currentPage * postPerPage;
     const firstIndex = lastIndex - postPerPage;
     const dataFiltered = users.slice(firstIndex, lastIndex);
 
   return (
-    <div className='bg-bgc_white-100 dark:bg-dark-800 rounded-lg px-4'>
+    <div>
+        <div className='bg-blueColor-50 100 dark:bg-dark-800 rounded-lg px-4'>
         {/* Filter Datas */}
         <div className='w-full flex flex-col gap-2 py-2 px-4 mb-2'>
             <div className='flex items-center gap-5'>
-                <p className='text-gray-800 dark:text-gray-300'>Datos Filtrados: <span className='bg-primary text-white p-1 px-3 rounded-full text-sm'>{ users.length }</span></p>
+                <p className='text-gray-800 dark:text-gray-300'>Datos Filtrados: <span className='bg-primary text-white p-1 px-4 rounded-md text-sm'>{ users.length }</span></p>
             </div>
         </div>
 
         {/* Content */}
         <div className="table-section relative dark:bg-dark-800">
             <table className="table w-full">
-                <thead className="bg-gray-800 sticky top-0 w-full z-10">
+                <thead className="bg-blueColor-50 sticky top-0 w-full z-10 dark:bg-dark-800">
                     <tr>
                         {
                             dataTHUsers.map(({ id, name }) => (
                                 <th key={ id }>
-                                    <div className="flex items-center gap-1 p-3 text-white">
+                                    <div className="flex items-center gap-1 p-3 text-gray-700 dark:text-gray-300">
                                         { name  }
                                         <HiOutlineArrowSmDown />
                                     </div>
@@ -96,6 +98,11 @@ export const DashboardUsersTable = () => {
         </div>
         
         <DashboardPagination totalPosts={ users.length } postPerPage={ postPerPage } setCurrentPage={ setCurrentPage } currentPage={ currentPage }/>
+        </div>
+        {
+            userState.status && (<DashboardUserContainer onModal={ onModal } />)
+        }
     </div>
+
   )
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DashboardTopBar, DashboardFilterContainer, DashboardTableContainer, DashboardUserContainer} from './';
+import { DashboardTopBar, DashboardFilterContainer, DashboardTableContainer } from './';
 import { useNewModal } from '../../hooks';
 
 export const Dashboard = () => {
@@ -33,22 +33,21 @@ export const Dashboard = () => {
             {/* Filter Data */}
             <DashboardFilterContainer 
               onShowModal={ onModalUsers } 
-              onModalFilter={ onModalFilter }
+              onModalFilter={ onModalFilter }              
             /> 
 
             {/* Filtered Data - Query */}
             <DashboardTableContainer 
               onModalFilter={ onModalFilter }
               modalState={ showNewModal[1] }
+              onModal={ onModalUsers }
+              userState={ showNewModal[0] }
               selectedOption={ selectedOption } 
               handleSelectedOption={ handleSelectedOption } 
               onShowModal={ onModalUsers }
             />
           </div>
       </div>
-      {
-        showNewModal[0].status && (<DashboardUserContainer onModal={ onModalUsers } />)
-      }
     </>
 
 

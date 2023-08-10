@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { DashboardBar, DashboardSearchInput, DashboardUserBackground, DashboardUserData, DashboardUsersLists } from './';
-import { UserContext } from '../../context/dashboard/UserContext';
+import { UserContext } from '../../context';
 
 export const DashboardUserContainer = ({ onModal }) => {
 

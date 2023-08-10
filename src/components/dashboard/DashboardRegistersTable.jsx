@@ -6,7 +6,6 @@ import { DashboardFilterModal } from './DashboardFilterModal';
 import { FilterContext } from '../../context';
 import { DashboardPagination } from './DashboardPagination';
 
-let total = 0
 
 export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
 
@@ -21,6 +20,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
         onDataFiltered( registers );
         onModalFilter();
     }
+    let total = 0
 
     dataFiltered.map((item) => {
         total += item.allData.length
@@ -29,7 +29,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
   return (
     <div>
     {/* Registers Table */}
-    <div className='bg-bgc_white-100 dark:bg-dark-800 rounded-lg px-4'>
+    <div className='bg-blueColor-50 dark:bg-dark-800 rounded-lg px-4'>
         <div className='w-full py-2 px-4 mb-2'>
             <p className='text-gray-800 dark:text-gray-300'>Datos Filtrados: <span className='bg-primary text-white p-1 px-4 rounded-md text-sm'> { total } </span></p>
         </div>
@@ -37,23 +37,32 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
             <table className="table w-full">
                 <thead className='dark:bg-dark-800 bg-blueColor-50 dark:border-gray-700 border-b border-gray-300 sticky top-0 w-full z-10'>
                     <tr>
-                        {
-                            dataTH.map(({id, name}) => (
-                                <th key={id}>
-                                    <div className="flex items-center gap-1 p-3 text-gray-700 dark:text-gray-300">
-                                        { name }
-                                        <HiOutlineArrowSmDown />
-                                    </div>
-                                </th>
-                            ))
-                        }
+                        <>
+                            <th>
+                                <div className="flex items-center gap-1 p-3 text-gray-700 dark:text-gray-300">
+                                    Nombre
+                                <HiOutlineArrowSmDown />
+                            </div>
+                            </th>
+                            {
+                                dataTH.map( th => (
+                                    dataFiltered[0]?.allData[0][th.name] !== null 
+                                        &&  (<th key={ th.name }>
+                                                <div className="flex items-center gap-1 p-3 text-gray-700 dark:text-gray-300">
+                                                { th.field }
+                                                <HiOutlineArrowSmDown />
+                                                </div>
+                                            </th>)
+                                )) 
+                            }
+                        </>    
                     </tr>
                 </thead>
                 <tbody>
                     {
                         dataFiltered.map( (register) => (
                             register.allData.map( (reg, index) => (
-                                <tr key={ reg.id } className={ index % 2 === 0 ? 'bg-bgc_white-50 dark:bg-dark-700 dark:hover:bg-gray-900 cursor-pointer' : 'bg-bgc_white-100 dark:bg-dark-800 dark:hover:bg-gray-900 cursor-pointer'}>
+                                <tr key={ reg.id_Register } className={ index % 2 === 0 ? 'bg-white dark:bg-dark-700 dark:hover:bg-gray-900 cursor-pointer' : 'bg-blueColor-50 dark:bg-dark-800 dark:hover:bg-gray-900 cursor-pointer'}>
                                     <th>
                                         <div className='flex items-center flex-wrap gap-2 py-1'>
                                             <div className={`userPhoto w-10 rounded rounded-full relative `}>
@@ -66,14 +75,18 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                                             </p>
                                         </div>
                                     </th>
-                                    <td> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.degree } </div> </td>
-                                    <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.subject } </div> </th>
-                                    <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.topic } </div> </th>
-                                    <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.date } </div> </th>
-                                    <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.login } </div> </th>
-                                    <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg.logout } </div> </th>
-                                    <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg?.delayedTime } </div> </th>
-                                    <th> <div className='text-gray-700 dark:text-gray-400 font-normal'> { reg?.tolerance } </div> </th>
+                                
+                                    {
+                                        dataTH.map( th => (
+                                            reg[th.name] !== null 
+                                            ?  (<td key={ th.name }>
+                                                    <div className="text-gray-700 dark:text-gray-400 font-normal">
+                                                    { reg[th.name] }
+                                                    </div>
+                                                </td>)
+                                            : false
+                                        )) 
+                                    }
                                 </tr>  
                             ))
                         ))

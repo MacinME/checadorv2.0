@@ -1,13 +1,12 @@
 export const dataTH = [
-    {id: 1, name: 'Nombre'}, 
-    {id: 2, name: 'Nivel Academico'}, 
-    {id: 3, name: 'Materia'}, 
-    {id: 4, name: 'Tema'}, 
-    {id: 6, name: 'Fecha'}, 
-    {id: 7, name: 'Entrada'}, 
-    {id: 8, name: 'Salida'},
-    {id: 5, name: 'Retardo'}, 
-    {id: 9, name: 'Tolerancia'}, 
+    {id: 1, name: 'degree', field: 'Nivel Academico'}, 
+    {id: 2, name: 'subject', field: 'Materia'}, 
+    {id: 3, name: 'topic', field: 'Tema'}, 
+    {id: 4, name: 'date', field: 'Fecha'}, 
+    {id: 5, name: 'login', field: 'Entrada'}, 
+    {id: 6, name: 'logout', field: 'Salida'}, 
+    {id: 7, name: 'delayedTime', field: 'Retardo'}, 
+    {id: 8, name: 'tolerance', field: 'Tolerancia'},
 ]
 
 export const dataTHUsers = [
