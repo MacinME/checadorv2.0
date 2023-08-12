@@ -20,7 +20,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
         onDataFiltered( registers );
         onModalFilter();
     }
-    let total = 0
+    let total = 0;
 
     dataFiltered.map((item) => {
         total += item.allData.length

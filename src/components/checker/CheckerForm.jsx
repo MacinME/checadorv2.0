@@ -3,7 +3,7 @@ import { HiBookmarkAlt, HiClipboard, HiClock } from 'react-icons/hi';
 import { useFetch, useForm } from '../../hooks';
 import { AuthContext, RegisterContext } from '../../context';
 import { DashboardErrorMessage } from '../dashboard/DashboardErrorMessage';
-import { onGet24TimeFormat } from '../../helpers';
+import { onDelayTime, onGet24TimeFormat, onGetSubject } from '../../helpers';
 import { days } from '../../data';
 
 export const CheckerForm = () => {
@@ -36,61 +36,22 @@ export const CheckerForm = () => {
     const onSubmitForm = async(evt) => {
         evt.preventDefault();
         const { degree, subject, topic } = formState;
-
         if(degree.trim().length < 1, subject.trim().length < 1, topic.trim().length < 1){
             return errorRef.current.style.display = 'block';
-        }
-
-        const onDelayTime = () => {
-            let originalString;
-
-            for (let i = 0; i < user.subjects.length; i++) {
-                if(user.subjects[i].id === Number(degree)){
-                    console.log(1);
-                    for (let j = 0; j < user.subjects[i].data.length; j++) {
-                        if(user.subjects[i].data[j].day.toLowerCase() === today.toLowerCase()){
-                            for (let t = 0; t < user.subjects[i].data[j].subjects.length; t++) {
-                                if(user.subjects[i].data[j].subjects[t].id_Time === Number(subject)){
-                                    originalString = user.subjects[i].data[j].subjects[t];
-                                }
-                            }
-                        }   
-                    }
-                }
-            }
-
-            const [hours, minutes] = originalString.start.split(':').map(Number);
-            const newTime = new Date();
-            const currentTime = new Date();
-            newTime.setHours( hours );
-            newTime.setMinutes( minutes );
-            newTime.setSeconds(0);
-            newTime.getTime();
-
-            const oneHour = 60*60*1000;
-            const oneMinute = 60*1000;
-            const time = newTime - currentTime.getTime();   
-
-            if(newTime > currentTime){  
-                return Number(-Math.floor((time % oneHour) / oneMinute));
-            }else{
-                return Math.ceil((time % oneHour) / oneMinute).toString().split('-')[1];
-            }
         }
 
         const data = {
             ...formState,
             degree: user.subjects.filter( l => l.id === Number(degree) )[0].degree,
-            subject: subject,
+            subject: onGetSubject(user, degree, subject, today),
             id_Register: Date.now(), 
             idCeut: userState.user.idCeut,
             idUser: userState.user.uid,
             date: new Date().toLocaleDateString(),
             login: onGet24TimeFormat(),
             logout: null,
-            delayedTime: onDelayTime()
+            delayedTime: onDelayTime(user, degree, subject, today)
         }
-
         await onSendData( data );
     }
 
