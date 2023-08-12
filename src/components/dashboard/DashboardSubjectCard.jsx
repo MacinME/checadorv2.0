@@ -1,9 +1,7 @@
-import { HiAcademicCap, HiPencil } from 'react-icons/hi';
-import { HiXMark } from 'react-icons/hi2';
-import { useNewModal } from '../../hooks/useNewModal';
-import { DashboardEditSubject } from './';
 import { useContext, useState } from 'react';
-import { useFetch } from '../../hooks';
+import { HiAcademicCap, HiPencil, HiX} from 'react-icons/hi';
+import { DashboardEditSubject } from './';
+import { useFetch, useNewModal } from '../../hooks';
 import { UserContext } from '../../context';
 
 export const DashboardSubjectCard = ( { data, degree, id }) => {
@@ -50,7 +48,7 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
                             <button 
                                 onClick={ () => onDeleteSubject(id) }
                                 className="bg-blueColor-100 dark:bg-dark-800 dark:text-white w-full h-6 flex items-center justify-center rounded-tr-lg text-gray-900 hover:text-gray-800 dark:hover:text-gray-800 dark:hover:bg-red-300 hover:bg-red-300 outline-none"
-                            > <HiXMark /> </button>
+                            > <HiX /> </button>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 bg-blueColor-50 dark:bg-dark-800 dark:border-gray-700 rounded-bl-lg rounded-br-lg px-4 py-5 w-full">

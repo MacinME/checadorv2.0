@@ -2,7 +2,7 @@ import { HiFilter, HiUser } from 'react-icons/hi';
 
 export const DashboardFilterContainer = ({ onShowModal, onModalFilter }) => {
   return (
-    <div className='pt-4 relative bg-blueColor-50 dark:bg-dark-800'>
+    <div className="pt-4 relative bg-blueColor-50 dark:bg-dark-800">
         <div className="">
             <div className="flex items-center flex-col gap-2 bg-blueColor-50 dark:bg-dark-800 mt-1 mx-3 px-2 rounded-lg h-screen"> 
               <button

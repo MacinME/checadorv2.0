@@ -29,7 +29,7 @@ export const Dashboard = () => {
 
       {/*  */}
       <div className="grid justify-items-center items-center w-screen h-screen overflow-x-hidden mt-12">
-        <div className='grid-register w-screen h-full'>
+        <div className="grid-register w-screen h-full">
             {/* Filter Data */}
             <DashboardFilterContainer 
               onShowModal={ onModalUsers } 
@@ -44,7 +44,6 @@ export const Dashboard = () => {
               userState={ showNewModal[0] }
               selectedOption={ selectedOption } 
               handleSelectedOption={ handleSelectedOption } 
-              onShowModal={ onModalUsers }
             />
           </div>
       </div>

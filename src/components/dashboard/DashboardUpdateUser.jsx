@@ -5,8 +5,6 @@ import { inputs } from '../../data';
 
 export const DashboardUpdateUser = ({ user, state, handleModal }) => {
 
-    console.log(user)
-
     const { onInputChange, formState } = useForm(user);
 
     const {userName, userRol, userID, userEmail} = formState;
@@ -37,7 +35,7 @@ export const DashboardUpdateUser = ({ user, state, handleModal }) => {
             >
                 Cancelar
             </button>
-            <button className=" dark:text-gray-300 btnModal-save flex items-center justify-center gap-2 rounded-full text-gray-900 py-2 px-2 text-sm">
+            <button className="dark:text-gray-300 btnModal-save flex items-center justify-center gap-2 rounded-full text-gray-900 py-2 px-2 text-sm">
                 <HiOutlineSave /> Guardar Cambios
             </button>
         </div>

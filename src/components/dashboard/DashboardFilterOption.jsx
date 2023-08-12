@@ -12,7 +12,7 @@ export const DashboardFilterOption = () => {
 
   return (
         <div className="bg-bgc_white-50 m-3 rounded-tr-lg relative">
-            <form className="">
+            <form>
               <div className="height-filter overflow-y-scroll bg-bgc_white-50 pt-4 px-4 pb-16"> 
                 <div className="flex items-center justify-center mb-5"> 
                   <HiDatabase />

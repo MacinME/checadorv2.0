@@ -1,12 +1,10 @@
 import { useContext, useRef } from 'react';
-import { HiBookmark, HiCalendarDays, HiOutlinePlus } from 'react-icons/hi2';
-import { academic } from '../../data';
+import { HiBookmark } from 'react-icons/hi2';
+import { DashboardTimeCard, DashboardErrorMessage, DashboardIconAddSubject } from './';
 import { UserContext } from '../../context';
-import { ErrorMessage } from './ErrorMessage';
 import { OnErrorValidator } from '../../helpers';
-import { DashboardTimeCard } from './DashboardTimeCard';
 import { useFetch, useSubject } from '../../hooks';
-import { IconAddSubject } from './IconAddSubject';
+import { academic } from '../../data';
 
 export const DashboardAddSubjects = ({ handleModal, stateClass }) => {
 
@@ -66,7 +64,7 @@ export const DashboardAddSubjects = ({ handleModal, stateClass }) => {
       { 
         formState.data.map((day, dayIndex) => (
           <div key={ dayIndex }>
-            <IconAddSubject 
+            <DashboardIconAddSubject 
               handleAddSubject= { handleAddSubject } 
               dayIndex={ dayIndex } 
               day={ day.day }
@@ -97,7 +95,7 @@ export const DashboardAddSubjects = ({ handleModal, stateClass }) => {
           ref={ errorRef }
           className="hidden"
         >
-          <ErrorMessage message="Error: Rellenar al memos un horario o seleccionar el nivel academico" />
+          <DashboardErrorMessage message="Rellenar al memos un horario o seleccionar el nivel academico" />
         </div>
     </form>
   );

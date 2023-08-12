@@ -1,9 +1,8 @@
 import { useContext } from 'react';
-import { HiAcademicCap } from 'react-icons/hi';
-import { HiCheck } from 'react-icons/hi2';
+import { HiAcademicCap, HiCheck} from 'react-icons/hi';
+import { DashboardTimeCard, DashboardIconAddSubject } from './';
 import { UserContext } from '../../context';
 import { useFetch, useSubject } from '../../hooks';
-import { DashboardTimeCard, IconAddSubject } from './';
 
 export const DashboardEditSubject = ({ editSubject, handleModal, showNewModal }) => {
 
@@ -32,7 +31,7 @@ export const DashboardEditSubject = ({ editSubject, handleModal, showNewModal })
             {
                 formState.data.map( (item, dayIndex) => (
                     <div key={ item.day } className="xl:w-full">
-                        <IconAddSubject 
+                        <DashboardIconAddSubject 
                             handleAddSubject= { handleAddSubject } 
                             dayIndex={ dayIndex } 
                             day={ item.day }

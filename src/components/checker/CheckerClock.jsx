@@ -12,8 +12,8 @@ export const CheckerClock = ({ setNewtime, newTime }) => {
     }, [])
     
     return (
-        <div className='flex justify-center' >
-            <div className='text-2xl text-gray-800 dark:text-slate-300'>
+        <div className="flex justify-center" >
+            <div className="text-2xl text-gray-800 dark:text-slate-300">
                 { newTime }
             </div>
         </div>

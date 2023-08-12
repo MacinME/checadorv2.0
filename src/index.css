@@ -64,18 +64,6 @@ li{
 /*#######################################
     Users Table - STYLES
 #######################################*/
-
-/* Table  styles */
-.table-section{
-    background-color: #e7edf8;
-    /* overflow-y: scroll;
-    height: 650px; */
-}
-
-/* .table-section tbody tr:nth-child(odd){
-    background-color: #ffffff;
-} */
-
 table{
     border-collapse: collapse;
 }
@@ -84,13 +72,6 @@ th,
 td{
     text-align: left;
 }
-
-/* .table-section tbody tr:nth-child(even){
-    background-color: #f5f9ff;
-}
-.table-section tbody tr:nth-child(odd){
-    background-color: #e7edf8;
-} */
 
 /* Height Filter - styles */
 
@@ -103,8 +84,6 @@ td{
 .grid-configUser{
     display: grid;
     grid-template-columns: 280px 1fr;
-    
-    /* height: 800px; */
 }
 /*#######################################
     User Profile Dashboard - STYLES
@@ -112,9 +91,6 @@ td{
 
 /* user profile styles */
 .user-profile{
-    /* position: absolute;
-    right: 20px;
-    top: 20px; */
     padding: 2px 5px;
     grid-template-columns: auto 1fr;
 }
@@ -131,7 +107,6 @@ td{
     content: "";
     clear: both;
 }
-
 
 
 /*#######################################
