@@ -1,37 +1,48 @@
 import { useContext, useEffect, useState } from 'react';
-import { colorsFrontend } from '../../data';
 import { UserContext } from '../../context/dashboard/UserContext';
+import { DashboardErrorMessage, DashboardSearchInput, DashboardUser } from './';
+import { useFetch, useForm } from '../../hooks';
 
 export const DashboardUsersLists = () => {
 
   const [users, setUsers] = useState([]);
   const { onGetUserData } = useContext(UserContext);
+  const { onFetchData } = useFetch('http://localhost:8081/users/api/findUsers', 'POST');
+  const { onInputChange, search } = useForm({
+    search: ''
+  });
 
-  useEffect(() => {
-      const fetchUsers = async () => {
-          const response = await fetch('http://localhost:8081/users/api');
-          const data = await response.json();
-          setUsers(data)
-      }
+  const onSearchUsers = async() => {
 
-      fetchUsers();
-  }, []);
+    if(search.trim().length < 2){
+        return;
+    }
+
+    const { results } = await onFetchData( { search } );
+    setUsers(results);
+  }
+
+    useEffect(() => {
+        onSearchUsers();
+    }, [search])
+
 
   return (
     <div className="bg-blueColor-50 dark:bg-dark-800 w-64 flex flex-col gap-2 p-2 h-full text-gray-800">
+        <DashboardSearchInput 
+            onInputChange={ onInputChange }
+            search={ search }
+        />
         {
-        users.map( (user, index) => (
-            <div 
-                onClick={ () => onGetUserData(user.uid)  }
-                key={ index } 
-                className="flex gap-3 items-center rounded-full cursor-pointer transition-all pl-1 hover:bg-blueColor-100 dark:hover:bg-dark-900"
-            >
-            <div className={`w-8 rounded rounded-full h-8 flex justify-center items-center font-bold ${ colorsFrontend[user.img.color] }`}>
-                { user.img.letter }
-            </div>  
-            <p className="font-semibold text-sm text-gray-800 dark:text-gray-200"> { user.name } </p>
-            </div>
-        ))
+            users.length > 0 ?
+                users.map( user => (
+                    <DashboardUser 
+                        key={ user. _id } 
+                        onGetUserData={ onGetUserData }
+                        {...user}
+                    />
+                ))
+            : search.trim().length > 2 && <DashboardErrorMessage message={`No encontrado: ${ search }`} />
         }
     </div>
   )

@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { DashboardBar, DashboardSearchInput, DashboardUserBackground, DashboardUserData, DashboardUsersLists } from './';
+import { DashboardBar, DashboardUserBackground, DashboardUserData, DashboardUsersLists } from './';
 import { UserContext } from '../../context';
 
 export const DashboardUserContainer = ({ onModal }) => {
 
-  const { user } = useContext(UserContext);
+  const { user, onRemoveUser } = useContext(UserContext);
 
   return (
     <div className="w-screen h-screen backdrop-brightness-50 absolute -top-12 left-0 flex justify-center z-30">
@@ -12,12 +12,11 @@ export const DashboardUserContainer = ({ onModal }) => {
         <div className="bg-white dark:bg-dark-700 w-full h-full relative rounded-xl">
             <div className="grid-configUser">
               <div className="dark:bg-dark-800 bg-blueColor-50 dark:bg-dark-700 flex flex-col h-[57.5rem] items-center rounded-bl-xl rounded-tl-xl z-10">
-                <DashboardSearchInput />
                 <DashboardUsersLists />
               </div>
               <div>
                 <div className="h-10">
-                  <DashboardBar onModalFilter={ onModal } />
+                  <DashboardBar onModalFilter={ onModal } onRemoveUser={ onRemoveUser } />
                 </div>
                 { 
                   !!user && (

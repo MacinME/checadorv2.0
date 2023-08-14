@@ -19,8 +19,12 @@ export const UserProvider = ({ children }) => {
 
     }
 
+    const onRemoveUser = () => {
+        setUser(null)
+    }
+
   return (
-    <UserContext.Provider value={{ onGetUserData, user }}>
+    <UserContext.Provider value={{ onGetUserData, onRemoveUser, user }}>
         { children }
     </UserContext.Provider>
   )

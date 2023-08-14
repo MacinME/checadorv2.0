@@ -1,4 +1,10 @@
-export const DashboardBar = ({ onModalFilter }) => {
+export const DashboardBar = ({ onModalFilter, onRemoveUser }) => {
+
+  const onClose = () => {
+    onModalFilter();
+    !!onRemoveUser && onRemoveUser();
+  }
+
   return (
     <div className="w-full absolute top-0 left-0 bg-transparent h-10 rounded-tl-xl rounded-tr-xl flex items-center py-2 px-2">
         <div className="flex gap-2 absolute right-0 px-3">
@@ -7,7 +13,7 @@ export const DashboardBar = ({ onModalFilter }) => {
           >
           </button>
           <button
-              onClick={ () => onModalFilter() }
+              onClick={ () => onClose() }
               className="w-4 h-4 bg-red-500 hover:bg-red-700 rounded-full"
           >
           </button>
