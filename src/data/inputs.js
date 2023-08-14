@@ -25,14 +25,5 @@ export const inputs = [
         placeholder: "Id Ceut = 1234",
         errorMessage: "El campo ID es requerido",
         required: true
-    },
-    {
-        id: 4,
-        type: "email",
-        label: "Correo electronico",
-        name: "email",
-        placeholder: "example@ceut.edu.mx",
-        errorMessage: "El campo correo es requerido",
-        required: true
-    },
+    }
 ]

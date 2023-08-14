@@ -16,8 +16,8 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
 
     const getAllData = async( evt, state) => {
         evt.preventDefault();
-        const { registers } = await onFetchData( state );
-        onDataFiltered( registers );
+        const data = await onFetchData( state );
+        onDataFiltered( data.registers );
         onModalFilter();
     }
     let total = 0;

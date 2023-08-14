@@ -21,13 +21,13 @@ export const DashboardEditSubject = ({ editSubject, handleModal, showNewModal })
 
   return (
     <>
-        <div className="w-full bg-white dark:bg-dark-800 h-auto to-yellow-800 rounded-tl-lg rounded-tr-lg py-5 hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer">
+        <div className="w-full bg-blueColor-50 dark:bg-dark-800 h-auto to-yellow-800 rounded-tl-lg rounded-tr-lg py-5 hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer">
             <div className="flex text-center text-lg text-gray-700 items-center justify-center flex-wrap dark:text-gray-400 gap-2 uppercase"> 
                 <HiAcademicCap/>    
                 <p className="text-sm text-gray-500 dark:text-gray-300">{ dataFiltered[0].degree }</p>
             </div>
         </div>
-        <div className="grid grid-cols-2 bg-white dark:bg-dark-800 dark:border-gray-700 rounded-bl-lg rounded-br-lg px-4 py-5 w-full">
+        <div className="grid grid-cols-2 bg-blueColor-50 dark:bg-dark-800 dark:border-gray-700 rounded-bl-lg rounded-br-lg px-4 py-5 w-full">
             {
                 formState.data.map( (item, dayIndex) => (
                     <div key={ item.day } className="xl:w-full">

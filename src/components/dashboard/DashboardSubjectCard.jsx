@@ -26,7 +26,7 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
     }
 
   return (
-    <div className="col-span-2 flex items-center flex-col h-full bg-white rounded-lg dark:bg-dark-700 relative">
+    <div className="col-span-2 flex items-center flex-col h-full rounded-lg dark:bg-dark-700 relative">
         {
             showNewModal[0].status 
                 ? ( <DashboardEditSubject 
@@ -35,10 +35,10 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
                         handleModal={ handleModal }
                     /> )
                 : <>
-                    <div className="w-full bg-blueColor-50 dark:bg-dark-800 h-auto to-yellow-800 rounded-tl-lg rounded-tr-lg py-5 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
-                        <div className="flex text-center text-lg text-gray-700 items-center justify-center flex-wrap dark:text-gray-400 gap-2 uppercase"> 
+                    <div className="w-full bg-yellowColor-800 h-auto to-yellow-800 rounded-tl-lg rounded-tr-lg py-5 cursor-pointer">
+                        <div className="flex text-center text-lg items-center justify-center flex-wrap text-gray-900 gap-2 uppercase"> 
                             <HiAcademicCap/>    
-                            <p className="text-sm text-gray-500 dark:text-gray-300">{ degree }</p>
+                            <p className="text-sm text-gray-900 dark:text-gray-900 font-semibold">{ degree }</p>
                         </div>
                         <div className="absolute w-16 rounded top-0 right-0 flex items-center justify-around">
                             <button 
