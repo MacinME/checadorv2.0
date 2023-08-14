@@ -1,19 +1,28 @@
+import { useContext } from 'react';
 import { HiOutlineSave } from 'react-icons/hi';
 import { DashboardInputElement } from './';
-import { useForm } from '../../hooks';
+import { useFetch, useForm } from '../../hooks';
 import { inputs } from '../../data';
+import { UserContext } from '../../context';
 
 export const DashboardUpdateUser = ({ user, state, handleModal }) => {
 
     const { onInputChange, formState } = useForm(user);
+    const { onFetchData } = useFetch(`http://localhost:8081/users/api/update/${ user.uid }`, 'PUT');
+    const { onGetUserData } = useContext(UserContext);
 
-    const {userName, userRol, userID, userEmail} = formState;
+    const { name, rol, idCeut } = formState;
 
-    const onSubmitForm = (evt) => {
+    const onSubmitForm = async(evt) => {
         evt.preventDefault();
-        if(userName.length <= 1 || userRol.length <= 1 || isNaN(userID) || userEmail.length <= 1){
-            console.log('empty field')
+        if(name.length <= 1 || rol.length <= 1 || isNaN(idCeut)){
+            return;
         }
+
+        await onFetchData( formState );
+        onGetUserData( formState.uid );
+        handleModal(state)
+
     }
 
   return (

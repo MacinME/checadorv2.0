@@ -26,6 +26,8 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
         total += item.allData.length
     })
 
+    const isRegisters = dataFiltered.length > 0 && dataFiltered[0].allData.length > 0 ? dataFiltered : [];
+
   return (
     <div>
         {/* Registers Table */}
@@ -46,7 +48,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                                 </th>
                                 {
                                     dataTH.map( th => (
-                                        dataFiltered[0]?.allData[0][th.name] !== null 
+                                        isRegisters[0]?.allData[0][th.name] !== null 
                                             &&  (<th key={ th.name }>
                                                     <div className="flex items-center gap-1 p-3 text-gray-700 dark:text-gray-300">
                                                         { th.field }
@@ -60,7 +62,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                     </thead>
                     <tbody>
                         {
-                            dataFiltered.map( (register) => (
+                            isRegisters.map( (register) => (
                                 register.allData.map( (reg, index) => (
                                     <tr key={ reg.id_Register } className={ index % 2 === 0 ? "bg-white dark:bg-dark-700 dark:hover:bg-gray-900 cursor-pointer" : "bg-blueColor-50 dark:bg-dark-800 dark:hover:bg-gray-900 cursor-pointer"}>
                                         <th>
