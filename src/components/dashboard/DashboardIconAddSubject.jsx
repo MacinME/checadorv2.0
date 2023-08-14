@@ -9,7 +9,7 @@ export const DashboardIconAddSubject = ({ handleAddSubject, dayIndex, day }) => 
         <p className="text-gray-700 dark:text-gray-300 w-24 text-center self-center font-semibold tracking-wider"> { day } </p>
         <button 
             onClick={ (evt) => handleAddSubject( evt, dayIndex ) }
-            className="dark:text-gray-200 rounded-lg text-gray-900 hover:bg-dark-900 p-2"
+            className="dark:text-gray-200 rounded-lg text-gray-900 hover:bg-blueColor-100 dark:hover:bg-dark-900 p-2"
         > <HiOutlinePlus /> </button>
     </div>
   )

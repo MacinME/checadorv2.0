@@ -8,13 +8,17 @@ import { UserContext } from '../../context';
 export const DashboardUserData = () => {
 
     const { user } = useContext(UserContext);
-    const {showNewModal, handleModal} = useNewModal([
+    const { showNewModal, handleModal } = useNewModal([
         {id: 1, status: false},
         {id: 2, status: false}
     ]);
 
     const state = showNewModal[0];
     const stateClass = showNewModal[1];
+
+    const onCloseModal = () => {
+        handleModal(stateClass)
+    }
 
   return (
     <div className="grid grid-cols-1 mt-4 pb-12 gap-4 w-full h-full">
@@ -41,21 +45,15 @@ export const DashboardUserData = () => {
                             </button>
                         }
                     </div>
-                    <div className="grid xl:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 xl:px-10 py-5 rounded-lg h-auto">
+                    <div className="grid xl:grid-cols-6 md:grid-cols-2 sm:grid-cols-1 gap-3 xl:px-10 py-5 rounded-lg h-auto">
                         {
-                            stateClass.status 
-                                ? (<DashboardAddSubjects 
-                                        stateClass={ stateClass } 
-                                        handleModal={ handleModal } 
-                                    />) 
-                                : ( 
-                                    user.subjects.map( oneClass => (
-                                        <DashboardSubjectCard 
-                                            key={ oneClass.id } 
-                                            {...oneClass} 
-                                        />
-                                    ))
-                                )
+
+                            user.subjects.map( oneClass => (
+                                <DashboardSubjectCard 
+                                    key={ oneClass.id } 
+                                    {...oneClass} 
+                                />
+                            ))
                         }
                     </div>
                 </div>
@@ -87,6 +85,10 @@ export const DashboardUserData = () => {
                 }
             </div>
         </div>
+        {
+            stateClass.status 
+                && ( <DashboardAddSubjects handleModal={ onCloseModal } /> ) 
+        }
     </div>
 
   )

@@ -15,11 +15,12 @@ export const DashboardUsersLists = () => {
   const onSearchUsers = async() => {
 
     if(search.trim().length < 2){
+        setUsers([]);
         return;
     }
 
-    const { results } = await onFetchData( { search } );
-    setUsers(results);
+    const data = await onFetchData( { search } );
+    setUsers(data.results);
   }
 
     useEffect(() => {
