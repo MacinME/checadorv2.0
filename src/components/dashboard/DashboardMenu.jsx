@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { GoTriangleUp } from 'react-icons/go';
-import { CommonThemeBtn } from '../common';
+import { CommonLogoutBtn, CommonThemeBtn } from '../common';
 
 export const DashboardMenu = () => {
   return (
@@ -14,7 +14,7 @@ export const DashboardMenu = () => {
             <CommonThemeBtn />
         </div>
 
-        <div className="w-full items-center text-lg cursor-pointer rounded" >
+        <div className="w-full items-center text-md cursor-pointer rounded" >
             <Link
                 to="/checador"
                 target="_blank"
@@ -22,6 +22,7 @@ export const DashboardMenu = () => {
             >   
                 Checador
             </Link>
+            <CommonLogoutBtn />
         </div>
     </div>   
   )

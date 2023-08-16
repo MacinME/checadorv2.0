@@ -82,8 +82,15 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                                             dataTH.map( th => (
                                                 reg[th.name] !== null 
                                                 ?  (<td key={ th.name }>
-                                                        <div className="text-gray-700 dark:text-gray-400 font-normal">
-                                                        { reg[th.name] }
+                                                        <div className={`text-gray-700 dark:text-gray-400 font-normal ${
+                                                            th.name === 'tolerance' && Number(reg[th.name]) > 0 ? 'text-red-500 dark:text-red-400' : ''
+                                                        }` }>
+                                                        { 
+                                                            th.name === 'tolerance' || th.name === 'delayedTime'
+                                                                ? reg[th.name]  + ' min'
+                                                                : reg[th.name]
+                                                        
+                                                        }
                                                         </div>
                                                     </td>)
                                                 : false

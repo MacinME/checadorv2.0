@@ -1,5 +1,5 @@
 import { HiBookOpen, HiX } from 'react-icons/hi';
-import { CheckerLogoutBtn } from './';
+import { CommonLogoutBtn } from '../common';
 
 export const CheckerMenu = ({menuState, handleModal}) => {
   return (
@@ -16,7 +16,7 @@ export const CheckerMenu = ({menuState, handleModal}) => {
                         </div>
                     </li>
                     <li>
-                        <CheckerLogoutBtn />
+                        <CommonLogoutBtn />
                     </li>
                 </div>
             </div>
