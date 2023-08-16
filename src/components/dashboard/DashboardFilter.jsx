@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HiCalendar } from 'react-icons/hi';
+import { HiCalendar, HiClock } from 'react-icons/hi';
 import { useCheckbox, useForm } from '../../hooks';
 
 // DatePicker Settings
@@ -25,7 +25,7 @@ export const DashboardFilter = ({ getAllData }) => {
 
     const [ group3, , onSelectSort ] = useCheckbox({
         option1: false,
-        option2: true,
+        option2: false,
         option3: false,
     })
 
@@ -36,14 +36,19 @@ export const DashboardFilter = ({ getAllData }) => {
         option4: false 
     })
 
-    const { onInputChange, formState, onCheckbox } = useForm({
+    const { onInputChange, tolerance_value, formState, onCheckbox } = useForm({
         search: '',
         date: '',
+        tolerance_value: '',
         group1_tolerance: null,
         group1_delayedTime: null,
         group2_online: true,
         group2_offline: null,
-        group3_sortBy: true,
+        group3_sortBy: {
+            actualDate: null, // By actual date
+            lastDate: null, // By last date
+            name: null, // By name A-Z
+        },
         group4_degree: null,
         group4_subject: null,
         group4_topic: null,
@@ -55,7 +60,6 @@ export const DashboardFilter = ({ getAllData }) => {
         setStartDate(start);
         setEndDate(end)
     }
-
 
     const handleGroupSelect = (evt) => {
         const { id } = evt.target;
@@ -77,6 +81,8 @@ export const DashboardFilter = ({ getAllData }) => {
         }
     }
 
+
+
     return (
     <form 
         onSubmit={ (evt) => getAllData( evt, formState ) }
@@ -89,25 +95,42 @@ export const DashboardFilter = ({ getAllData }) => {
                     search={ formState.search }
                 />
             </div>
-            <div className="flex flex-col gap-2">
-                <label htmlFor="" className="text-gray-700">
-                    <div className="flex items-center gap-2 w-full text-gray-600 dark:text-gray-300 rounded-lg px-2">
-                        <HiCalendar className="text-sm" /> Fecha:
-                    </div>
-                </label>
-                <DatePicker 
-                    selected={startDate} 
-                    onChange={ onChangeDate }
-                    startDate={ startDate }
-                    endDate={ endDate }
-                    selectsRange
-                    name="date"
-                    showMonthDropdown
-                    locale='es'            
-                    className="w-full dark:border-gray-800 dark:text-gray-200 bg-transparent outline-none border-b border-gray-100 focus:border-gray-300 focus:rounded-none py-1 px-2 text-gray-700" 
-                />
-            </div>
+            <div className="flex gap-2 items-center">
+                <div>
+                    <label>
+                        <div className="flex items-center gap-2 w-full text-gray-600 dark:text-gray-300 rounded-lg px-2 font-semibold">
+                            <HiCalendar className="text-sm" /> Fecha:
+                        </div>
+                    </label>
+                    <DatePicker 
+                        selected={ startDate } 
+                        onChange={ onChangeDate }
+                        startDate={ startDate }
+                        endDate={ endDate }
+                        selectsRange
+                        name="date"
+                        showMonthDropdown
+                        locale='es'            
+                        className="w-full bg-blueColor-50 dark:bg-dark-800 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b" 
+                    />
+                </div>
 
+                <div>
+                <label>
+                        <div className="flex items-center gap-2 w-full text-gray-600 dark:text-gray-300 rounded-lg px-2 font-semibold">
+                            <HiClock className="text-sm" /> Tolerancia:
+                        </div>
+                    </label>
+                    <input 
+                        type="number" 
+                        placeholder="10"
+                        name="tolerance_value"
+                        value={ tolerance_value }
+                        onChange={ onInputChange }
+                        className="w-full bg-blueColor-50 dark:bg-dark-800 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b"
+                    />
+                </div>
+            </div>
         </div>
 
         <div className="flex flex-col gap-5 py-5 px-3 h-2/3 overflow-y-scroll">

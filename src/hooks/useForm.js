@@ -15,7 +15,16 @@ export const useForm = ( initialForm = {} ) => {
     const onCheckbox = ({ target }) => {
       const { name, value} = target;
       const newValue = value.split(' ')[1].trim();
-      console.log(value.split(' ')[1])
+      const newName = name.split('.')[1];
+      if(`group3_sortBy.${ newName }` === name){
+        setFormState({
+          ...formState,
+          group3_sortBy: {
+            [ newName ]: newValue === 'false' ? true : false
+          }
+        });
+        return;
+      }
       setFormState({
           ...formState,
           [ name ]: newValue === 'false' ? true : false

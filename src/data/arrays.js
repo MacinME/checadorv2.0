@@ -45,19 +45,19 @@ export const filterTypes = [
                 id: 1,
                 title: 'Fecha Actual',
                 group: 'group3',
-                name: 'group3_sortBy'
+                name: 'group3_sortBy.actualDate'
             },
             {
                 id: 2,
                 title: 'Fecha Anterior',
                 group: 'group3',
-                name: 'group3_sortBy'
+                name: 'group3_sortBy.lastDate'
             },
             {
                 id: 3,
                 title: 'Nombre a-z',
                 group: 'group3',
-                name: 'group3_sortBy'
+                name: 'group3_sortBy.name'
             }
         ],
     },
