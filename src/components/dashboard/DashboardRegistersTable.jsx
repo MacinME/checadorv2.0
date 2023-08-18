@@ -6,7 +6,6 @@ import { DashboardFilterModal } from './DashboardFilterModal';
 import { FilterContext } from '../../context';
 import { DashboardPagination } from './DashboardPagination';
 
-
 export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
 
     const { onFetchData } = useFetch('http://localhost:8081/users/api/registers', 'POST');
@@ -68,21 +67,24 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                                     {
                                         dataTH.map( th => (
                                             reg[th.name] !== null && th.name !== 'name'
-                                            ?  (<td key={ th.name }>
-                                                    <div className={`text-gray-700 dark:text-gray-400 font-normal ${
-                                                        th.name === 'tolerance' && Number(reg[th.name]) > 0 ? 'text-red-500 dark:text-red-400' : ''
-                                                    }` }>
-                                                    { 
-                                                        th.name === 'tolerance' || 
-                                                        th.name === 'delayedTime'
-                                                            ? reg[th.name] + ' min'
-                                                            : th.name === 'date' ? new Date(reg[th.name]).toLocaleDateString()
-                                                            : reg[th.name]
-                                                    
-                                                    }
-                                                    </div>
-                                                </td>)
-                                            : false
+                                                ?  (<td
+                                                        key={ th.name }
+                                                    >
+                                                        <div className={`text-gray-700 dark:text-gray-400 font-normal ${
+                                                            th.name === 'tolerance' && Number(reg[th.name]) > 0 ? 'text-red-500 dark:text-red-400' : ''
+                                                        }` }>
+                                                        { 
+                                                            th.name === 'tolerance' || 
+                                                            th.name === 'delayedTime'
+                                                                ? reg[th.name] + ' min'
+                                                                : th.name === 'date' ? new Date(reg[th.name]).toLocaleDateString()
+                                                                : reg[th.name]
+                                                        }
+                                                        </div>
+                                                    </td>)
+                                                : reg[th.name] === null && th.name === 'logout' 
+                                                ? <td key={ th.name } ><div className="text-gray-700 dark:text-gray-400 font-normal">En clase</div></td>
+                                                : false
                                         )) 
                                     }
                                 </tr> 

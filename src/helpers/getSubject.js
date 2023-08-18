@@ -51,5 +51,5 @@ export const onGetSubject = (user, idDegree, idSubject, today) => {
         }
     }
 
-    return originalString.subject;
+    return originalString;
 }

@@ -35,10 +35,10 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
                         handleModal={ handleModal }
                     /> )
                 : <>
-                    <div className="w-full bg-yellowColor-800 h-auto to-yellow-800 rounded-tl-lg rounded-tr-lg py-5 cursor-pointer">
-                        <div className="flex text-center text-lg items-center justify-center flex-wrap text-gray-900 gap-2 uppercase"> 
+                    <div className="w-full bg-blueColor-50 h-auto dark:bg-dark-800 rounded-tl-lg rounded-tr-lg py-5 cursor-pointer">
+                        <div className="flex text-center text-lg items-center justify-center flex-wrap text-gray-400 gap-2 uppercase"> 
                             <HiAcademicCap/>    
-                            <p className="text-sm text-gray-900 dark:text-gray-900 font-semibold">{ degree }</p>
+                            <p className="text-sm text-gray-900 dark:text-gray-100 font-semibold">{ degree }</p>
                         </div>
                         <div className="absolute w-16 rounded top-0 right-0 flex items-center justify-around">
                             <button 
@@ -59,11 +59,11 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
                                     <div className="xl: xl:w-full xl:justify-start xl:gap-3 py-2 px-2">
                                         {   
                                             item.subjects.map( (subject, index) => (
-                                                <div key={ index } className="xl:flex flex-col bg-white dark:bg-dark-700 dark:border-gray-800 rounded-lg md:mb-2 sm:mb-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer py-2 px-3">
-                                                    <p className="text-gray-500 dark:text-gray-200 w-full">{ subject.subject }</p>
-                                                    <p className="text-gray-600 dark:text-gray-300 p-1 text-sm font-semibold">{ subject.start ? subject.start + ' - ' + subject.end: 'No establecido' } </p>
+                                                <div key={ index } className="xl:flex flex-col bg-white dark:bg-dark-700 dark:border-gray-800 rounded-lg md:mb-2 sm:mb-2 hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer py-2 px-3">
+                                                    <p className="text-yellow-600 dark:text-yellow-500 w-full font-bold">{ subject.subject }</p>
+                                                    <p className="text-gray-600 dark:text-gray-400 p-1 text-sm font-semibold">{ subject.start ? subject.start + ' - ' + subject.end: 'No establecido' } </p>
                                                     <div className="p-1 h-full">
-                                                        <p className="text-gray-600 dark:text-gray-300 text-sm"> { subject.grade } </p>
+                                                        <p className="text-gray-600 dark:text-gray-300 text-sm font-semibold"> { subject.grade } </p>
                                                     </div>
                                                 </div>
                                             ))

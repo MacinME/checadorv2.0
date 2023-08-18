@@ -40,10 +40,14 @@ export const CheckerForm = () => {
             return errorRef.current.style.display = 'block';
         }
 
+        const getSubjectData = onGetSubject(user, degree, subject, today);
+
         const data = {
             ...formState,
             degree: user.subjects.filter( l => l.id === Number(degree) )[0].degree,
-            subject: onGetSubject(user, degree, subject, today),
+            subject: getSubjectData.subject,
+            grade: getSubjectData.grade,
+            originalTime: getSubjectData.start,
             id_Register: Date.now(), 
             idCeut: userState.user.idCeut,
             idUser: userState.user.uid,
