@@ -77,13 +77,11 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                                                             th.name === 'tolerance' || 
                                                             th.name === 'delayedTime'
                                                                 ? reg[th.name] + ' min'
-                                                                : th.name === 'date' ? new Date(reg[th.name]).toLocaleDateString()
+                                                                : th.name === 'date' ? new Date(reg[th.name]).toISOString()
                                                                 : reg[th.name]
                                                         }
                                                         </div>
                                                     </td>)
-                                                : reg[th.name] === null && th.name === 'logout' 
-                                                ? <td key={ th.name } ><div className="text-gray-700 dark:text-gray-400 font-normal">En clase</div></td>
                                                 : false
                                         )) 
                                     }

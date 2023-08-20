@@ -73,7 +73,7 @@ export const filterTypes = [
             },
             {
                 id: 2,
-                title: 'Maestria',
+                title: 'Materia',
                 group: 'group4',
                 name: 'group4_subject'
             },
@@ -86,9 +86,23 @@ export const filterTypes = [
             ,
             {
                 id: 4,
-                title: 'Horario de salida',
+                title: 'Grado',
                 group: 'group4',
-                name: 'group4_time'
+                name: 'group4_grade'
+            }
+            ,
+            {
+                id: 5,
+                title: 'Registro de entrada',
+                group: 'group4',
+                name: 'group4_regLogin'
+            }
+            ,
+            {
+                id: 6,
+                title: 'Registro de salida',
+                group: 'group4',
+                name: 'group4_regLogout'
             }
         ],
     }

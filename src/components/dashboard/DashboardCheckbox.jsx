@@ -1,5 +1,5 @@
 export const DashboardCheckbox = ({ i, index, handleGroupSelect, groups, onCheckbox }) => {
-  
+
   const onChange = (evt) => {
     handleGroupSelect(evt);
     onCheckbox(evt);

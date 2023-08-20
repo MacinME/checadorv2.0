@@ -1,18 +1,10 @@
-import { useState } from 'react';
 import { HiCalendar, HiClock } from 'react-icons/hi';
 import { useCheckbox, useForm } from '../../hooks';
-
-// DatePicker Settings
-import DatePicker, { registerLocale } from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'
-import es from 'date-fns/locale/es';
 import { DashboardCheckbox, DashboardSearchInput } from './';
 import { filterTypes } from '../../data';
-registerLocale('es', es);
 
 export const DashboardFilter = ({ getAllData }) => {
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(null);
+
     const [ group1, onSelectOptionsTime ] = useCheckbox({
         option1: false,
         option2: false,
@@ -33,12 +25,15 @@ export const DashboardFilter = ({ getAllData }) => {
         option1: false,
         option2: false,
         option3: false,
-        option4: false 
+        option4: false,
+        option5: false,
+        option6: false,
     })
 
-    const { onInputChange, tolerance_value, formState, onCheckbox } = useForm({
+    const { onInputChange, tolerance_value, startDate, endDate, formState, onCheckbox } = useForm({
         search: '',
-        date: '',
+        startDate: '',
+        endDate: '',
         tolerance_value: '',
         group1_tolerance: null,
         group1_delayedTime: null,
@@ -52,14 +47,10 @@ export const DashboardFilter = ({ getAllData }) => {
         group4_degree: null,
         group4_subject: null,
         group4_topic: null,
-        group4_time: null,
+        group4_grade: null,        
+        group4_regLogin: null,
+        group4_regLogout: null,
     });
-
-    const onChangeDate = (date) => {
-        const [start, end] = date;
-        setStartDate(start);
-        setEndDate(end)
-    }
 
     const handleGroupSelect = (evt) => {
         const { id } = evt.target;
@@ -81,8 +72,6 @@ export const DashboardFilter = ({ getAllData }) => {
         }
     }
 
-
-
     return (
     <form 
         onSubmit={ (evt) => getAllData( evt, formState ) }
@@ -102,15 +91,26 @@ export const DashboardFilter = ({ getAllData }) => {
                             <HiCalendar className="text-sm" /> Fecha:
                         </div>
                     </label>
-                    <DatePicker 
-                        selected={ startDate } 
-                        onChange={ onChangeDate }
-                        startDate={ startDate }
-                        endDate={ endDate }
-                        selectsRange
-                        name="date"
-                        showMonthDropdown
-                        locale='es'            
+                    <input 
+                        type="date"
+                        name="startDate"
+                        value={ startDate }
+                        onChange={ onInputChange }
+                        className="w-full bg-blueColor-50 dark:bg-dark-800 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b" 
+                    />
+                </div>
+
+                <div>
+                    <label>
+                        <div className="flex items-center gap-2 w-full text-gray-600 dark:text-gray-300 rounded-lg px-2 font-semibold">
+                            <HiCalendar className="text-sm" /> Fecha:
+                        </div>
+                    </label>
+                    <input 
+                        type="date"
+                        name="endDate"
+                        value={ endDate }
+                        onChange={ onInputChange }
                         className="w-full bg-blueColor-50 dark:bg-dark-800 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b" 
                     />
                 </div>
