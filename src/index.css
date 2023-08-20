@@ -166,10 +166,6 @@ td{
 }
 
 /* Modal user styles*/
-.modal-user{
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
 .btnModal-close {
     background-color: #f02626;
     top: 0;
@@ -195,56 +191,9 @@ td{
 #######################################*/
 
 /* File Modal */
-.file-modal{
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
 .input-modal{
     background-color:  #2666f0 ;
 
-}
-
-/* DatePicker - styles */
-.react-datepicker{
-    background-color: #f4f4f4;
-    border: 0;
-}
-
-.react-datepicker__header{
-    background-color: #0d1117;
-    color: #f4f4f4;
-    padding: 10px 25px;
-    border: none;
-}
-
-.react-datepicker__day-name{
-    color: #a0a0a0;
-    font-size: 16px;
-}
-
-.react-datepicker__month-read-view--selected-month{
-    font-size: 18px;
-}
-.react-datepicker__current-month{
-    color: #fff;
-    font-weight: 100;
-}
-
-.react-datepicker__month-option{
-    padding: 2px;
-    background-color: #0d1117;
-    font-size: 14px;
-}
-
-.react-datepicker__month-option:hover{
-    background-color: #161b22;
-}
-
-.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range), .react-datepicker__month-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range), .react-datepicker__quarter-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range), .react-datepicker__year-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range){
-    background-color: #0084ff;
-}
-.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range{
-    background-color: #2666f0;
 }
 
 /* Loader */
@@ -268,3 +217,23 @@ td{
 @keyframes skLinRotate {
     95% ,100% { transform: rotate(840deg) }
 }
+
+.downloader {
+    width: 24px;
+    height: 24px;
+    border: 5px solid #FFF;
+    border-bottom-color: #FF3D00;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 

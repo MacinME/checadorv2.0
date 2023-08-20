@@ -11,7 +11,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
     const { onFetchData } = useFetch('http://localhost:8081/users/api/registers', 'POST');
     const { dataFiltered, onDataFiltered } = useContext(FilterContext);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage, serPostPerPage] = useState(5);
+    const [postPerPage, serPostPerPage] = useState(10);
 
     const getAllData = async( evt, state) => {
         evt.preventDefault();
@@ -20,6 +20,10 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
         onDataFiltered( allData );
         onModalFilter();
     }
+
+    const lastIndex = currentPage * postPerPage;
+    const firstIndex = lastIndex - postPerPage;
+    const data = dataFiltered.slice(firstIndex, lastIndex);
 
   return (
     <div>
@@ -49,7 +53,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                     </thead>
                     <tbody>
                         {
-                            dataFiltered.map( (reg, index) => (
+                            data.map( (reg, index) => (
                                 <tr key={ reg.id_Register } className={`hover:bg-blueColor-100 dark:hover:bg-dark-900 cursor-pointer ${ index % 2 === 0 ? "bg-white dark:bg-dark-700" : "bg-blueColor-50 dark:bg-dark-800"}`}>
                                     <th>
                                         <div className="flex items-center flex-wrap gap-2 py-1">
@@ -92,7 +96,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                 </table>
             </div>
 
-            <DashboardPagination totalPosts={ 10 } postPerPage={ postPerPage } currentPage={ currentPage } setCurrentPage={ setCurrentPage } />
+            <DashboardPagination totalPosts={ dataFiltered.length } postPerPage={ postPerPage } currentPage={ currentPage } setCurrentPage={ setCurrentPage } />
         </div>
         {
             modalState.status && (<DashboardFilterModal onModalFilter={ onModalFilter } getAllData={ getAllData } />)

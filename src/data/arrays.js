@@ -52,12 +52,6 @@ export const filterTypes = [
                 title: 'Fecha Anterior',
                 group: 'group3',
                 name: 'group3_sortBy.lastDate'
-            },
-            {
-                id: 3,
-                title: 'Nombre a-z',
-                group: 'group3',
-                name: 'group3_sortBy.name'
             }
         ],
     },

@@ -2,8 +2,16 @@ import { HiCalendar, HiClock } from 'react-icons/hi';
 import { useCheckbox, useForm } from '../../hooks';
 import { DashboardCheckbox, DashboardSearchInput } from './';
 import { filterTypes } from '../../data';
+import icon_excel from '../../assets/excel.svg';
+import { useState } from 'react';
 
 export const DashboardFilter = ({ getAllData }) => {
+
+    const [isDownloading, setIsDownloading] = useState(false);
+    const [message, setMessage] = useState({
+        type: '',
+        message: ''
+    });
 
     const [ group1, onSelectOptionsTime ] = useCheckbox({
         option1: false,
@@ -18,7 +26,6 @@ export const DashboardFilter = ({ getAllData }) => {
     const [ group3, , onSelectSort ] = useCheckbox({
         option1: false,
         option2: false,
-        option3: false,
     })
 
     const [ group4, onSelectOptionsField ] = useCheckbox({
@@ -42,7 +49,6 @@ export const DashboardFilter = ({ getAllData }) => {
         group3_sortBy: {
             actualDate: null, // By actual date
             lastDate: null, // By last date
-            name: null, // By name A-Z
         },
         group4_degree: null,
         group4_subject: null,
@@ -51,6 +57,62 @@ export const DashboardFilter = ({ getAllData }) => {
         group4_regLogin: null,
         group4_regLogout: null,
     });
+
+    const onExportToExcel = async() => {
+        setIsDownloading(true);
+        const body = {...formState};
+        try {
+            const resp = await fetch('http://localhost:8081/users/api/export', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify( body ),
+            });
+
+            if(!resp.ok){
+                throw new Error('Failed to fetch the file')
+            }
+
+            const blob = await resp.blob();
+            
+            if(blob.type === 'application/json'){
+                setMessage({
+                    type: 'error',
+                    message: "Excel sin contenido"
+                })
+                setTimeout(() => {
+                    setMessage({
+                        ...message
+                    })
+                    setIsDownloading(false);
+                }, 1000)
+                return;
+            }
+            const blobUrl = URL.createObjectURL(blob);
+        
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.download = 'HorariosCEUT.xlsx';
+            link.click();
+
+            setTimeout(() => {
+                setIsDownloading(false);
+            }, 1000)
+            setMessage({
+                type: 'success',
+                message: "Descarga Exitosa"
+            })
+            setTimeout(() => {
+                setMessage({
+                    ...message
+                })
+            }, 3000)
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const handleGroupSelect = (evt) => {
         const { id } = evt.target;
@@ -84,11 +146,11 @@ export const DashboardFilter = ({ getAllData }) => {
                     search={ formState.search }
                 />
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center justify-around">
                 <div>
                     <label>
                         <div className="flex items-center gap-2 w-full text-gray-600 dark:text-gray-300 rounded-lg px-2 font-semibold">
-                            <HiCalendar className="text-sm" /> Fecha:
+                            <HiCalendar className="text-sm" /> Fecha inicio:
                         </div>
                     </label>
                     <input 
@@ -96,14 +158,13 @@ export const DashboardFilter = ({ getAllData }) => {
                         name="startDate"
                         value={ startDate }
                         onChange={ onInputChange }
-                        className="w-full bg-blueColor-50 dark:bg-dark-800 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b" 
+                        className="w-full bg-white dark:bg-dark-700 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b" 
                     />
                 </div>
-
                 <div>
                     <label>
                         <div className="flex items-center gap-2 w-full text-gray-600 dark:text-gray-300 rounded-lg px-2 font-semibold">
-                            <HiCalendar className="text-sm" /> Fecha:
+                            <HiCalendar className="text-sm" /> Fecha fin:
                         </div>
                     </label>
                     <input 
@@ -111,7 +172,7 @@ export const DashboardFilter = ({ getAllData }) => {
                         name="endDate"
                         value={ endDate }
                         onChange={ onInputChange }
-                        className="w-full bg-blueColor-50 dark:bg-dark-800 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b" 
+                        className="w-full bg-white dark:bg-dark-700 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b" 
                     />
                 </div>
 
@@ -125,9 +186,10 @@ export const DashboardFilter = ({ getAllData }) => {
                         type="number" 
                         placeholder="10"
                         name="tolerance_value"
+                        min={ 0 }
                         value={ tolerance_value }
                         onChange={ onInputChange }
-                        className="w-full bg-blueColor-50 dark:bg-dark-800 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b"
+                        className="w-full bg-white dark:bg-dark-700 dark:text-gray-200 outline-none border-gray-200 focus:rounded-md py-1 px-2 text-gray-600 rounded-md dark:border-gray-800 border-b"
                     />
                 </div>
             </div>
@@ -161,19 +223,31 @@ export const DashboardFilter = ({ getAllData }) => {
                 ))
             }
 
-            <div className="w-full py-2 w-full flex justify-end gap-2">
-                <button 
-                    className="w-24 h-8 flex items-center justify-center font-semibold bg-gray-200 text-gray-600 rounded-md text-center gap-2 w-24 h-24 hover:bg-gray-300"
-                > 
-                    Descargar 
-                </button>
+        </div>
 
-                <button 
-                    className="w-24 h-8 flex items-center font-semibold justify-center bg-primary rounded-md text-white text-center hover:bg-blueColor-900 w-24 h-24"
-                >
-                    Filtrar
-                </button>
+        <div className="w-full w-full flex justify-between gap-2">
+            <button 
+                onClick={ onExportToExcel }
+                type="button"
+                className="w-11 h-8 flex items-center justify-center font-semibold bg-gray-200 text-gray-600 rounded-md text-center gap-2 w-24 h-24 hover:bg-gray-300"
+            > 
+                { isDownloading 
+                    ? <span className="downloader"></span>
+                    : <img src={ icon_excel } alt="Icon Excel" className="w-5" /> 
+                }
+                
+            </button>
+
+            <div className={`${ message.type !== 'error' ? "text-green-500 font-semibold" : "text-red-500 font-semibold" }`}>
+                { message.message }
             </div>
+            
+            <button 
+                type="submit"
+                className="w-24 h-8 flex items-center font-semibold justify-center bg-primary rounded-md text-white text-center hover:bg-blueColor-900 w-24 h-24"
+            >
+                Filtrar
+            </button>
         </div>
     </form>
 
