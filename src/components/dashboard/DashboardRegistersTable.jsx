@@ -1,10 +1,12 @@
-import { HiOutlineArrowSmDown } from 'react-icons/hi';
-import { colorsFrontend, dataTH } from '../../data';
-import { useFetch } from '../../hooks/useFetch';
 import { useContext, useState } from 'react';
-import { DashboardFilterModal } from './DashboardFilterModal';
+import ExcelJS from 'exceljs';
+import { HiOutlineArrowSmDown } from 'react-icons/hi';
+import { DashboardPagination, DashboardDeleteModal, DashboardFilterModal } from './';
+import { colorsFrontend, dataTH } from '../../data';
 import { FilterContext } from '../../context';
-import { DashboardPagination } from './DashboardPagination';
+import { useNewModal, useFetch} from '../../hooks';
+import icon_excel from '../../assets/excel.svg';
+
 
 export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
 
@@ -12,6 +14,59 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
     const { dataFiltered, onDataFiltered } = useContext(FilterContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, serPostPerPage] = useState(10);
+
+    const { showNewModal, handleModal } = useNewModal([
+        { id: 1,status: false }
+    ]);
+    
+    const onDeleteRegister = () => {
+        handleModal(showNewModal[0])
+    }
+    
+    const [isDownloading, setIsDownloading] = useState(false);
+
+    const onExportToExcel = async() => {
+
+        if(dataFiltered.length < 1) return;
+
+        setIsDownloading(true);
+
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('DataSheet');
+
+        const columns = [];
+
+        dataTH.forEach( td => {
+            if(dataFiltered[0][td.name] !== null){
+                columns.push({ header: td.field, key: td.name, width: 30 })
+            }
+        });
+
+        worksheet.columns = columns;
+
+        dataFiltered.forEach( row => {
+            if(row.date){
+                row.date = new Date(row.date);
+            }
+            worksheet.addRow(row);
+        });
+
+        workbook.xlsx.writeBuffer().then(buffer => {
+            const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Horarios ${ new Date().toLocaleString() }.xlsx`;
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        setTimeout(() => {
+            setIsDownloading(false);
+            onDeleteRegister();
+        },1000)
+
+    }
 
     const getAllData = async( evt, state) => {
         evt.preventDefault();
@@ -28,8 +83,19 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
   return (
     <div>
         <div className="bg-blueColor-50 dark:bg-dark-800 rounded-lg px-4">
-            <div className="w-full py-2 px-4 mb-2">
+            <div className="w-full flex items-center gap-2 py-2 px-4 mb-2">
                 <p className="text-gray-800 dark:text-gray-300">Datos Filtrados: <span className="bg-primary text-white p-1 px-4 rounded-md text-sm"> { dataFiltered.length } </span></p>
+            <button 
+                onClick={ onExportToExcel }
+                type="button"
+                className="w-11 h-8 flex items-center justify-center font-semibold bg-gray-200 text-gray-600 rounded-md text-center gap-2 w-24 h-24 hover:bg-gray-300"
+            > 
+                { isDownloading 
+                    ? <span className="downloader"></span>
+                    : <img src={ icon_excel } alt="Icon Excel" className="w-5" /> 
+                }
+                
+            </button>
             </div>
             <div className="table-section relative">
                 <table className="table w-full">
@@ -81,7 +147,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                                                             th.name === 'tolerance' || 
                                                             th.name === 'delayedTime'
                                                                 ? reg[th.name] + ' min'
-                                                                : th.name === 'date' ? new Date(reg[th.name]).toISOString()
+                                                                : th.name === 'date' ? new Date(reg[th.name]).toDateString()
                                                                 : reg[th.name]
                                                         }
                                                         </div>
@@ -100,6 +166,9 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
         </div>
         {
             modalState.status && (<DashboardFilterModal onModalFilter={ onModalFilter } getAllData={ getAllData } />)
+        }
+        {
+            showNewModal[0].status && <DashboardDeleteModal onDeleteRegister={ onDeleteRegister } />
         }
     </div>
   )

@@ -40,6 +40,10 @@ module.exports = {
           50: '#f5f9ff',
           100: '#e7edf8'
         },
+        alert: {
+          successicon: '#45f66c',
+          erroricon: '#e61347',
+        }
       }
     },
   },

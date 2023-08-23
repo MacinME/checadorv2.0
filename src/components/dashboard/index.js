@@ -27,3 +27,5 @@ export * from './DashboardBar';
 export * from './DashboardErrorMessage';
 export * from './DashboardIconAddSubject';
 export * from './DashboardUser';
+export * from './DashboardDeleteModal';
+export * from './DashboardFilterModal'

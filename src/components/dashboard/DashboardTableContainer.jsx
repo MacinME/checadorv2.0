@@ -1,8 +1,13 @@
+import { useContext } from 'react';
 import { HiDatabase } from 'react-icons/hi';
 import { DashboardUsersTable, DashboardRegistersTable } from './';
-import { FilterProvider } from '../../context';
+import { AlertContext, FilterProvider } from '../../context';
+import { CommonSuccessAlert } from '../common';
 
 export const DashboardTableContainer = ({ selectedOption, onModalFilter, modalState, onModal, userState }) => {
+
+  const { showAlert } = useContext(AlertContext);
+
   return (
     <FilterProvider>
       <div className="flex flex-col overflow-y-scroll bg-bgc_white-50 dark:bg-dark-900 p-2 h-screen">
@@ -22,6 +27,9 @@ export const DashboardTableContainer = ({ selectedOption, onModalFilter, modalSt
               }
           </div>
       </div>
+      {
+        showAlert.display && <CommonSuccessAlert message={ showAlert.message } />
+      }
     </FilterProvider>
   )
 }
