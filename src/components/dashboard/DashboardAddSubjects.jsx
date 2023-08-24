@@ -9,7 +9,7 @@ import { academic } from '../../data';
 export const DashboardAddSubjects = ({ handleModal }) => {
 
   const { onGetUserData, user } = useContext(UserContext);
-  const { onFetchData } = useFetch('http://localhost:8081/users/api/addSubject', 'POST');
+  const { onFetchData } = useFetch('http://localhost:8081/schedules/add', 'POST');
   const { handleInputChange, handleAddSubject, handleRemoveSubject, formState } = useSubject({
     id: null, degree: '', data: [
         { idDay: 1, day: 'Lunes', subjects: [ { id_Time: 1, subject:'', start: '', end: '', grade: ''} ] },
@@ -46,7 +46,7 @@ export const DashboardAddSubjects = ({ handleModal }) => {
         <DashboardBar onModalFilter={ handleModal } />
       </div>
 
-      <h4 className="flex items-center justify-center gap-3 text-gray-600 font-bold text-center text-lg dark:text-gray-400"> Registrar horarios de clase </h4>
+      <h4 className="text-gray-600 text-center text-lg dark:text-gray-200"> Registrar horarios de clase </h4>
       
       <div className="w-full h-[42rem] overflow-y-scroll py-5">
         <form 

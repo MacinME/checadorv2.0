@@ -12,7 +12,7 @@ export const DashboardSubjectCard = ( { data, degree, id }) => {
     const { user, onGetUserData } = useContext(UserContext);
 
     const [editSubject, setEditSubject] = useState(null);
-    const { onFetchData } = useFetch('http://localhost:8081/users/api/deleteSubject', 'DELETE');
+    const { onFetchData } = useFetch('http://localhost:8081/schedules/delete', 'DELETE');
 
     const onEditSubject = (idSubject) =>{
         handleModal(showNewModal[0]);

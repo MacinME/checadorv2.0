@@ -2,7 +2,7 @@ import { HiCalendar, HiOutlinePlus } from 'react-icons/hi';
 
 export const DashboardIconAddSubject = ({ handleAddSubject, dayIndex, day }) => {
   return (
-    <div className="w-full flex items-center font-bold text-gray-600 tracking-wider dark:text-gray-300 px-3">
+    <div className="w-full border-b dark:border-gray-700 botder-gray-600 flex items-center font-bold text-gray-600 tracking-wider dark:text-gray-300 px-3 rounded">
         <div className='text-gray-700 dark:text-gray-400'>
             <HiCalendar />
         </div>

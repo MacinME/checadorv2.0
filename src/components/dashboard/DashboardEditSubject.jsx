@@ -9,7 +9,7 @@ export const DashboardEditSubject = ({ editSubject, handleModal, showNewModal })
     const { user, onGetUserData} = useContext(UserContext);
     const dataFiltered = user.subjects.filter( subject => subject.id === editSubject );
     const { handleInputChange, handleAddSubject, handleRemoveSubject, formState } = useSubject(dataFiltered[0]);
-    const { onFetchData } = useFetch('http://localhost:8081/users/api/updateSubject', 'PUT');
+    const { onFetchData } = useFetch('http://localhost:8081/schedules/update', 'PUT');
 
     const onSubmit = async(evt) => {
         evt.preventDefault();

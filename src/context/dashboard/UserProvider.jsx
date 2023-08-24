@@ -7,7 +7,7 @@ export const UserProvider = ({ children }) => {
 
     const onGetUserData = async(id) => {
         try {
-            const response = await fetch(`http://localhost:8081/users/api/user/${ id }`);
+            const response = await fetch(`http://localhost:8081/users/user/${ id }`);
             if(response.ok){
                 const { user } = await response.json();
                 setUser( user )

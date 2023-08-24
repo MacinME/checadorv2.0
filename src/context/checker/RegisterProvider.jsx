@@ -8,7 +8,7 @@ export const RegisterProvider = ({ children }) => {
     const [registeredData, setRegisteredData] = useState({});
     const { userState } = useContext(AuthContext);
     const { user } = userState;
-    const { onFetchData } = useFetch('http://localhost:8081/users/api/lastRegister', 'POST');
+    const { onFetchData } = useFetch('http://localhost:8081/registers/last', 'POST');
 
     const onGetLastRegister = async( id ) => {
       const data = { id }

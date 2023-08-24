@@ -11,7 +11,7 @@ export const CheckerOutput = () => {
     const [newTime, setNewtime] = useState( currentTime );
     const { registeredData, onUpdateData } = useContext(RegisterContext);
     const { lastClass } = registeredData;
-    const { onFetchData } = useFetch('http://localhost:8081/users/api/updateRegister', 'PUT');
+    const { onFetchData } = useFetch('http://localhost:8081/registers/go_out', 'PUT');
 
     const onSetLogout = async(evt) => {
         evt.preventDefault();

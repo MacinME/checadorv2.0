@@ -13,7 +13,7 @@ export const SignUpPage = () => {
     const handleSingInGoogle = async () => {
 
         const body = { id_token:  token }
-        await fetch('http://localhost:8081/api/auth/singUp', {
+        await fetch('http://localhost:8081/auth/singUp', {
             method: 'POST',
             headers: {
                 'Content-Type': "application/json"

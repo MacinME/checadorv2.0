@@ -45,7 +45,7 @@ export const DashboardUserData = () => {
                             </button>
                         }
                     </div>
-                    <div className="grid xl:grid-cols-6 md:grid-cols-2 sm:grid-cols-1 gap-3 xl:px-10 py-5 rounded-lg h-auto">
+                    <div className="grid xl:grid-cols-6 md:grid-cols-2 sm:grid-cols-1 gap-3 py-5 rounded-lg h-auto">
                         {
 
                             user.subjects.map( oneClass => (

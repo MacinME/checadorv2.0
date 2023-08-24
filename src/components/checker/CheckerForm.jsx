@@ -1,15 +1,14 @@
 import { useContext, useRef, useState } from 'react';
 import { HiBookmarkAlt, HiClipboard, HiClock } from 'react-icons/hi';
 import { useFetch, useForm } from '../../hooks';
-import { AuthContext, RegisterContext } from '../../context';
+import { RegisterContext } from '../../context';
 import { DashboardErrorMessage } from '../dashboard/DashboardErrorMessage';
 import { onDelayTime, onGet24TimeFormat, onGetSubject } from '../../helpers';
 import { days } from '../../data';
 
-export const CheckerForm = () => {
+export const CheckerForm = ({ dataLoaded }) => {
 
     const [chooseDegree, setChooseDegree] = useState(null);
-    const { userState } = useContext(AuthContext);
     const { registeredData, onUpdateData } = useContext(RegisterContext);
     const errorRef = useRef();
     const { topic, onInputChange, formState } = useForm({
@@ -17,16 +16,14 @@ export const CheckerForm = () => {
         subject: '',
         topic: '',
     });
-
     const today = days[new Date().getDay()];
-    const { user } = userState;
 
     const onChooseDegree = (evt) => {
         setChooseDegree( evt.target.value );
         onInputChange( evt );
     }
 
-    const { onFetchData } = useFetch('http://localhost:8081/users/api/send', 'POST');
+    const { onFetchData } = useFetch('http://localhost:8081/registers/go_in', 'POST');
 
     const onSendData = async(myData) => {
         const getData = await onFetchData(myData);
@@ -36,25 +33,29 @@ export const CheckerForm = () => {
     const onSubmitForm = async(evt) => {
         evt.preventDefault();
         const { degree, subject, topic } = formState;
-        if(degree.trim().length < 1, subject.trim().length < 1, topic.trim().length < 1){
-            return errorRef.current.style.display = 'block';
+        if(degree.trim().length < 1 || subject.trim().length < 1 || topic.trim().length < 1){
+            errorRef.current.style.display = 'block';
+            setTimeout(() => {
+                errorRef.current.style.display = 'none';
+            },3000);
+            return;
         }
 
-        const getSubjectData = onGetSubject(user, degree, subject, today);
+        const getSubjectData = onGetSubject(dataLoaded, degree, subject, today);
 
         const data = {
             ...formState,
-            degree: user.subjects.filter( l => l.id === Number(degree) )[0].degree,
+            degree: dataLoaded.subjects.filter( l => l.id === Number(degree) )[0].degree,
             subject: getSubjectData.subject,
             grade: getSubjectData.grade,
             originalTime: getSubjectData.start,
             id_Register: Date.now(), 
-            idCeut: userState.user.idCeut,
-            idUser: userState.user.uid,
+            idCeut: dataLoaded.idCeut,
+            idUser: dataLoaded.uid,
             date: new Date().toLocaleDateString(),
             login: onGet24TimeFormat(),
             logout: null,
-            delayedTime: onDelayTime(user, degree, subject, today)
+            delayedTime: onDelayTime(dataLoaded, degree, subject, today)
         }
         await onSendData( data );
     }
@@ -71,7 +72,7 @@ export const CheckerForm = () => {
             >
                 <option value="">Seleccionar Nivel Academico</option>
                 {
-                    user.subjects.map(( level ) => (
+                    dataLoaded.subjects.map(( level ) => (
                         <option 
                             key={ level.id }
                             value={ level.id }
@@ -92,7 +93,7 @@ export const CheckerForm = () => {
                     >
                         <option value="">Seleccrionar clase</option>
                         {
-                            user.subjects.map((level) => {
+                            dataLoaded.subjects.map((level) => {
                                 if(level.id === Number(chooseDegree)){
                                     return level.data.map( data => {
                                         if(data.day.toLowerCase() === today.toLowerCase() ){
@@ -101,7 +102,7 @@ export const CheckerForm = () => {
                                                     && (<option 
                                                         key={ subject.id_Time }
                                                         value={ subject.id_Time } 
-                                                    > { `${ subject.subject.toUpperCase() } - ${ subject.start } - ${ subject.end }` } </option>)
+                                                    > { `${ subject.subject.toUpperCase() } - ${ subject.start } - ${ subject.end } - ${ subject.grade }` } </option>)
                                             ))
                                         }
                                     })
@@ -126,7 +127,7 @@ export const CheckerForm = () => {
         </div>
         <div className="flex flex-wrap items-center justify-center gap-2">
             <button
-                className="btnModal-save flex items-center justify-center gap-2 rounded text-gray-700 py-2 px-2 hover:text-white dark:text-gray-400 dark:hover:text-white">
+                className="bg-blueColor-100 dark:bg-dark-700 flex items-center justify-center gap-2 rounded text-gray-700 py-2 px-2 hover:text-gray-800 dark:text-gray-200 dark:hover:text-white">
                 <HiClock /> Iniciar Clase
             </button>
         </div>

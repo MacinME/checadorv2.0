@@ -24,7 +24,7 @@ export const Dashboard = () => {
   }
 
   return (
-    <AlertProvider>
+    <>
       {/* Top Bar */}
       <DashboardTopBar selectedOption={ selectedOption } handleSelectedOption={ handleSelectedOption } />
 
@@ -48,8 +48,6 @@ export const Dashboard = () => {
             />
           </div>
       </div>
-    </AlertProvider>
-
-
+    </>
   )
 }

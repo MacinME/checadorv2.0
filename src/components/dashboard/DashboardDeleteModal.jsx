@@ -6,7 +6,7 @@ export const DashboardDeleteModal = ({ onDeleteRegister }) => {
 
     const { dataFiltered, onDataFiltered } = useContext(FilterContext);
     const { onDisplayAlert } = useContext(AlertContext);
-    const { onFetchData } = useFetch('http://localhost:8081/users/api/deleteRegisters', 'POST');
+    const { onFetchData } = useFetch('http://localhost:8081/registers/delete', 'POST');
 
     const getIds = () => {
         return dataFiltered.map((field) => {

@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
 
     const handleSingInGoogle = async () => {
 
-      await fetch('http://localhost:8081/api/auth/sigin', {
+      await fetch('http://localhost:8081/auth/sigin', {
           method: 'POST',
           headers: {
               'Content-Type': "application/json"

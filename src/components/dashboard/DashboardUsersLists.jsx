@@ -7,7 +7,7 @@ export const DashboardUsersLists = () => {
 
   const [users, setUsers] = useState([]);
   const { onGetUserData } = useContext(UserContext);
-  const { onFetchData } = useFetch('http://localhost:8081/users/api/findUsers', 'POST');
+  const { onFetchData } = useFetch('http://localhost:8081/users/find', 'POST');
   const { onInputChange, search } = useForm({
     search: ''
   });
@@ -34,17 +34,20 @@ export const DashboardUsersLists = () => {
             onInputChange={ onInputChange }
             search={ search }
         />
-        {
-            users.length > 0 ?
-                users.map( user => (
-                    <DashboardUser 
-                        key={ user. _id } 
-                        onGetUserData={ onGetUserData }
-                        {...user}
-                    />
-                ))
-            : search.trim().length > 2 && <DashboardErrorMessage message={`No encontrado: ${ search }`} />
-        }
+
+        <div className="overflow-y-scroll flex flex-col gap-3">
+          {
+              users.length > 0 ?
+                  users.map( user => (
+                      <DashboardUser 
+                          key={ user. _id } 
+                          onGetUserData={ onGetUserData }
+                          {...user}
+                      />
+                  ))
+              : search.trim().length > 2 && <DashboardErrorMessage message={`No encontrado: ${ search }`} />
+          }
+        </div>
     </div>
   )
 }

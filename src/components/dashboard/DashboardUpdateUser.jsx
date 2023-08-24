@@ -8,7 +8,7 @@ import { UserContext } from '../../context';
 export const DashboardUpdateUser = ({ user, state, handleModal }) => {
 
     const { onInputChange, formState } = useForm(user);
-    const { onFetchData } = useFetch(`http://localhost:8081/users/api/update/${ user.uid }`, 'PUT');
+    const { onFetchData } = useFetch(`http://localhost:8081/users/update/${ user.uid }`, 'PUT');
     const { onGetUserData } = useContext(UserContext);
 
     const { name, rol, idCeut } = formState;

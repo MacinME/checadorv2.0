@@ -7,11 +7,11 @@ export const DashboardUsersTable = ({ userState, onModal }) => {
 
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage, serPostPerPage] = useState(20);
+    const [postPerPage, serPostPerPage] = useState(10);
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch(`http://localhost:8081/users/api`);
+            const response = await fetch(`http://localhost:8081/users/`);
             const data = await response.json();
 
             setUsers(data)

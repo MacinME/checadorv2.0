@@ -8,7 +8,7 @@ export const CommonLogoutBtn = () => {
 
     const { onLogin } = useContext(AuthContext);
     const navigate = useNavigate();
-    const { onFetchData } = useFetch('http://localhost:8081/api/auth/logout', 'POST');
+    const { onFetchData } = useFetch('http://localhost:8081/auth/logout', 'POST');
 
     const logout = async () => {
         const getData = await onFetchData();

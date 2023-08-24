@@ -1,16 +1,14 @@
 import { useContext, useState } from 'react';
 import ExcelJS from 'exceljs';
-import { HiOutlineArrowSmDown } from 'react-icons/hi';
+import { HiDocumentDownload, HiOutlineArrowSmDown } from 'react-icons/hi';
 import { DashboardPagination, DashboardDeleteModal, DashboardFilterModal } from './';
 import { colorsFrontend, dataTH } from '../../data';
 import { FilterContext } from '../../context';
 import { useNewModal, useFetch} from '../../hooks';
-import icon_excel from '../../assets/excel.svg';
-
 
 export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
 
-    const { onFetchData } = useFetch('http://localhost:8081/users/api/registers', 'POST');
+    const { onFetchData } = useFetch('http://localhost:8081/registers/filter', 'POST');
     const { dataFiltered, onDataFiltered } = useContext(FilterContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, serPostPerPage] = useState(10);
@@ -88,11 +86,11 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
             <button 
                 onClick={ onExportToExcel }
                 type="button"
-                className="w-11 h-8 flex items-center justify-center font-semibold bg-gray-200 text-gray-600 rounded-md text-center gap-2 w-24 h-24 hover:bg-gray-300"
+                className="w-8 h-8 flex items-center justify-center font-semibold bg-gray-300 dark:bg-dark-700 rounded-md text-center gap-2 w-24 h-24 hover:bg-gray-400 dark:hover:bg-dark-900"
             > 
                 { isDownloading 
                     ? <span className="downloader"></span>
-                    : <img src={ icon_excel } alt="Icon Excel" className="w-5" /> 
+                    : <HiDocumentDownload className="dark:fill-white fill-dark-900 text-xl" /> 
                 }
                 
             </button>
@@ -147,7 +145,7 @@ export const DashboardRegistersTable = ({ onModalFilter, modalState}) => {
                                                             th.name === 'tolerance' || 
                                                             th.name === 'delayedTime'
                                                                 ? reg[th.name] + ' min'
-                                                                : th.name === 'date' ? new Date(reg[th.name]).toDateString()
+                                                                : th.name === 'date' ? new Date(reg[th.name]).toISOString().split('T')[0]
                                                                 : reg[th.name]
                                                         }
                                                         </div>
